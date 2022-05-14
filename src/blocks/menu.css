@@ -1,0 +1,33 @@
+.menu {
+  max-width: 100%;
+  max-height: 100px;
+  background-color: #F0EBF4;
+  grid-area: 1 / 1 / 2 / 2;
+  border-radius: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  font-size: calc(12px + 4 * (100vw / 1600));
+  line-height: 22px;
+}
+
+.menu__select {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  text-align: end;
+  box-sizing: border-box;
+}
+
+.menu__option {
+  justify-content: flex-end;
+  background-color: inherit;
+}
+
+.menu__field {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
