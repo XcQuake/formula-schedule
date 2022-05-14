@@ -31,7 +31,8 @@
         "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true } ],
         "max-len": ["warn", { "code": 80 }],
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "warn",
+        "linebreak-style": ["error", "windows"]
     },
     "settings": {
         "import/resolver": { "typescript": {} }
