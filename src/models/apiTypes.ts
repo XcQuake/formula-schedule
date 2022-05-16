@@ -1,4 +1,4 @@
-export interface DriverData {
+export type DriverData = {
   driverId: string,
   permanentNumber: string,
   code: string,
@@ -9,14 +9,14 @@ export interface DriverData {
   nationality: string,
 }
 
-export interface ConstructorData {
+export type ConstructorData = {
   constructorId: string,
   url: string,
   name: string,
   nationality: string,
 }
 
-export interface DriverStandingData {
+export type DriverStandingData = {
   position: string,
   positionText: string,
   points: string,
@@ -25,37 +25,37 @@ export interface DriverStandingData {
   Constructors: ConstructorData[],
 }
 
-export interface StandingListData {
+export type StandingListData = {
   season: string,
   round: string,
   DriverStandings: DriverStandingData[],
 }
 
-export interface StandingTableData {
+export type StandingTableData = {
   season: string,
   StandingsLists: StandingListData,
 }
 
-export interface LocationData {
+export type LocationData = {
   let: string,
   long: string,
   locality: string,
   country: string,
 }
 
-export interface CircuitData {
+export type CircuitData = {
   circuitId: string,
   url: string,
   circuitNmae: string,
   Location: LocationData,
 }
 
-export interface PracticeData {
+export type PracticeData = {
   date: string,
   time: string,
 }
 
-export interface RaceData {
+export type RaceData = {
   season: string,
   round: string,
   url: string,
@@ -69,18 +69,18 @@ export interface RaceData {
   Qualifying: PracticeData,
 }
 
-export interface RaceTableData {
+export type RaceTableData = {
   season: string,
   Races: RaceData[],
 }
 
-export interface StandingData {
+export type ApiData = {
   xmins: string,
   series: string,
   url: string,
   limit: string,
   offset: string,
   total: string,
-  StandingsTable: StandingTableData,
-  RaceTable: RaceTableData,
+  StandingsTable?: StandingTableData,
+  RaceTable?: RaceTableData,
 }

@@ -1,4 +1,4 @@
-import { StandingData } from '../models/interfacesApi';
+import { ApiData } from '../models/apiTypes';
 
 interface ApiConfig {
   baseUrl: string,
@@ -18,7 +18,7 @@ class Api {
   }
 
   private static processResult(res: Response):
-    Promise<{ MRData: StandingData }> {
+  Promise<{ MRData: ApiData }> {
     if (res.ok) return res.json();
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
   }
@@ -28,7 +28,7 @@ class Api {
       method: 'GET',
     })
       .then((res: Response) => Api.processResult(res))
-      .then((data) => data.MRData.StandingsTable.StandingsLists);
+      .then((data) => data.MRData.StandingsTable!.StandingsLists);
   }
 
   getSchedule(): object {
@@ -36,7 +36,7 @@ class Api {
       method: 'GET',
     })
       .then((res: Response) => Api.processResult(res))
-      .then((data) => data.MRData.RaceTable.Races);
+      .then((data) => data.MRData.RaceTable!.Races);
   }
 }
 
