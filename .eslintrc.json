@@ -32,7 +32,8 @@
         "max-len": ["warn", { "code": 80 }],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
-        "linebreak-style": ["error", "windows"]
+        "linebreak-style": ["error", "windows"],
+        "@typescript-eslint/no-non-null-assertion": "off"
     },
     "settings": {
         "import/resolver": { "typescript": {} }
