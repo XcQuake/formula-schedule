@@ -27,10 +27,6 @@
   border-radius: 7px 7px 0 0;
 }
 
-.driver__param_center {
-  text-align: center;
-}
-
 .driver__flag {
   width: 20px;
   box-sizing: border-box;
