@@ -33,7 +33,7 @@ export type StandingListData = {
 
 export type StandingTableData = {
   season: string,
-  StandingsLists: StandingListData,
+  StandingsLists: StandingListData[],
 }
 
 export type LocationData = {
