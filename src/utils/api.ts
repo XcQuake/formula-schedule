@@ -1,4 +1,4 @@
-import { ApiData } from '../models/apiTypes';
+import { ApiData, RaceData, StandingListData } from '../models/apiTypes';
 
 interface ApiConfig {
   baseUrl: string,
@@ -23,15 +23,15 @@ class Api {
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
   }
 
-  getDriverStanding(): object {
+  getDriverStanding(): Promise<StandingListData> {
     return fetch(`${this.link}/current/driverStandings.json`, {
       method: 'GET',
     })
       .then((res: Response) => Api.processResult(res))
-      .then((data) => data.MRData.StandingsTable!.StandingsLists);
+      .then((data) => data.MRData.StandingsTable!.StandingsLists[0]);
   }
 
-  getSchedule(): object {
+  getSchedule(): Promise<RaceData[]> {
     return fetch(`${this.link}/current.json`, {
       method: 'GET',
     })
