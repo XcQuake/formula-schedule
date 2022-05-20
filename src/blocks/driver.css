@@ -29,5 +29,7 @@
 
 .driver__flag {
   width: 20px;
+  height: 100%;
   box-sizing: border-box;
+  box-shadow: 2px 2px 1px black;
 }
