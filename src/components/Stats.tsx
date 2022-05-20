@@ -1,5 +1,5 @@
 import React, { ReactElement, useContext } from 'react';
-import CurrentSeasonContext from '../contexts/CurrentSeasonContext';
+import { CurrentSeasonContext } from '../contexts/CurrentSeasonContext';
 import flags from '../utils/flags';
 import Driver from './Driver';
 

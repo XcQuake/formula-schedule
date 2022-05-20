@@ -1,7 +1,9 @@
-import React, { ReactElement, useState, useEffect, useMemo } from 'react';
+import React, {
+  ReactElement, useState, useEffect, useMemo,
+} from 'react';
 import Header from './Header';
 import api from '../utils/api';
-import CurrentSeasonContext from '../contexts/CurrentSeasonContext';
+import { CurrentSeasonContext } from '../contexts/CurrentSeasonContext';
 import { DriverStandingData, RaceData } from '../models/apiTypes';
 import Main from './Main';
 
