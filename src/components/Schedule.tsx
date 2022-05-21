@@ -6,30 +6,31 @@ import {
   ICurrentSeasonContext,
 } from '../contexts/CurrentSeasonContext';
 
-export default function Schedule(): ReactElement {
-  const currentSeason: (
-    ICurrentSeasonContext | null
-  ) = useContext(CurrentSeasonContext);
-  const [isRaceOpened, setIsRaceOpened] = useState<number | null>(null);
+export default function Schedule(): JSX.Element {
+  const currentSeason: ICurrentSeasonContext | null = useContext(
+    CurrentSeasonContext,
+  );
+  const [activeIndex, setActiveIndex] = useState(1);
 
-  function handleOpenRace(index: number): void {
-    return index === isRaceOpened ? setIsRaceOpened(null) : setIsRaceOpened(index);
-  }
+  const renderedWeekend: React.ReactNode = currentSeason?.races.map(
+    (race, index) => {
+      const toggleRace = index === activeIndex
+        ? { maxHeight: '80px', marginBottom: '10px', opacity: '1' }
+        : { maxHeight: '0', opacity: '0' };
+
+      return (
+        <Weekend
+          race={race}
+          toggleRace={toggleRace}
+          onClick={() => setActiveIndex(index)}
+        />
+      );
+    },
+  );
 
   return (
     <section className="schedule">
-      <ul className="schedule__list">
-        {currentSeason && currentSeason.races.map(
-          (race, index) => (
-            <Weekend
-              key={uniqid()}
-              onClick={() => handleOpenRace(index)}
-              isClicked={isRaceOpened === index}
-              race={race}
-            />
-          ),
-        )}
-      </ul>
+      <ul className="schedule__list">{renderedWeekend}</ul>
     </section>
   );
 }
