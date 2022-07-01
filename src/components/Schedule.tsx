@@ -1,3 +1,4 @@
+import '../styles/Schedule.scss';
 import React, { useState, useContext, ReactElement } from 'react';
 import uniqid from 'uniqid';
 import Weekend from './Weekend';
@@ -7,9 +8,8 @@ import {
 } from '../contexts/CurrentSeasonContext';
 
 export default function Schedule(): JSX.Element {
-  const currentSeason: ICurrentSeasonContext | null = useContext(
-    CurrentSeasonContext,
-  );
+  const currentSeason:
+    ICurrentSeasonContext | null = useContext(CurrentSeasonContext);
   const [activeIndex, setActiveIndex] = useState(1);
 
   const renderedWeekend: React.ReactNode = currentSeason?.races.map(
