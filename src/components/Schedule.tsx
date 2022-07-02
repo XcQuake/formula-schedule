@@ -1,5 +1,5 @@
-import '../styles/Schedule.scss';
-import React, { useState, useContext, ReactElement } from 'react';
+import '../styles/components/Schedule.scss';
+import React, { useState, useContext } from 'react';
 import uniqid from 'uniqid';
 import Weekend from './Weekend';
 import {
@@ -20,6 +20,7 @@ export default function Schedule(): JSX.Element {
 
       return (
         <Weekend
+          key={uniqid()}
           race={race}
           toggleRace={toggleRace}
           onClick={() => setActiveIndex(index)}

@@ -1,6 +1,7 @@
-import '../styles/Driver.scss';
+import '../styles/components/Driver.scss';
 import React, { ReactElement } from 'react';
 import { DriverStandingData } from '../models/apiTypes';
+import { TEAM_COLORS } from '../utils/constants';
 
 type DriverData = {
   stats: DriverStandingData;
@@ -12,7 +13,6 @@ export default function Driver({ stats, flag }: DriverData): ReactElement {
   const team = stats.Constructors[0];
 
   const driverClassname = `driver team_${team.constructorId}`;
-
   return (
     <li className={driverClassname}>
       <ul className="driver__params">

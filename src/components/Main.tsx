@@ -1,4 +1,4 @@
-import '../styles/Main.scss';
+import '../styles/components/Main.scss';
 import React, { ReactElement } from 'react';
 import Stats from './Stats';
 import Schedule from './Schedule';

@@ -1,4 +1,4 @@
-import '../styles/Header.scss';
+import '../styles/components/Header.scss';
 import React, { ReactElement } from 'react';
 
 export default function Header(): ReactElement {

@@ -19,15 +19,13 @@ function App(): ReactElement {
   );
 
   useEffect(() => {
-    api
-      .getSchedule()
+    api.getSchedule()
       .then((data) => {
         setRaces(data);
       })
       .catch((err: Error) => console.log(err));
 
-    api
-      .getDriverStanding()
+    api.getDriverStanding()
       .then((data) => {
         setDriverStanding(data.DriverStandings);
       })

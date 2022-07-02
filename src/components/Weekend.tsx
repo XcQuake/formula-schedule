@@ -1,4 +1,4 @@
-import '../styles/Weekend.scss';
+import '../styles/components/Weekend.scss';
 import React from 'react';
 import { RaceData } from '../models/apiTypes';
 import WeekendActivity from './WeekendActivity';

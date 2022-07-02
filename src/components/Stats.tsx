@@ -1,4 +1,4 @@
-import '../styles/Stats.scss';
+import '../styles/components/Stats.scss';
 import React, { ReactElement, useContext } from 'react';
 import { CurrentSeasonContext } from '../contexts/CurrentSeasonContext';
 import flags from '../utils/flags';

@@ -1,5 +1,8 @@
-@import url(./vendor/normalize.css);
-@import url(./vendor/fonts.css);
+@import './vendors/normalize';
+@import './vendors/fonts';
+@import './utils/colors';
+@import './utils/mixins';
+@import './utils/teams';
 
 .page {
   background-color: #1A1A1D;

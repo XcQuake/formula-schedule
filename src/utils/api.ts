@@ -17,8 +17,7 @@ class Api {
     this.headers = headers;
   }
 
-  private static processResult(res: Response):
-  Promise<{ MRData: ApiData }> {
+  private static processResult(res: Response): Promise<{ MRData: ApiData }> {
     if (res.ok) return res.json();
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
   }
