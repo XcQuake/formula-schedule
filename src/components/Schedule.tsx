@@ -1,5 +1,5 @@
 import '../styles/components/Schedule.scss';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 import Weekend from './Weekend';
 import {
   CurrentSeasonContext,
@@ -7,23 +7,25 @@ import {
 } from '../contexts/CurrentSeasonContext';
 import { refactorDate } from '../utils/utils';
 
-export default function Schedule(): JSX.Element {
+function Schedule(): JSX.Element {
   const currentSeason:
     ICurrentSeasonContext | null = useContext(CurrentSeasonContext);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(999);
+
+  const onClick = useCallback((index: number) => {
+    setActiveIndex(index);
+  }, []);
 
   const renderedWeekend: React.ReactNode = currentSeason?.races.map(
     (race, index) => {
-      const toggleRace = index === activeIndex
-        ? { maxHeight: '80px', marginBottom: '10px', opacity: '1' }
-        : { maxHeight: '0', opacity: '0' };
-      // if (race.date)
+      const isActive = index === activeIndex;
       return (
         <Weekend
           key={race.date}
           race={race}
-          toggleRace={toggleRace}
-          onClick={() => setActiveIndex(index)}
+          isActive={isActive}
+          onClick={onClick}
+          index={index}
         />
       );
     },
@@ -35,3 +37,5 @@ export default function Schedule(): JSX.Element {
     </section>
   );
 }
+
+export default React.memo(Schedule);
