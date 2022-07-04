@@ -65,7 +65,8 @@ export type RaceData = {
   time: string,
   FirstPractice: PracticeData,
   SecondPractice: PracticeData,
-  ThirdPractice: PracticeData,
+  ThirdPractice?: PracticeData,
+  Sprint?: PracticeData,
   Qualifying: PracticeData,
 }
 

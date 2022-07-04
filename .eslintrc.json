@@ -34,7 +34,8 @@
         "react-hooks/exhaustive-deps": "warn",
         "linebreak-style": ["error", "windows"],
         "@typescript-eslint/no-non-null-assertion": "off",
-        "object-curly-newline": "off"
+        "object-curly-newline": "off",
+        "function-paren-newline": ["error", "consistent"]
     },
     "settings": {
         "import/resolver": { "typescript": {} }
