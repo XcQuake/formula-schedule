@@ -1,6 +1,6 @@
 import '../styles/components/Weekend.scss';
 import React, { EffectCallback, useEffect } from 'react';
-import { isSameWeek, parseISO } from 'date-fns';
+import { isBefore, isSameWeek, parseISO } from 'date-fns';
 import { refactorDate } from '../utils/utils';
 import { RaceData } from '../models/apiTypes';
 import Session from './Session';
@@ -31,6 +31,8 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
     sprint: Sprint && refactorDate(Sprint.date, Sprint.time),
     qualifying: refactorDate(Qualifying.date, Qualifying.time),
   };
+
+  const isWeekendOver = isBefore(parseISO(race.date), new Date());
 
   useEffect(() => {
     const isCurrentWeekend = isSameWeek(new Date(), parseISO(race.date), {
@@ -72,7 +74,10 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
         onClick={handleRaceClick}
         onKeyDown={handleRaceKeyDown}
       >
-        <p className="weekend__race-title">{race.raceName}</p>
+        <div className="weekend__race-info">
+          <p className="weekend__race-title">{race.raceName}</p>
+          {isWeekendOver && <div className="weekend__race-over" /> }
+        </div>
         <div className="weekend__race-date">
           <p className="weekend__date">{dates.race.date}</p>
           <p className="weekend__time">{dates.race.time}</p>

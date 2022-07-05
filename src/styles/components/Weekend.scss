@@ -16,8 +16,10 @@
   &__race {
     padding: 0;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    // justify-content: space-between;
     background-color: #1a1a1a;
     color: #fff;
     border-radius: 5px 5px 0 0;
@@ -26,13 +28,28 @@
     transition: linear 0.2s;
     box-shadow: inset 1px 1px 2px black;
 
+    &-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-over {
+      width: 25px;
+      height: 14.5px;
+      margin: 10px;
+      background-image: url(../../images/finish-flag.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      border: 1px solid rgb(158, 153, 153);
+    }
+
     &_active {
       background-color: #940a26;
     }
 
     &:hover {
       background: #000;
-      /* box-shadow: 0 0 0 3px #000; */
     }
 
     &-title {
@@ -41,7 +58,6 @@
     }
 
     &-date {
-      width: 50%;
       background-color: #940a26;
       display: flex;
       justify-content: space-between;
