@@ -1,39 +1,41 @@
-.team_alfa {
-  @include team-color($alfa);
-}
-
-.team_alphatauri {
-  @include team-color($alphatauri);
-}
-
-.team_alpine {
-  @include team-color($alpine);
-}
-
-.team_aston_martin {
-  @include team-color($aston-martin);
-}
-
-.team_ferrari {
-  @include team-color($ferrari);
-}
-
-.team_haas {
-  @include team-color($haas);
-}
-
-.team_mclaren {
-  @include team-color($mclaren);
-}
-
-.team_mercedes {
-  @include team-color($mercedes);
-}
-
-.team_red_bull {
-  @include team-color($red-bull);
-}
-
-.team_williams {
-  @include team-color($williams);
+.team {
+  &_alfa {
+    @include team-color($alfa);
+  }
+  
+  &_alphatauri {
+    @include team-color($alphatauri);
+  }
+  
+  &_alpine {
+    @include team-color($alpine);
+  }
+  
+  &_aston_martin {
+    @include team-color($aston-martin);
+  }
+  
+  &_ferrari {
+    @include team-color($ferrari);
+  }
+  
+  &_haas {
+    @include team-color($haas);
+  }
+  
+  &_mclaren {
+    @include team-color($mclaren);
+  }
+  
+  &_mercedes {
+    @include team-color($mercedes);
+  }
+  
+  &_red_bull {
+    @include team-color($red-bull);
+  }
+  
+  &_williams {
+    @include team-color($williams);
+  }
 }

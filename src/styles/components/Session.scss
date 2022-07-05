@@ -1,43 +1,45 @@
-.session__qualifying {
-  background-color: #A8122F;
-  border-radius: 0 0 10px 0;
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: right;
-  box-shadow: inset 1px 1px 2px black;
-}
+.session {
+  &__qualifying {
+    background-color: #A8122F;
+    border-radius: 0 0 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: right;
+    box-shadow: inset 1px 1px 2px black;
+  }
 
-.session__practice {
-  padding: 10px;
-}
+  &__practice {
+    padding: 10px;
+  }
 
-.session__sprint {
-  padding: 10px;
-  background-color: rgb(14, 92, 14);
-  box-shadow: inset 1px 2px 2px black;
-}
+  &__sprint {
+    padding: 10px;
+    background-color: rgb(14, 92, 14);
+    box-shadow: inset 1px 2px 2px black;
+  }
 
-.session__practice:first-child {
-  box-shadow: inset 1px 0 2px black;
-  border-radius: 0 0 0 10px;
-}
+  &__practice:first-child {
+    box-shadow: inset 1px 0 2px black;
+    border-radius: 0 0 0 10px;
+  }
 
-.session__practice-title {
-  margin: 0 0 10px;
-  font-size: 15px;
-  line-height: 17px;
-}
+  &__practice-title {
+    margin: 0 0 10px;
+    font-size: 15px;
+    line-height: 17px;
+  }
 
-.session__date {
-  margin: 0;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15px;
-}
+  &__date {
+    margin: 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+  }
 
-.session__time {
-  margin: 0;
-  padding-top: 3px;
-  font-size: 13px;
-  line-height: 15px;
+  &__time {
+    margin: 0;
+    padding-top: 3px;
+    font-size: 13px;
+    line-height: 15px;
+  }
 }

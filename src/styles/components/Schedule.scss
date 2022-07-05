@@ -5,17 +5,17 @@
   grid-area: 1 / 3 / 3 / 4;
   padding: 15px;
   box-sizing: border-box;
-}
 
-.schedule__title {
-  margin: 0;
-  padding: 0;
-}
-
-.schedule__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+  &__title {
+    margin: 0;
+    padding: 0;
+  }
+  
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
 }
