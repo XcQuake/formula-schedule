@@ -20,6 +20,7 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
     Sprint,
     Qualifying,
   } = race;
+  const isWeekendOver = isBefore(parseISO(race.date), new Date());
 
   const dates = {
     race: refactorDate(race.date, race.time),
@@ -31,8 +32,6 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
     sprint: Sprint && refactorDate(Sprint.date, Sprint.time),
     qualifying: refactorDate(Qualifying.date, Qualifying.time),
   };
-
-  const isWeekendOver = isBefore(parseISO(race.date), new Date());
 
   useEffect(() => {
     const isCurrentWeekend = isSameWeek(new Date(), parseISO(race.date), {
