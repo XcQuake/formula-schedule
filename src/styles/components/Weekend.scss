@@ -1,16 +1,15 @@
 .weekend {
   display: block;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
 
   &__date {
     margin: 0;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
   }
 
   &__time {
     margin: 0;
-    font-size: 14px;
   }
 
   &__race {
@@ -18,8 +17,7 @@
     list-style: none;
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 1fr;
-    // justify-content: space-between;
+    grid-template-columns: minmax(100px, 300px) minmax(60px, 200px);
     background-color: #1a1a1a;
     color: #fff;
     border-radius: 5px 5px 0 0;
@@ -28,7 +26,7 @@
     transition: ease 0.2s;
     box-shadow: inset 1px 1px 2px black;
 
-    &:focus {
+    &:focus-visible {
       outline: none;
       box-shadow: inset 0 0 0 2px #fff;
     }
@@ -44,13 +42,18 @@
     }
 
     &-over {
-      width: 25px;
+      min-width: 25px;
       height: 14.5px;
       margin: 10px;
       background-image: url(../../images/finish-flag.svg);
       background-size: cover;
       background-repeat: no-repeat;
       border: 1px solid rgb(158, 153, 153);
+      transition: 0.2s ease;
+
+      &:hover {
+        transform: scale(1.15);
+      }
     }
 
     &_active {
@@ -60,6 +63,9 @@
     &-title {
       padding: 10px;
       margin: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     &-date {
@@ -79,7 +85,7 @@
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 150px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     background-color: #1A1A1A;
     border-radius: 0 0 10px 10px;
     color: #fff;
@@ -92,6 +98,22 @@
       max-height: 80px;
       margin-bottom: 10px;
       opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .weekend {
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .weekend{
+    &__race-date {
+      font-size: 12px;
+      line-height: 14px;
     }
   }
 }

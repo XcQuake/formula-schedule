@@ -1,5 +1,9 @@
 .session {
-  &__qualifying {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+
+  &_qualifying {
     background-color: #A8122F;
     border-radius: 0 0 10px 0;
     padding: 10px;
@@ -8,38 +12,37 @@
     box-shadow: inset 1px 1px 2px black;
   }
 
-  &__practice {
-    padding: 10px;
-  }
-
-  &__sprint {
+  &_sprint {
     padding: 10px;
     background-color: rgb(14, 92, 14);
     box-shadow: inset 1px 2px 2px black;
   }
 
-  &__practice:first-child {
-    box-shadow: inset 1px 0 2px black;
-    border-radius: 0 0 0 10px;
+  &_practice {
+    padding: 10px;
+
+    &:first-child {
+      box-shadow: inset 1px 0 2px black;
+      border-radius: 0 0 0 10px;
+    }
   }
 
-  &__practice-title {
+  &__title {
     margin: 0 0 10px;
-    font-size: 15px;
-    line-height: 17px;
   }
 
   &__date {
     margin: 0;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
   }
 
   &__time {
     margin: 0;
-    padding-top: 3px;
-    font-size: 13px;
-    line-height: 15px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .session {
+    font-size: 12px;
+    line-height: 14px;
   }
 }

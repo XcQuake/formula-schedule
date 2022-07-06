@@ -84,13 +84,13 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
       </div>
       <ul className={accordionClassname}>
         <Session
-          title="1st practice"
+          title="Practice #1"
           date={dates.firstPractice.date}
           time={dates.firstPractice.time}
           type="practice"
         />
         <Session
-          title="2nd practice"
+          title="Practice #2"
           date={dates.secondPractice.date}
           time={dates.secondPractice.time}
           type="practice"
@@ -98,7 +98,7 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
         {
           race.ThirdPractice && (
             <Session
-              title="3rd practice"
+              title="Practice #3"
               date={dates.thirdPractice!.date}
               time={dates.thirdPractice!.time}
               type="practice"
