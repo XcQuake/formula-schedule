@@ -1,4 +1,5 @@
-import { ApiData, RaceData, StandingListData } from '../models/apiTypes';
+import { FormulaApiData, RaceData, StandingListData } from './formulaApiTypes';
+import { FORMULA_API_URL } from '../utils/constants';
 
 interface ApiConfig {
   baseUrl: string,
@@ -7,26 +8,29 @@ interface ApiConfig {
   }
 }
 
-class Api {
+class FormulaApi {
   private link: string;
 
-  private headers: object;
+  private headers: {
+    'Content-Type': string,
+  };
 
   constructor({ baseUrl, headers }: ApiConfig) {
     this.link = baseUrl;
     this.headers = headers;
   }
 
-  private static processResult(res: Response): Promise<{ MRData: ApiData }> {
+  private static processResult = (res: Response):
+  Promise<{ MRData: FormulaApiData }> => {
     if (res.ok) return res.json();
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
-  }
+  };
 
   getDriverStanding(): Promise<StandingListData> {
     return fetch(`${this.link}/current/driverStandings.json`, {
       method: 'GET',
     })
-      .then((res: Response) => Api.processResult(res))
+      .then((res: Response) => FormulaApi.processResult(res))
       .then((data) => data.MRData.StandingsTable!.StandingsLists[0]);
   }
 
@@ -34,16 +38,16 @@ class Api {
     return fetch(`${this.link}/current.json`, {
       method: 'GET',
     })
-      .then((res: Response) => Api.processResult(res))
+      .then((res: Response) => FormulaApi.processResult(res))
       .then((data) => data.MRData.RaceTable!.Races);
   }
 }
 
-const api = new Api({
-  baseUrl: 'http://ergast.com/api/f1',
+const formulaApi = new FormulaApi({
+  baseUrl: FORMULA_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-export default api;
+export default formulaApi;

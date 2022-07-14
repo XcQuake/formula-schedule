@@ -11,6 +11,4 @@ export const TEAM_COLORS = {
   williams: '#0A0F6D',
 };
 
-export const COLORS = {
-  primer: '',
-};
+export const FORMULA_API_URL = 'http://ergast.com/api/f1';
