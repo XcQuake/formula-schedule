@@ -75,7 +75,7 @@ export type RaceTableData = {
   Races: RaceData[],
 }
 
-export type ApiData = {
+export type FormulaApiData = {
   xmins: string,
   series: string,
   url: string,

@@ -1,9 +1,8 @@
-import { combineReducers } from 'redux';
 import { DriverStandingData } from '../../models/apiTypes';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
-interface DriverStandingState {
+interface DriversStandingState {
   loading: boolean;
   error: string | null;
   standing: DriverStandingData[];
@@ -16,9 +15,9 @@ const initialState = {
 };
 
 const driversStandingReducer = (
+  state: DriversStandingState = initialState,
   action: Action,
-  state: DriverStandingState = initialState,
-): DriverStandingState => {
+): DriversStandingState => {
   switch (action.type) {
     case ActionType.FETCH_STANDING:
       return { loading: true, error: null, standing: [] };

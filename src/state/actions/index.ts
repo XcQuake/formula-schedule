@@ -1,14 +1,3 @@
-/* eslint-disable max-len */
-// import formulaApi from '../../utils/FormulaApi';
-// import { ApiData, RaceData, StandingListData } from '../../models/apiTypes';
-// import { Dispatch } from 'react';
-
-// export const fetchDriverStanding = (): any => async (dispatch: Dispatch) => {
-//   const response = await formulaApi.getDriverStanding();
-
-//   dispatch({ type: 'FETCH_DRIVER_STANDING', payload: response });
-// };
-
 import { ActionType } from '../action-types';
 import { DriverStandingData } from '../../models/apiTypes';
 

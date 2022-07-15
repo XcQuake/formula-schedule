@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
-import formulaApi from '../../utils/FormulaApi';
+import formulaApi from '../../requests/formulaApi';
 
 export const fetchDriverStanding = () => async (dispatch: Dispatch<Action>) => {
   dispatch({
@@ -21,5 +22,3 @@ export const fetchDriverStanding = () => async (dispatch: Dispatch<Action>) => {
     });
   }
 };
-
-export const foo = 'foo';

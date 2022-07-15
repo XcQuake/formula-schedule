@@ -7,7 +7,7 @@ type DriverData = {
   flag: string;
 };
 
-export default function Driver({ stats, flag }: DriverData): JSX.Element {
+function Driver({ stats, flag }: DriverData): JSX.Element {
   const bio = stats.Driver;
   const team = stats.Constructors[0];
 
@@ -28,3 +28,5 @@ export default function Driver({ stats, flag }: DriverData): JSX.Element {
     </li>
   );
 }
+
+export default Driver;

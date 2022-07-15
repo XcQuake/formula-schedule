@@ -31,12 +31,13 @@
         "@typescript-eslint/explicit-function-return-type": ["error", { "allowExpressions": true } ],
         "max-len": ["warn", { "code": 85 }],
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": "off",
         "linebreak-style": ["error", "windows"],
         "@typescript-eslint/no-non-null-assertion": "off",
         "object-curly-newline": "off",
         "function-paren-newline": ["error", "consistent"],
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "default-param-last": "off"
     },
     "settings": {
         "import/resolver": { "typescript": {} }
