@@ -1,5 +1,5 @@
 import { ActionType } from '../action-types';
-import { DriverStandingData } from '../../models/apiTypes';
+import { DriverStandingData, RaceData } from '../../models/apiTypes';
 
 export const foo = 'foo';
 
@@ -17,7 +17,24 @@ interface FetchStandingErrorAction {
   payload: string;
 }
 
+interface FetchScheduleAction {
+  type: ActionType.FETCH_SCHEDULE;
+}
+
+interface FetchScheduleSuccessAction {
+  type: ActionType.FETCH_SCHEDULE_SUCCESS;
+  payload: RaceData[],
+}
+
+interface FetchScheduleErrorAction {
+  type: ActionType.FETCH_SCHEDULE_ERROR;
+  payload: string,
+}
+
 export type Action =
   | FetchStandingAction
   | FetchStandingSuccessAction
-  | FetchStandingErrorAction;
+  | FetchStandingErrorAction
+  | FetchScheduleAction
+  | FetchScheduleSuccessAction
+  | FetchScheduleErrorAction;

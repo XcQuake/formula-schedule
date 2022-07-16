@@ -22,3 +22,22 @@ export const fetchDriverStanding = () => async (dispatch: Dispatch<Action>) => {
     });
   }
 };
+
+export const fetchSchedule = () => async (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.FETCH_SCHEDULE,
+  });
+
+  try {
+    const response = await formulaApi.getSchedule();
+    dispatch({
+      type: ActionType.FETCH_SCHEDULE_SUCCESS,
+      payload: response,
+    });
+  } catch (err: any) {
+    dispatch({
+      type: ActionType.FETCH_SCHEDULE_ERROR,
+      payload: err.message,
+    });
+  }
+};
