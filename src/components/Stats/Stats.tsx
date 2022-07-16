@@ -5,6 +5,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import './Stats.scss';
 import flags from '../../utils/flags';
 import Driver from '../Driver/Driver';
+import Preloader from '../Preloader/Preloader';
 
 function Stats(): ReactElement {
   const { fetchDriverStanding } = useActions();
@@ -16,8 +17,21 @@ function Stats(): ReactElement {
     fetchDriverStanding();
   }, []);
 
+  const renderedStanding: React.ReactNode = (
+    !loading && !error && standing.map(
+      (driver) => (
+        <Driver
+          key={driver.Driver.driverId}
+          stats={driver}
+          flag={flags[driver.Driver.nationality]}
+        />
+      ),
+    )
+  );
+
   return (
     <section className="stats">
+      <h3 className="stats__header">Standing</h3>
       <ul className="stats__list">
         <ul className="driver__params driver__params_head">
           <li className="driver__param text_center">Pos</li>
@@ -27,18 +41,9 @@ function Stats(): ReactElement {
           <li className="driver__param">Team</li>
           <li className="driver__param text_center">Nationality</li>
         </ul>
-        {error && <h3 style={{ color: '#fff' }}>{error}</h3>}
-        {loading && <h3 style={{ color: '#fff' }}>Loading...</h3> }
-        {!loading && !error && standing.map(
-          (driver) => (
-            <Driver
-              key={driver.Driver.driverId}
-              stats={driver}
-              flag={flags[driver.Driver.nationality]}
-            />
-          ),
-        )}
+        {renderedStanding}
       </ul>
+      {loading && <Preloader />}
     </section>
   );
 }

@@ -37,7 +37,8 @@
         "object-curly-newline": "off",
         "function-paren-newline": ["error", "consistent"],
         "import/prefer-default-export": "off",
-        "default-param-last": "off"
+        "default-param-last": "off",
+        "react/function-component-definition": "off"
     },
     "settings": {
         "import/resolver": { "typescript": {} }

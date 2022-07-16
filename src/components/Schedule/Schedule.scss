@@ -6,10 +6,15 @@
   padding: 15px;
   box-sizing: border-box;
   max-width: 500px;
-
-  &__title {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  // justify-content: center;
+  align-items: center;
+  
+  &__header {
     margin: 0;
-    padding: 0;
+    padding: 0 0 5px;
   }
   
   &__list {
