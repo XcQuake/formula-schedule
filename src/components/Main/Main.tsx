@@ -1,7 +1,7 @@
-import '../styles/components/Main.scss';
+import './Main.scss';
 import React, { ReactElement } from 'react';
-import Stats from './Stats';
-import Schedule from './Schedule';
+import Stats from '../Stats/Stats';
+import Schedule from '../Schedule/Schedule';
 
 export default function Main(): ReactElement {
   return (

@@ -1,8 +1,8 @@
-import '../styles/components/Schedule.scss';
+import './Schedule.scss';
 import React, { useState, useContext, useCallback, useEffect } from 'react';
-import Weekend from './Weekend';
-import { useTypedSelector } from '../hooks/useTypedSelector';
-import { useActions } from '../hooks/useActions';
+import Weekend from '../Weekend/Weekend';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 
 function Schedule(): JSX.Element {
   const { fetchSchedule } = useActions();

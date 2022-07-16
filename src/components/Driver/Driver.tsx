@@ -1,6 +1,6 @@
-import '../styles/components/Driver.scss';
+import './Driver.scss';
 import React from 'react';
-import { DriverStandingData } from '../models/apiTypes';
+import { DriverStandingData } from '../../models/apiTypes';
 
 type DriverData = {
   stats: DriverStandingData;

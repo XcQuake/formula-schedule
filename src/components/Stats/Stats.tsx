@@ -1,10 +1,10 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { useActions } from '../hooks/useActions';
-import { useTypedSelector } from '../hooks/useTypedSelector';
-import '../styles/components/Stats.scss';
-import flags from '../utils/flags';
-import Driver from './Driver';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import './Stats.scss';
+import flags from '../../utils/flags';
+import Driver from '../Driver/Driver';
 
 function Stats(): ReactElement {
   const { fetchDriverStanding } = useActions();

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components/Session.scss';
+import './Session.scss';
 
 type args = {
   title: string;

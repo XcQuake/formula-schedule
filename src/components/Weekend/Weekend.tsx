@@ -1,9 +1,9 @@
-import '../styles/components/Weekend.scss';
-import React, { EffectCallback, useEffect } from 'react';
-import { isBefore, isAfter, isPast, isFuture, isSameWeek, parseISO } from 'date-fns';
-import { refactorDate } from '../utils/utils';
-import { RaceData } from '../models/apiTypes';
-import Session from './Session';
+import './Weekend.scss';
+import React, { useEffect } from 'react';
+import { isPast, isSameWeek, parseISO } from 'date-fns';
+import { refactorDate } from '../../utils/utils';
+import { RaceData } from '../../models/apiTypes';
+import Session from '../Session/Session';
 
 type WeekendArgs = {
   onClick: (index: number) => void;
