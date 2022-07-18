@@ -1,7 +1,5 @@
 import { ActionType } from '../action-types';
 import {
-  ConstructorStanding,
-  DriverStanding,
   Race,
   StandingList,
 } from '../../models/apiTypes';

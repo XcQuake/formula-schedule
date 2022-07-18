@@ -15,10 +15,8 @@ const Stats = (): ReactElement => {
     (state) => state.standing,
   );
   const [championship, setChampionship] = useState('driver');
-
-  // useEffect(() => {
-  //   fetchStanding('current', championship);
-  // }, []);
+  const drivers = standingList?.DriverStandings;
+  const constructors = standingList?.ConstructorStandings;
 
   useEffect(() => {
     fetchStanding('current', championship);
@@ -33,26 +31,24 @@ const Stats = (): ReactElement => {
     }
   };
 
+  const renderList = (): React.ReactNode => {
+    if (!loading && !error) {
+      return (drivers && <DriversList drivers={drivers} />)
+      || (constructors && <ConstructorsList constructors={constructors} />);
+    }
+    if (loading) {
+      return <Preloader />;
+    }
+    return <p>Failed to load data</p>;
+  };
+
   return (
     <section className="stats">
       <ToggleButton
         labels={{ firstState: 'Drivers', secondState: 'Constructors' }}
         onClick={handleCHangeChampionship}
       />
-      {loading && <Preloader />}
-      {/* {
-        !loading
-        && !error
-        && <DriversList drivers={standingList} />
-      } */}
-      {
-        standingList?.DriverStandings
-        && <DriversList drivers={standingList.DriverStandings} />
-      }
-      {
-        standingList?.ConstructorStandings
-        && <ConstructorsList constructors={standingList.ConstructorStandings} />
-      }
+      {renderList()}
     </section>
   );
 };

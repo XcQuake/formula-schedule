@@ -14,7 +14,6 @@ export const fetchStanding = (
 
   try {
     const response = await formulaApi.getStanding(season, championship);
-    console.log(response);
     dispatch({
       type: ActionType.FETCH_STANDING_SUCCESS,
       payload: response,

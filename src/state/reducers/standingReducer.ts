@@ -1,4 +1,4 @@
-import { StandingData, StandingList } from '../../models/apiTypes';
+import { StandingList } from '../../models/apiTypes';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
