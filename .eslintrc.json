@@ -38,7 +38,8 @@
         "function-paren-newline": ["error", "consistent"],
         "import/prefer-default-export": "off",
         "default-param-last": "off",
-        "react/function-component-definition": "off"
+        "react/function-component-definition": "off",
+        "jsx-a11y/label-has-associated-control": "off"
     },
     "settings": {
         "import/resolver": { "typescript": {} }
