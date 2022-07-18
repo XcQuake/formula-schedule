@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import driversStandingReducer from './driversStandingReducer';
+import standingReducer from './standingReducer';
 import scheduleReducer from './scheduleReducer';
 
 const reducers = combineReducers({
-  driversStanding: driversStandingReducer,
+  standing: standingReducer,
   schedule: scheduleReducer,
 });
 

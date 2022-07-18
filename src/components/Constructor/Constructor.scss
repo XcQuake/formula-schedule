@@ -1,4 +1,4 @@
-.driver {
+.constructor {
   border-radius: 3px 3px 15px 3px;
   margin: 0;
   padding: 5px 0;
@@ -11,37 +11,19 @@
     margin: 0;
     padding: 5px 0 0;
     display: grid;
-    grid-template-columns: 0.4fr 2.1fr 0.5fr 0.4fr 1.6fr 1.3fr;
+    grid-template-columns: 0.4fr 2.1fr 0.5fr 0.4fr 1.6fr;
     gap: 15px 15px;
     font-weight: 400;
     font-size: 16px;
     line-height: 18px;
     text-shadow: 0 0 5px black;
-
-    &_head {
-      font-weight: 500;
-      background-color: black;
-      color: #fff;
-      padding: 0;
-      margin: 0;
-      border-radius: 7px 7px 0 0;
-    }
   }
 
   &__flag {
     width: 25px;
     height: 18px;
     box-sizing: border-box;
-    box-shadow: 0 0 2px 1px black;
     object-fit: cover;
-  }
-}
-
-@media (max-width: 1150px) {
-  .driver {
-    &__params {
-      font-size: 14px;
-      line-height: 16px;
-    }
+    box-shadow: 0 0 2px 1px black;
   }
 }

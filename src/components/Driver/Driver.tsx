@@ -1,15 +1,17 @@
-import './Driver.scss';
 import React from 'react';
-import { DriverStandingData } from '../../models/apiTypes';
+import { findFlagUrlByNationality } from 'country-flags-svg';
+
+import './Driver.scss';
+import { DriverStanding } from '../../models/apiTypes';
 
 type DriverData = {
-  stats: DriverStandingData;
-  flag: string;
+  stats: DriverStanding;
 };
 
-function Driver({ stats, flag }: DriverData): JSX.Element {
+function Driver({ stats }: DriverData): JSX.Element {
   const bio = stats.Driver;
   const team = stats.Constructors[0];
+  const flagUrl = findFlagUrlByNationality(bio.nationality);
 
   return (
     <li className={`driver team_${team.constructorId}`}>
@@ -22,7 +24,7 @@ function Driver({ stats, flag }: DriverData): JSX.Element {
         <li className="driver__param text_center">{stats.wins}</li>
         <li className="driver__param">{team.name}</li>
         <li className="driver__param text_center">
-          <img className="driver__flag" src={flag} alt={bio.nationality} />
+          <img className="driver__flag" src={flagUrl} alt={bio.nationality} />
         </li>
       </ul>
     </li>

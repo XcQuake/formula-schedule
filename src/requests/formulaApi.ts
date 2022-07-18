@@ -1,4 +1,4 @@
-import { FormulaApiData, RaceData, StandingListData } from './formulaApiTypes';
+import { MRData, Race, StandingList } from '../models/apiTypes';
 import { FORMULA_API_URL } from '../utils/constants';
 
 interface ApiConfig {
@@ -21,20 +21,20 @@ class FormulaApi {
   }
 
   private static processResult = (res: Response):
-  Promise<{ MRData: FormulaApiData }> => {
+  Promise<{ MRData: MRData }> => {
     if (res.ok) return res.json();
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
   };
 
-  getDriverStanding(): Promise<StandingListData> {
-    return fetch(`${this.link}/current/driverStandings.json`, {
+  getStanding(season: string, championship: string): Promise<StandingList> {
+    return fetch(`${this.link}/${season}/${championship}Standings.json`, {
       method: 'GET',
     })
       .then((res: Response) => FormulaApi.processResult(res))
       .then((data) => data.MRData.StandingsTable!.StandingsLists[0]);
   }
 
-  getSchedule(): Promise<RaceData[]> {
+  getSchedule(): Promise<Race[]> {
     return fetch(`${this.link}/current.json`, {
       method: 'GET',
     })

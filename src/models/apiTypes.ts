@@ -1,4 +1,4 @@
-export type DriverData = {
+export type Driver = {
   driverId: string,
   permanentNumber: string,
   code: string,
@@ -9,79 +9,92 @@ export type DriverData = {
   nationality: string,
 }
 
-export type ConstructorData = {
+export type Constructor = {
   constructorId: string,
   url: string,
   name: string,
   nationality: string,
 }
 
-export type DriverStandingData = {
+export type DriverStanding = {
   position: string,
   positionText: string,
   points: string,
   wins: string,
-  Driver: DriverData,
-  Constructors: ConstructorData[],
+  Driver: Driver,
+  Constructors: Constructor[],
 }
 
-export type StandingListData = {
+export type ConstructorStanding = {
+  position: string,
+  positionText: string,
+  points: string,
+  wins: string,
+  Constructor: Constructor,
+}
+
+export type StandingList = {
   season: string,
   round: string,
-  DriverStandings: DriverStandingData[],
+  DriverStandings?: DriverStanding[],
+  ConstructorStandings?: ConstructorStanding[],
 }
 
-export type StandingTableData = {
+export type StandingsTable = {
   season: string,
-  StandingsLists: StandingListData[],
+  StandingsLists: StandingList[],
 }
 
-export type LocationData = {
+export type Location = {
   let: string,
   long: string,
   locality: string,
   country: string,
 }
 
-export type CircuitData = {
+export type Circuit = {
   circuitId: string,
   url: string,
   circuitNmae: string,
-  Location: LocationData,
+  Location: Location,
 }
 
-export type PracticeData = {
+export type Practice = {
   date: string,
   time: string,
 }
 
-export type RaceData = {
+export type Race = {
   season: string,
   round: string,
   url: string,
   raceName: string,
-  Circuit: CircuitData,
+  Circuit: Circuit,
   date: string,
   time: string,
-  FirstPractice: PracticeData,
-  SecondPractice: PracticeData,
-  ThirdPractice?: PracticeData,
-  Sprint?: PracticeData,
-  Qualifying: PracticeData,
+  FirstPractice: Practice,
+  SecondPractice: Practice,
+  ThirdPractice?: Practice,
+  Sprint?: Practice,
+  Qualifying: Practice,
 }
 
-export type RaceTableData = {
+export type RaceTable = {
   season: string,
-  Races: RaceData[],
+  Races: Race[],
 }
 
-export type FormulaApiData = {
+export type MRData = {
   xmins: string,
   series: string,
   url: string,
   limit: string,
   offset: string,
   total: string,
-  StandingsTable?: StandingTableData,
-  RaceTable?: RaceTableData,
+  StandingsTable?: StandingsTable,
+  RaceTable?: RaceTable,
 }
+
+export type StandingData =
+  | DriverStanding[]
+  | ConstructorStanding[];

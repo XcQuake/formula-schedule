@@ -2,12 +2,12 @@ import './Weekend.scss';
 import React, { useEffect } from 'react';
 import { isPast, isSameWeek, parseISO } from 'date-fns';
 import { refactorDate } from '../../utils/utils';
-import { RaceData } from '../../models/apiTypes';
+import { Race } from '../../models/apiTypes';
 import Session from '../Session/Session';
 
 type WeekendArgs = {
   onClick: (index: number) => void;
-  race: RaceData;
+  race: Race;
   isActive: boolean;
   index: number;
 }

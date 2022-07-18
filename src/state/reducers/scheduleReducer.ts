@@ -1,11 +1,11 @@
-import { RaceData } from '../../models/apiTypes';
+import { Race } from '../../models/apiTypes';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
 interface ScheduleState {
   loading: boolean;
   error: string | null;
-  schedule: RaceData[];
+  schedule: Race[];
 }
 
 const initialState = {

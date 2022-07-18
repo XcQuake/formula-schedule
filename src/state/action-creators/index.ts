@@ -4,16 +4,20 @@ import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import formulaApi from '../../requests/formulaApi';
 
-export const fetchDriverStanding = () => async (dispatch: Dispatch<Action>) => {
+export const fetchStanding = (
+  season: string,
+  championship: string,
+) => async (dispatch: Dispatch<Action>) => {
   dispatch({
     type: ActionType.FETCH_STANDING,
   });
 
   try {
-    const response = await formulaApi.getDriverStanding();
+    const response = await formulaApi.getStanding(season, championship);
+    console.log(response);
     dispatch({
       type: ActionType.FETCH_STANDING_SUCCESS,
-      payload: response.DriverStandings,
+      payload: response,
     });
   } catch (err: any) {
     dispatch({
