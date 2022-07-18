@@ -3,7 +3,6 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import './Stats.scss';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { DriverStanding, StandingData } from '../../models/apiTypes';
 import DriversList from '../DriversList/DriversList';
 import Preloader from '../Preloader/Preloader';
 import ToggleButton from '../Buttons/ToggleButton/ToggleButton';

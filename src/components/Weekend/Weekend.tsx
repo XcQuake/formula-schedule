@@ -32,26 +32,19 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
     qualifying: refactorDate(Qualifying.date, Qualifying.time),
   };
 
+  const raceName = race.raceName.replace('Grand Prix', 'GP');
+
+  const isCurrentWeekend = isSameWeek(new Date(), parseISO(race.date), {
+    weekStartsOn: 1,
+  });
+
   useEffect(() => {
-    const isCurrentWeekend = isSameWeek(new Date(), parseISO(race.date), {
-      weekStartsOn: 1,
-    });
     if (isCurrentWeekend) {
       onClick(index);
     }
   }, []);
 
   const isWeekendOver = isPast(parseISO(race.date));
-
-  function handleRaceClick(): void {
-    onClick(index);
-  }
-
-  function handleRaceKeyDown(e: { key: string }): void {
-    if (e.key === 'Enter') {
-      onClick(index);
-    }
-  }
 
   const accordionClassname = (
     isActive
@@ -71,11 +64,11 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
         className={raceClassname}
         role="button"
         tabIndex={0}
-        onClick={handleRaceClick}
-        onKeyDown={handleRaceKeyDown}
+        onClick={() => onClick(index)}
+        onKeyDown={() => onClick(index)}
       >
         <div className="weekend__race-info">
-          <p className="weekend__race-title">{race.raceName}</p>
+          <p className="weekend__race-title">{raceName}</p>
           {isWeekendOver && <div className="weekend__race-over" /> }
         </div>
         <div className="weekend__race-date">
@@ -85,13 +78,13 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
       </div>
       <ul className={accordionClassname}>
         <Session
-          title="Practice #1"
+          title="FP1"
           date={dates.firstPractice.date}
           time={dates.firstPractice.time}
           type="practice"
         />
         <Session
-          title="Practice #2"
+          title="FP2"
           date={dates.secondPractice.date}
           time={dates.secondPractice.time}
           type="practice"
@@ -99,7 +92,7 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
         {
           race.ThirdPractice && (
             <Session
-              title="Practice #3"
+              title="FP3"
               date={dates.thirdPractice!.date}
               time={dates.thirdPractice!.time}
               type="practice"
@@ -117,7 +110,7 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
           )
         }
         <Session
-          title="Qualifying"
+          title="QU"
           date={dates.qualifying.date}
           time={dates.qualifying.time}
           type="qualifying"

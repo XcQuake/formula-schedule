@@ -55,7 +55,7 @@ export type Location = {
 export type Circuit = {
   circuitId: string,
   url: string,
-  circuitNmae: string,
+  circuitName: string,
   Location: Location,
 }
 
