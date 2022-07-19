@@ -1,8 +1,10 @@
-import './Weekend.scss';
 import React, { useEffect } from 'react';
 import { isPast, isSameWeek, parseISO } from 'date-fns';
+
+import './Weekend.scss';
 import { refactorDate } from '../../utils/utils';
 import { Race } from '../../models/apiTypes';
+import * as circuits from '../../utils/circuits';
 import Session from '../Session/Session';
 
 type WeekendArgs = {
@@ -32,7 +34,7 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
     qualifying: refactorDate(Qualifying.date, Qualifying.time),
   };
 
-  const raceName = race.raceName.replace('Grand Prix', 'GP');
+  const raceName = race.raceName.replace('Grand Prix', '');
 
   const isCurrentWeekend = isSameWeek(new Date(), parseISO(race.date), {
     weekStartsOn: 1,
@@ -58,6 +60,8 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
       : 'weekend__race'
   );
 
+  const circuitName = race.raceName.split(' ')[0].toLowerCase();
+
   return (
     <li className="weekend">
       <div
@@ -67,16 +71,30 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
         onClick={() => onClick(index)}
         onKeyDown={() => onClick(index)}
       >
+        <img
+          className="weekend__race-image"
+          src={circuits[circuitName as keyof typeof circuits]}
+          alt={race.Circuit.circuitName}
+        />
         <div className="weekend__race-info">
-          <p className="weekend__race-title">{raceName}</p>
-          {isWeekendOver && <div className="weekend__race-over" /> }
-        </div>
-        <div className="weekend__race-date">
-          <p className="weekend__date">{dates.race.date}</p>
-          <p className="weekend__time">{dates.race.time}</p>
+          <div className="weekend__race-header">
+            <p className="weekend__race-title">{raceName}</p>
+            <p className="weekend__race-subtitle">Grand prix</p>
+          </div>
+          {
+            isWeekendOver
+              ? <p className="weekend__race-finished">Finished</p>
+              : (
+                <div className="weekend__race-date">
+                  <p className="weekend__date">{dates.race.date}</p>
+                  <p className="weekend__time">{dates.race.time}</p>
+                </div>
+              )
+          }
+          {/* {isWeekendOver && <div className="weekend__race-over" /> } */}
         </div>
       </div>
-      <ul className={accordionClassname}>
+      {/* <ul className={accordionClassname}>
         <Session
           title="FP1"
           date={dates.firstPractice.date}
@@ -115,7 +133,7 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
           time={dates.qualifying.time}
           type="qualifying"
         />
-      </ul>
+      </ul> */}
     </li>
   );
 }
