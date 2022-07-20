@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dispatch } from 'redux';
+
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import formulaApi from '../../requests/formulaApi';
+import { Race } from '../../models/apiTypes';
 
 export const fetchStanding = (
   season: string,
@@ -43,4 +44,13 @@ export const fetchSchedule = () => async (dispatch: Dispatch<Action>) => {
       payload: err.message,
     });
   }
+};
+
+export const selectWeekend = (
+  weekend: Race,
+) => (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.SELECT_WEEKEND,
+    payload: weekend,
+  });
 };

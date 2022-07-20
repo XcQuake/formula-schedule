@@ -6,15 +6,21 @@ import { refactorDate } from '../../utils/utils';
 import { Race } from '../../models/apiTypes';
 import * as circuits from '../../utils/circuits';
 import Session from '../Session/Session';
+import { useActions } from '../../hooks/useActions';
 
 type WeekendArgs = {
-  onClick: (index: number) => void;
   race: Race;
   isActive: boolean;
   index: number;
 }
 
-function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
+function Weekend({ race, isActive, index }: WeekendArgs): JSX.Element {
+  const { selectWeekend } = useActions();
+
+  const onClick = (): void => {
+    selectWeekend(race);
+  };
+
   const {
     FirstPractice,
     SecondPractice,
@@ -40,19 +46,13 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
     weekStartsOn: 1,
   });
 
-  useEffect(() => {
-    if (isCurrentWeekend) {
-      onClick(index);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (isCurrentWeekend) {
+  //     onClick(index);
+  //   }
+  // }, []);
 
   const isWeekendOver = isPast(parseISO(race.date));
-
-  const accordionClassname = (
-    isActive
-      ? 'weekend__sessions weekend__sessions_active'
-      : 'weekend__sessions'
-  );
 
   const raceClassname = (
     isActive
@@ -68,8 +68,8 @@ function Weekend({ race, onClick, isActive, index }: WeekendArgs): JSX.Element {
         className={raceClassname}
         role="button"
         tabIndex={0}
-        onClick={() => onClick(index)}
-        onKeyDown={() => onClick(index)}
+        onClick={() => onClick()}
+        onKeyDown={() => onClick()}
       >
         <img
           className="weekend__race-image"

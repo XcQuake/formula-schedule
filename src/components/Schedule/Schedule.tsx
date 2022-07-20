@@ -28,7 +28,6 @@ const Schedule: React.FC = () => {
           key={race.date}
           race={race}
           isActive={isActive}
-          onClick={onClick}
           index={index}
         />
       );

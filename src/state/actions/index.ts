@@ -34,10 +34,16 @@ interface FetchScheduleErrorAction {
   payload: string,
 }
 
+interface SelectWeekend {
+  type: ActionType.SELECT_WEEKEND,
+  payload: Race,
+}
+
 export type Action =
   | FetchStandingAction
   | FetchStandingSuccessAction
   | FetchStandingErrorAction
   | FetchScheduleAction
   | FetchScheduleSuccessAction
-  | FetchScheduleErrorAction;
+  | FetchScheduleErrorAction
+  | SelectWeekend;

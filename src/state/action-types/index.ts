@@ -5,4 +5,5 @@ export enum ActionType {
   FETCH_SCHEDULE = 'fetch_schedule',
   FETCH_SCHEDULE_SUCCESS = 'fetch_schedule_success',
   FETCH_SCHEDULE_ERROR = 'fetch_schedule_error',
+  SELECT_WEEKEND = 'select_weekend',
 }
