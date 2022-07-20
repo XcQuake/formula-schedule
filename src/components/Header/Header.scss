@@ -1,22 +1,58 @@
+@import '../../styles/utils/colors.scss';
+
 .header {
-  background-color: #C3073F;
-  height: 60px;
+  background-color: #000;
+  height: 50px;
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    max-width: 1270px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  &__navbar {
+    justify-self: flex-start;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    transition: ease 0.2s;
+  }
+
+  .active {
+    border-bottom: 3px solid $red;
+  }
+
+  &__logo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
   &__logo {
     background-image: url(../../images/F1-logo.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    width: 120px;
-    height: 30px;
-  }
-
-  &__container {
-    max-width: 1270px;
-    margin: 0 auto;
+    width: 110px;
+    height: 35px;
   }
 }
