@@ -37,7 +37,7 @@ const Schedule: React.FC = () => {
 
   return (
     <section className="schedule">
-      <h3 className="schedule__header">Schedule</h3>
+      {/* <h3 className="schedule__header">Schedule</h3> */}
       {loading && <Preloader />}
       <ul className="schedule__list">{renderedWeekend}</ul>
     </section>

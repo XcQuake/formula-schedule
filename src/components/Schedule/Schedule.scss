@@ -1,14 +1,15 @@
+@import '../../styles/utils/colors.scss';
+
 .schedule {
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: black;
   border-radius: 5px;
-  grid-area: 1 / 3 / 3 / 4;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: white;
   align-items: center;
   
   &__header {
@@ -26,10 +27,8 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 20px;
-    // grid-template-columns: repeat(auto-fill, minmax(150px, 200px));
   }
 }

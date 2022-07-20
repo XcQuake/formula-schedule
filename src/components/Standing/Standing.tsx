@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 
-import './Stats.scss';
+import './Standing.scss';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import DriversList from '../DriversList/DriversList';
@@ -8,7 +8,7 @@ import Preloader from '../Preloader/Preloader';
 import ToggleButton from '../Buttons/ToggleButton/ToggleButton';
 import ConstructorsList from '../ConstructorsList/ConstructorsList';
 
-const Stats = (): ReactElement => {
+const Standing = (): ReactElement => {
   const { fetchStanding } = useActions();
   const { standingList, loading, error } = useTypedSelector(
     (state) => state.standing,
@@ -42,7 +42,7 @@ const Stats = (): ReactElement => {
   };
 
   return (
-    <section className="stats">
+    <section className="standing">
       <ToggleButton
         labels={{ firstState: 'Drivers', secondState: 'Constructors' }}
         onClick={handleCHangeChampionship}
@@ -52,4 +52,4 @@ const Stats = (): ReactElement => {
   );
 };
 
-export default Stats;
+export default Standing;
