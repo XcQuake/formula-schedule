@@ -1,21 +1,45 @@
 {
   "files": {
-    "main.css": "/formula-standing/static/css/main.d945dc0c.css",
-    "main.js": "/formula-standing/static/js/main.66d37fab.js",
+    "main.css": "/formula-standing/static/css/main.019906ee.css",
+    "main.js": "/formula-standing/static/js/main.05be78c0.js",
     "static/media/Inter-Medium.woff": "/formula-standing/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/formula-standing/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/formula-standing/static/media/Inter-Regular.8c206db99195777c6769.woff",
     "static/media/Inter-Medium.woff2": "/formula-standing/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
     "static/media/Inter-Black.woff2": "/formula-standing/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
     "static/media/Inter-Regular.woff2": "/formula-standing/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
-    "static/media/finish-flag.svg": "/formula-standing/static/media/finish-flag.026b61b7a061d16e9101.svg",
-    "static/media/F1-logo.svg": "/formula-standing/static/media/F1-logo.4c99b09fe6cfaa98bbe2.svg",
+    "static/media/monaco.svg": "/formula-standing/static/media/monaco.5c7f8cf635c28069b03c0b6842849300.svg",
+    "static/media/abu.svg": "/formula-standing/static/media/abu.f2ee2f6b9e558fbfe136d131bbcc540e.svg",
+    "static/media/belgian.svg": "/formula-standing/static/media/belgian.dfc678b46cd8b9e290cbb3147c649830.svg",
+    "static/media/singapore.svg": "/formula-standing/static/media/singapore.b75c18148b1ddba077023253502456fe.svg",
+    "static/media/azerbaijan.svg": "/formula-standing/static/media/azerbaijan.7356f1208caee2f5828a6f931ec8a8bd.svg",
+    "static/media/saudi.svg": "/formula-standing/static/media/saudi.55c495ba64d7d410e17d2d2189a777b2.svg",
+    "static/media/united.svg": "/formula-standing/static/media/united.15904cc0570f589f6c59d7cbc5737c8c.svg",
+    "static/media/hungarian.svg": "/formula-standing/static/media/hungarian.39f605617cf03f393cbda96a024bc58e.svg",
+    "static/media/british.svg": "/formula-standing/static/media/british.1ef5b4f40a8faed92c5d2fc5ce5bfd7c.svg",
+    "static/media/turkish.svg": "/formula-standing/static/media/turkish.9acab15eddf2ef0a3e014ba56f521008.svg",
+    "static/media/russian.svg": "/formula-standing/static/media/russian.a22107e474f46204f5c4056f89043be9.svg",
+    "static/media/emilia.svg": "/formula-standing/static/media/emilia.42c7fe4f141b7b13f8d34612584a812f.svg",
+    "static/media/brazilian.svg": "/formula-standing/static/media/brazilian.8ad0d030a59096156ef98ef4bdecfc0d.svg",
+    "static/media/canadian.svg": "/formula-standing/static/media/canadian.b5b1640170bc43ba4294b59648494b47.svg",
+    "static/media/japanese.svg": "/formula-standing/static/media/japanese.38bd485acc89da1702016048d073224b.svg",
+    "static/media/dutch.svg": "/formula-standing/static/media/dutch.8f36b4d7c3bd302f2c9edc3cc95529c9.svg",
+    "static/media/french.svg": "/formula-standing/static/media/french.59cc6a6be6f015d75b5b779a2e6202fb.svg",
+    "static/media/austrian.svg": "/formula-standing/static/media/austrian.f3ba6506de9178b3391e4fe09a890cea.svg",
+    "static/media/portugal.svg": "/formula-standing/static/media/portugal.fb4d543fe498e702aef3add91f2d4417.svg",
+    "static/media/miami.svg": "/formula-standing/static/media/miami.97815866c9e6e2944f12e7fc3d08ad3b.svg",
+    "static/media/bahrain.svg": "/formula-standing/static/media/bahrain.1e89d65ef14fcb396ea96b8c8d5c122d.svg",
+    "static/media/mexico.svg": "/formula-standing/static/media/mexico.2feddcf0c10de367fde5d37549b2f760.svg",
+    "static/media/australian.svg": "/formula-standing/static/media/australian.9ae71608663596c5bfec7f7ae52ddd59.svg",
+    "static/media/italian.svg": "/formula-standing/static/media/italian.f903439c44aa9d25cc41a9746012a47b.svg",
+    "static/media/spanish.svg": "/formula-standing/static/media/spanish.efd8757ad0fab2d08da403af02d65cc0.svg",
     "index.html": "/formula-standing/index.html",
-    "main.d945dc0c.css.map": "/formula-standing/static/css/main.d945dc0c.css.map",
-    "main.66d37fab.js.map": "/formula-standing/static/js/main.66d37fab.js.map"
+    "static/media/F1-logo.svg": "/formula-standing/static/media/F1-logo.33cff349b64153b335a8.svg",
+    "main.019906ee.css.map": "/formula-standing/static/css/main.019906ee.css.map",
+    "main.05be78c0.js.map": "/formula-standing/static/js/main.05be78c0.js.map"
   },
   "entrypoints": [
-    "static/css/main.d945dc0c.css",
-    "static/js/main.66d37fab.js"
+    "static/css/main.019906ee.css",
+    "static/js/main.05be78c0.js"
   ]
 }
