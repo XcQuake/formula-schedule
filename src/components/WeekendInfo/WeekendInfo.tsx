@@ -3,20 +3,25 @@
 import React, { useEffect, useState } from 'react';
 
 import './WeekendInfo.scss';
+import { refactorDate, refactorWeekendDates } from '../../utils/utils';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import * as wikiApi from '../../requests/wikiApi';
 
 const WeekendInfo: React.FC = () => {
+  const [circuitImage, setCircuitImage] = useState('');
+
   const weekend = useTypedSelector((state) => state.weekend);
   const wikiUrl = weekend?.Circuit.url;
   const wikiTitle = wikiUrl?.substring(wikiUrl.lastIndexOf('/') + 1);
 
-  const [circuitImage, setCircuitImage] = useState('');
+  const dates = weekend && refactorWeekendDates(weekend);
 
   useEffect(() => {
-    wikiApi.getImage(wikiTitle!)
-      .then((image: string) => setCircuitImage(image))
-      .catch((err: Error) => console.log(err));
+    if (weekend) {
+      wikiApi.getImage(wikiTitle!)
+        .then((image: string) => setCircuitImage(image))
+        .catch((err: Error) => console.log(err));
+    }
   }, [weekend]);
 
   return (

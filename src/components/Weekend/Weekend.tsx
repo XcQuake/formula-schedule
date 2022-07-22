@@ -5,7 +5,6 @@ import './Weekend.scss';
 import { refactorDate } from '../../utils/utils';
 import { Race } from '../../models/apiTypes';
 import * as circuits from '../../utils/circuits';
-import Session from '../Session/Session';
 import { useActions } from '../../hooks/useActions';
 
 type WeekendArgs = {
@@ -15,50 +14,29 @@ type WeekendArgs = {
 function Weekend({ race }: WeekendArgs): JSX.Element {
   const { selectWeekend } = useActions();
 
+  const weekendData = {
+    name: race.raceName.replace('Grand Prix', ''),
+    date: refactorDate(race.date, race.time),
+    isCurrent: isSameWeek(new Date(), parseISO(race.date), { weekStartsOn: 1 }),
+    isOver: isPast(parseISO(race.date)),
+    circuit: race.raceName.split(' ')[0].toLowerCase(),
+  };
+
+  useEffect(() => {
+    if (weekendData.isCurrent) {
+      selectWeekend(race);
+    }
+  }, []);
+
   const onClick = (): void => {
     selectWeekend(race);
   };
-
-  const {
-    FirstPractice,
-    SecondPractice,
-    ThirdPractice,
-    Sprint,
-    Qualifying,
-  } = race;
-
-  const dates = {
-    race: refactorDate(race.date, race.time),
-    firstPractice: refactorDate(FirstPractice.date, FirstPractice.time),
-    secondPractice: refactorDate(SecondPractice.date, SecondPractice.time),
-    thirdPractice: ThirdPractice && refactorDate(
-      ThirdPractice.date, ThirdPractice.time,
-    ),
-    sprint: Sprint && refactorDate(Sprint.date, Sprint.time),
-    qualifying: refactorDate(Qualifying.date, Qualifying.time),
-  };
-
-  const raceName = race.raceName.replace('Grand Prix', '');
-
-  const isCurrentWeekend = isSameWeek(new Date(), parseISO(race.date), {
-    weekStartsOn: 1,
-  });
-
-  // useEffect(() => {
-  //   if (isCurrentWeekend) {
-  //     onClick(index);
-  //   }
-  // }, []);
-
-  const isWeekendOver = isPast(parseISO(race.date));
 
   // const raceClassname = (
   //   isActive
   //     ? 'weekend__race weekend__race_active'
   //     : 'weekend__race'
   // );
-
-  const circuitName = race.raceName.split(' ')[0].toLowerCase();
 
   return (
     <li className="weekend">
@@ -71,25 +49,24 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
       >
         <img
           className="weekend__race-image"
-          src={circuits[circuitName as keyof typeof circuits]}
+          src={circuits[weekendData.circuit as keyof typeof circuits]}
           alt={race.Circuit.circuitName}
         />
         <div className="weekend__race-info">
           <div className="weekend__race-header">
-            <p className="weekend__race-title">{raceName}</p>
+            <p className="weekend__race-title">{weekendData.name}</p>
             <p className="weekend__race-subtitle">Grand prix</p>
           </div>
           {
-            isWeekendOver
+            weekendData.isOver
               ? <p className="weekend__race-finished">Finished</p>
               : (
                 <div className="weekend__race-date">
-                  <p className="weekend__date">{dates.race.date}</p>
-                  <p className="weekend__time">{dates.race.time}</p>
+                  <p className="weekend__date">{weekendData.date.date}</p>
+                  <p className="weekend__time">{weekendData.date.time}</p>
                 </div>
               )
           }
-          {/* {isWeekendOver && <div className="weekend__race-over" /> } */}
         </div>
       </div>
       {/* <ul className={accordionClassname}>
