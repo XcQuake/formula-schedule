@@ -1,11 +1,13 @@
 .weekend-info {
   background-color: black;
   display: flex;
+  // grid-template-rows: 20px 300px 1fr;
   flex-direction: column;
   padding: 20px;
+  gap: 20px;
 
   &__header {
-    margin: 0 0 20px;
+    margin: 0;
     text-align: center;
     font-weight: 500;
     font-size: 18px;
@@ -14,11 +16,17 @@
 
   &__image {
     width: 250px;
-    max-height: 300px;
+    height: 150px;
     align-self: center;
     background-color: #fff;
     color: black;
     border-radius: 10px;
-    object-fit: fill;
+    object-fit: contain;
+  }
+
+  &__dates {
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
 }

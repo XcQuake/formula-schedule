@@ -69,46 +69,6 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
           }
         </div>
       </div>
-      {/* <ul className={accordionClassname}>
-        <Session
-          title="FP1"
-          date={dates.firstPractice.date}
-          time={dates.firstPractice.time}
-          type="practice"
-        />
-        <Session
-          title="FP2"
-          date={dates.secondPractice.date}
-          time={dates.secondPractice.time}
-          type="practice"
-        />
-        {
-          race.ThirdPractice && (
-            <Session
-              title="FP3"
-              date={dates.thirdPractice!.date}
-              time={dates.thirdPractice!.time}
-              type="practice"
-            />
-          )
-        }
-        {
-          race.Sprint && (
-            <Session
-              title="Sprint"
-              date={dates.sprint!.date}
-              time={dates.sprint!.time}
-              type="sprint"
-            />
-          )
-        }
-        <Session
-          title="QU"
-          date={dates.qualifying.date}
-          time={dates.qualifying.time}
-          type="qualifying"
-        />
-      </ul> */}
     </li>
   );
 }
