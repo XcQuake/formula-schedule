@@ -10,11 +10,9 @@ import { useActions } from '../../hooks/useActions';
 
 type WeekendArgs = {
   race: Race;
-  isActive: boolean;
-  index: number;
 }
 
-function Weekend({ race, isActive, index }: WeekendArgs): JSX.Element {
+function Weekend({ race }: WeekendArgs): JSX.Element {
   const { selectWeekend } = useActions();
 
   const onClick = (): void => {
@@ -54,18 +52,18 @@ function Weekend({ race, isActive, index }: WeekendArgs): JSX.Element {
 
   const isWeekendOver = isPast(parseISO(race.date));
 
-  const raceClassname = (
-    isActive
-      ? 'weekend__race weekend__race_active'
-      : 'weekend__race'
-  );
+  // const raceClassname = (
+  //   isActive
+  //     ? 'weekend__race weekend__race_active'
+  //     : 'weekend__race'
+  // );
 
   const circuitName = race.raceName.split(' ')[0].toLowerCase();
 
   return (
     <li className="weekend">
       <div
-        className={raceClassname}
+        className="weekend__race"
         role="button"
         tabIndex={0}
         onClick={() => onClick()}

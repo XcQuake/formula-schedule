@@ -1,0 +1,24 @@
+.weekend-info {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  &__header {
+    margin: 0 0 20px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  &__image {
+    width: 250px;
+    max-height: 300px;
+    align-self: center;
+    background-color: #fff;
+    color: black;
+    border-radius: 10px;
+    object-fit: fill;
+  }
+}
