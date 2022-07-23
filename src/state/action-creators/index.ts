@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
 
+import * as wikiApi from '../../requests/wikiApi';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import formulaApi from '../../requests/formulaApi';
@@ -46,11 +47,32 @@ export const fetchSchedule = () => async (dispatch: Dispatch<Action>) => {
   }
 };
 
-export const selectWeekend = (
-  weekend: Race,
-) => (dispatch: Dispatch<Action>) => {
+export const selectWeekend = (weekend: Race) => (dispatch: Dispatch<Action>) => {
   dispatch({
     type: ActionType.SELECT_WEEKEND,
     payload: weekend,
   });
+};
+
+export const fetchWikiData = (
+  wikiTitle: string,
+) => async (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.FETCH_WIKIDATA,
+  });
+
+  try {
+    const imgSource = await wikiApi.getImage(wikiTitle);
+    dispatch({
+      type: ActionType.FETCH_WIKIDATA_SUCCESS,
+      payload: {
+        imgSource,
+      },
+    });
+  } catch (err: any) {
+    dispatch({
+      type: ActionType.FETCH_WIKIDATA_ERROR,
+      payload: err,
+    });
+  }
 };

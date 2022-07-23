@@ -34,9 +34,25 @@ interface FetchScheduleErrorAction {
   payload: string,
 }
 
-interface SelectWeekend {
+interface SelectWeekendAction {
   type: ActionType.SELECT_WEEKEND,
   payload: Race,
+}
+
+interface FetchWikiDataAction {
+  type: ActionType.FETCH_WIKIDATA,
+}
+
+interface FetchWikiDataSuccessAction {
+  type: ActionType.FETCH_WIKIDATA_SUCCESS,
+  payload: {
+    imgSource: string,
+  }
+}
+
+interface FetchWikiDataErrorAction {
+  type: ActionType.FETCH_WIKIDATA_ERROR,
+  payload: string,
 }
 
 export type Action =
@@ -46,4 +62,7 @@ export type Action =
   | FetchScheduleAction
   | FetchScheduleSuccessAction
   | FetchScheduleErrorAction
-  | SelectWeekend;
+  | SelectWeekendAction
+  | FetchWikiDataAction
+  | FetchWikiDataSuccessAction
+  | FetchWikiDataErrorAction;
