@@ -39,7 +39,8 @@
         "import/prefer-default-export": "off",
         "default-param-last": "off",
         "react/function-component-definition": "off",
-        "jsx-a11y/label-has-associated-control": "off"
+        "jsx-a11y/label-has-associated-control": "off",
+        "react/jsx-one-expression-per-line": "off"
     },
     "settings": {
         "import/resolver": { "typescript": {} }
