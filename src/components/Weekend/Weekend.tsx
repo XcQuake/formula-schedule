@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { isPast, isBefore, isSameWeek, parseISO, addHours } from 'date-fns';
+import { isPast, isSameWeek, parseISO, addHours } from 'date-fns';
 
 import './Weekend.scss';
 import { refactorDate } from '../../utils/utils';
@@ -20,7 +20,7 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
     name: race.raceName.replace('Grand Prix', ''),
     date: refactorDate(race.date, race.time),
     isCurrent: isSameWeek(new Date(), parseISO(rawDate), { weekStartsOn: 1 }),
-    isOver: isBefore(addHours(parseISO(rawDate), 3), new Date()),
+    isOver: isPast(addHours(parseISO(rawDate), 3)),
     circuit: race.raceName.split(' ')[0].toLowerCase(),
   };
 

@@ -1,5 +1,5 @@
 import './Schedule.scss';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Weekend from '../Weekend/Weekend';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
