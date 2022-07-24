@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { isPast, isSameWeek, parseISO } from 'date-fns';
+import { isPast, isBefore, isSameWeek, parseISO, addHours } from 'date-fns';
 
 import './Weekend.scss';
 import { refactorDate } from '../../utils/utils';
@@ -14,11 +14,13 @@ type WeekendArgs = {
 function Weekend({ race }: WeekendArgs): JSX.Element {
   const { selectWeekend } = useActions();
 
+  const rawDate = `${race.date}T${race.time}`;
+
   const weekendData = {
     name: race.raceName.replace('Grand Prix', ''),
     date: refactorDate(race.date, race.time),
-    isCurrent: isSameWeek(new Date(), parseISO(race.date), { weekStartsOn: 1 }),
-    isOver: isPast(parseISO(race.date)),
+    isCurrent: isSameWeek(new Date(), parseISO(rawDate), { weekStartsOn: 1 }),
+    isOver: isBefore(addHours(parseISO(rawDate), 3), new Date()),
     circuit: race.raceName.split(' ')[0].toLowerCase(),
   };
 
@@ -31,12 +33,6 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
   const onClick = (): void => {
     selectWeekend(race);
   };
-
-  // const raceClassname = (
-  //   isActive
-  //     ? 'weekend__race weekend__race_active'
-  //     : 'weekend__race'
-  // );
 
   return (
     <li className="weekend">

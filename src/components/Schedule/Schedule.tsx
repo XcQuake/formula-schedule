@@ -16,20 +16,25 @@ const Schedule: React.FC = () => {
     fetchSchedule();
   }, []);
 
-  const renderedWeekend: React.ReactNode = (
-    !loading && !error && schedule.map((race) => (
-      <Weekend
-        key={race.date}
-        race={race}
-      />
-    ))
+  const weekendList: React.ReactNode = (
+    <ul className="schedule__list">
+      {
+        schedule.map((race) => (
+          <Weekend
+            key={race.date}
+            race={race}
+          />
+        ))
+      }
+    </ul>
   );
 
   return (
     <section className="schedule">
-      {/* <h3 className="schedule__header">Schedule</h3> */}
-      {loading && <Preloader />}
-      <ul className="schedule__list">{renderedWeekend}</ul>
+      <div className="schedule__wrapper">
+        {loading && <Preloader />}
+        {!loading && !error && weekendList}
+      </div>
       <WeekendInfo />
     </section>
   );
