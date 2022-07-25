@@ -3,10 +3,10 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import './Standing.scss';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import DriversList from '../DriversList/DriversList';
+import DriversStanding from '../DriversStanding/DriversStanding';
 import Preloader from '../Preloader/Preloader';
 import ToggleButton from '../Buttons/ToggleButton/ToggleButton';
-import ConstructorsList from '../ConstructorsList/ConstructorsList';
+import ConstructorsList from '../ConstructorsStanding/ConstructorsStanding';
 
 const Standing = (): ReactElement => {
   const { fetchStanding } = useActions();
@@ -30,16 +30,10 @@ const Standing = (): ReactElement => {
     }
   };
 
-  const renderList = (): React.ReactNode => {
-    if (!loading && !error) {
-      return (drivers && <DriversList drivers={drivers} />)
-      || (constructors && <ConstructorsList constructors={constructors} />);
-    }
-    if (loading) {
-      return <Preloader />;
-    }
-    return <p>Failed to load data</p>;
-  };
+  const renderList: React.ReactNode = (
+    (drivers && <DriversStanding drivers={drivers} />)
+    || (constructors && <ConstructorsList constructors={constructors} />)
+  );
 
   return (
     <section className="standing">
@@ -47,7 +41,10 @@ const Standing = (): ReactElement => {
         labels={{ firstState: 'Drivers', secondState: 'Constructors' }}
         onClick={handleCHangeChampionship}
       />
-      {renderList()}
+      <div className="standing__wrapper">
+        {loading && <Preloader />}
+        {!loading && !error && renderList}
+      </div>
     </section>
   );
 };

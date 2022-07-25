@@ -1,0 +1,35 @@
+.table {
+  border-spacing: 0 5px;
+
+  &__head {
+    width: 100%;
+    border: none;
+  }
+  &__body {
+    width: 100%;
+    border: none;
+  }
+  &__row {
+    width: 100%;
+    border-radius: 0 3px 15px 0;
+  }
+  &__cell {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    padding: 5px;
+
+    &_last {
+      border-radius: 0 3px 15px 0;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .table {
+    &__cell {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}
