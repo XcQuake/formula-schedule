@@ -12,3 +12,15 @@
     max-width: 1270px;
   }
 }
+
+@media (max-width: 767px) {
+  .main {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    padding: 0 15px;
+  }
+}

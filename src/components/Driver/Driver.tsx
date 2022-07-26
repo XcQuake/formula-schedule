@@ -22,8 +22,8 @@ function Driver({ stats }: DriverData): JSX.Element {
       </td>
       <td className="table__cell text_center">{stats.points}</td>
       <td className="table__cell text_center">{stats.wins}</td>
-      <td className="table__cell">{team.name}</td>
-      <td className="table__cell text_center table__cell_last">
+      <td className="table__cell table__cell_type_team">{team.name}</td>
+      <td className="table__cell text_center table__cell_type_last">
         <img className="driver__flag" src={flagUrl} alt={bio.nationality} />
       </td>
     </tr>

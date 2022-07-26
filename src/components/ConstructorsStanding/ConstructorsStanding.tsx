@@ -25,7 +25,7 @@ const ConstructorsStanding: React.FC<props> = ({ constructors }) => {
         <th className="table__cell text_left">Team</th>
         <th className="table__cell">Pts</th>
         <th className="table__cell">Wins</th>
-        <th className="table__cell">Nationality</th>
+        <th className="table__cell table__cell_type_nationality">Nat</th>
       </tr>
     </Table>
   );

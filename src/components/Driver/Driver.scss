@@ -57,3 +57,12 @@ td {
     }
   }
 }
+
+@media (max-width: 375px) {
+  .driver {
+    &__flag {
+      width: 20px;
+      height: 15px;
+    }
+  }
+}

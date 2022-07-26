@@ -29,8 +29,8 @@ const DriversStanding: React.FC<props> = ({ drivers }) => {
         <th className="table__cell text_left">Name</th>
         <th className="table__cell">Pts</th>
         <th className="table__cell">Wins</th>
-        <th className="table__cell text_left">Team</th>
-        <th className="table__cell">Nationality</th>
+        <th className="table__cell text_left table__cell_type_team">Team</th>
+        <th className="table__cell table__cell_type_nationality">Nat</th>
       </tr>
     </Table>
   );
