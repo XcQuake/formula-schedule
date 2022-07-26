@@ -15,6 +15,10 @@ function App(): JSX.Element {
           <Routes>
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/standing" element={<Standing />} />
+            <Route
+              path="*"
+              element={<Navigate to="/schedule" replace />}
+            />
           </Routes>
         </div>
       </main>
