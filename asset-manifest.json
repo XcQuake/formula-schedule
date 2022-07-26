@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/formula-standing/static/css/main.2da9c15e.css",
-    "main.js": "/formula-standing/static/js/main.a88884e5.js",
+    "main.css": "/formula-standing/static/css/main.237b9545.css",
+    "main.js": "/formula-standing/static/js/main.76a0d14b.js",
     "static/media/Inter-Medium.woff": "/formula-standing/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/formula-standing/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/formula-standing/static/media/Inter-Regular.8c206db99195777c6769.woff",
@@ -35,11 +35,11 @@
     "static/media/spanish.svg": "/formula-standing/static/media/spanish.efd8757ad0fab2d08da403af02d65cc0.svg",
     "index.html": "/formula-standing/index.html",
     "static/media/F1-logo.svg": "/formula-standing/static/media/F1-logo.33cff349b64153b335a899ee24a4d0ef.svg",
-    "main.2da9c15e.css.map": "/formula-standing/static/css/main.2da9c15e.css.map",
-    "main.a88884e5.js.map": "/formula-standing/static/js/main.a88884e5.js.map"
+    "main.237b9545.css.map": "/formula-standing/static/css/main.237b9545.css.map",
+    "main.76a0d14b.js.map": "/formula-standing/static/js/main.76a0d14b.js.map"
   },
   "entrypoints": [
-    "static/css/main.2da9c15e.css",
-    "static/js/main.a88884e5.js"
+    "static/css/main.237b9545.css",
+    "static/js/main.76a0d14b.js"
   ]
 }
