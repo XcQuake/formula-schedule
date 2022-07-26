@@ -1,39 +1,22 @@
 .driver {
   border-radius: 3px 3px 15px 3px;
   margin: 0;
+  padding: 5px 0 0;
+  display: grid;
+  grid-template-columns: 0.4fr 1.65fr 0.5fr 0.4fr 1.5fr 1fr;
+  gap: 15px 15px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  text-shadow: 0 0 5px black;
+  list-style: none;
   padding: 5px 0;
-  color: #fff;
-  text-shadow: 1px 1px 2px black;
-  position: relative;
+  text-overflow: ellipsis;
 
-  &__params {
-    list-style: none;
-    margin: 0;
-    padding: 5px 0 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 15px 15px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-    text-shadow: 0 0 5px black;
-
-    &_head {
-      font-weight: 500;
-      background-color: black;
-      color: #fff;
-      padding: 0;
-      margin: 0;
-      border-radius: 7px 7px 0 0;
-    }
-  }
-
-  &__param {
-    margin: 0;
-    
-    &_team {
-      display: none;
-    }
+  &_head {
+    font-weight: 500;
+    background-color: black;
+    color: #fff;
   }
 
   &__flag {
@@ -45,15 +28,22 @@
   }
 }
 
-td {
-  border-collapse: collapse;
-}
-
 @media (max-width: 1150px) {
   .driver {
-    &__params {
-      font-size: 14px;
-      line-height: 16px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@media (max-width: 485px) {
+  .driver {
+    grid-template-columns: 0.4fr 1.65fr 0.5fr 0.4fr 1fr;
+    grid-template-rows: 1fr;
+
+    &__param {
+      &_team {
+        display: none;
+      }
     }
   }
 }

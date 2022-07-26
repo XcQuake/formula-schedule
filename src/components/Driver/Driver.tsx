@@ -12,21 +12,20 @@ function Driver({ stats }: DriverData): JSX.Element {
   const bio = stats.Driver;
   const team = stats.Constructors[0];
   const flagUrl = findFlagUrlByNationality(bio.nationality);
-  console.log(stats);
 
   return (
-    <tr className={`table__row team_${team.constructorId}`}>
-      <td className="table__cell text_center">{stats.position}</td>
-      <td className="table__cell">
+    <li className={`driver team_${team.constructorId}`}>
+      <div className="driver__param text_center">{stats.position}</div>
+      <div className="driver__param">
         {`${bio.givenName} ${bio.familyName}`}
-      </td>
-      <td className="table__cell text_center">{stats.points}</td>
-      <td className="table__cell text_center">{stats.wins}</td>
-      <td className="table__cell table__cell_type_team">{team.name}</td>
-      <td className="table__cell text_center table__cell_type_last">
+      </div>
+      <div className="driver__param text_center">{stats.points}</div>
+      <div className="driver__param text_center">{stats.wins}</div>
+      <div className="driver__param driver__param_team">{team.name}</div>
+      <div className="driver__param text_center">
         <img className="driver__flag" src={flagUrl} alt={bio.nationality} />
-      </td>
-    </tr>
+      </div>
+    </li>
   );
 }
 

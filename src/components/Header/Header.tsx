@@ -7,12 +7,12 @@ export default function Header(): ReactElement {
     <header className="header">
       <div className="header__wrapper">
         <nav className="header__navbar">
-          <NavLink to="/schedule" className="header__link">Schedule</NavLink>
-          <NavLink to="/standing" className="header__link">Standing</NavLink>
+          <NavLink to="./schedule" className="header__link">Schedule</NavLink>
+          <div className="header__logo-wrapper">
+            <div className="header__logo" />
+          </div>
+          <NavLink to="./standing" className="header__link">Standing</NavLink>
         </nav>
-        <div className="header__logo-wrapper">
-          <div className="header__logo" />
-        </div>
       </div>
     </header>
   );

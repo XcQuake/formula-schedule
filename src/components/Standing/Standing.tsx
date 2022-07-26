@@ -3,10 +3,10 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import './Standing.scss';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import DriversStanding from '../DriversStanding/DriversStanding';
+import DriversList from '../DriversList/DriversList';
 import Preloader from '../Preloader/Preloader';
 import ToggleButton from '../Buttons/ToggleButton/ToggleButton';
-import ConstructorsList from '../ConstructorsStanding/ConstructorsStanding';
+import ConstructorsList from '../ConstructorsList/ConstructorsList';
 
 const Standing = (): ReactElement => {
   const { fetchStanding } = useActions();
@@ -31,9 +31,11 @@ const Standing = (): ReactElement => {
   };
 
   const renderList: React.ReactNode = (
-    (drivers && <DriversStanding drivers={drivers} />)
+    (drivers && <DriversList drivers={drivers} />)
     || (constructors && <ConstructorsList constructors={constructors} />)
   );
+
+  const newloading = true;
 
   return (
     <section className="standing">

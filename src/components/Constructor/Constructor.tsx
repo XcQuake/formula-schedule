@@ -13,15 +13,15 @@ const Constructor: React.FC<props> = ({ stats }) => {
   const flagUrl = findFlagUrlByNationality(team.nationality);
 
   return (
-    <tr className={`table__row team_${team.constructorId}`}>
-      <td className="table__cell text_center">{stats.position}</td>
-      <td className="table__cell">{team.name}</td>
-      <td className="table__cell text_center">{stats.points}</td>
-      <td className="table__cell text_center">{stats.wins}</td>
-      <td className="table__cell text_center table__cell_type_last">
-        <img className="driver__flag" src={flagUrl} alt={team.nationality} />
-      </td>
-    </tr>
+    <li className={`constructor team_${team.constructorId}`}>
+      <div className="constructor__param text_center">{stats.position}</div>
+      <div className="constructor__param">{team.name}</div>
+      <div className="constructor__param text_center">{stats.points}</div>
+      <div className="constructor__param text_center">{stats.wins}</div>
+      <div className="constructor__param text_center">
+        <img className="constructor__flag" src={flagUrl} alt={team.nationality} />
+      </div>
+    </li>
   );
 };
 
