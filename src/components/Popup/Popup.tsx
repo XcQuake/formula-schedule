@@ -1,7 +1,6 @@
 import React from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import WeekendInfo from '../WeekendInfo/WeekendInfo';
 
 import './Popup.scss';
 
