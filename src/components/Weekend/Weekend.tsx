@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { isPast, isSameWeek, parseISO, addHours } from 'date-fns';
 
 import './Weekend.scss';
@@ -6,13 +6,14 @@ import { refactorDate } from '../../utils/utils';
 import { Race } from '../../models/apiTypes';
 import * as circuits from '../../utils/circuits';
 import { useActions } from '../../hooks/useActions';
+import WeekendInfo from '../WeekendInfo/WeekendInfo';
 
 type WeekendArgs = {
   race: Race;
 }
 
 function Weekend({ race }: WeekendArgs): JSX.Element {
-  const { selectWeekend } = useActions();
+  const { selectWeekend, openPopup } = useActions();
 
   const rawDate = `${race.date}T${race.time}`;
 
@@ -24,14 +25,31 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
     circuit: race.raceName.split(' ')[0].toLowerCase(),
   };
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleResizeWindow = (): void => {
+    setWidth(window.innerWidth);
+  };
+
   useEffect(() => {
     if (weekendData.isCurrent) {
       selectWeekend(race);
     }
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      window.removeEventListener('resize', handleResizeWindow);
+    };
   }, []);
+
+  const weekInfo = (
+    <WeekendInfo />
+  );
 
   const onClick = (): void => {
     selectWeekend(race);
+    if (width < 699) {
+      openPopup(weekInfo);
+    }
   };
 
   return (

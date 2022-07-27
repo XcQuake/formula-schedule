@@ -1,5 +1,5 @@
 import './Schedule.scss';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Weekend from '../Weekend/Weekend';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
@@ -12,8 +12,18 @@ const Schedule: React.FC = () => {
     (state) => state.schedule,
   );
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleResizeWindow = (): void => {
+    setWidth(window.innerWidth);
+  };
+
   useEffect(() => {
     fetchSchedule();
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      window.removeEventListener('resize', handleResizeWindow);
+    };
   }, []);
 
   const weekendList: React.ReactNode = (
@@ -35,7 +45,7 @@ const Schedule: React.FC = () => {
         {loading && <Preloader />}
         {!loading && !error && weekendList}
       </div>
-      <WeekendInfo />
+      {(width > 699) && <WeekendInfo />}
     </section>
   );
 };

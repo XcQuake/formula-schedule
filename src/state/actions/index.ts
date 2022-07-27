@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ActionType } from '../action-types';
 import {
   Race,
@@ -34,11 +36,6 @@ interface FetchScheduleErrorAction {
   payload: string,
 }
 
-interface SelectWeekendAction {
-  type: ActionType.SELECT_WEEKEND,
-  payload: Race,
-}
-
 interface FetchWikiDataAction {
   type: ActionType.FETCH_WIKIDATA,
 }
@@ -55,6 +52,20 @@ interface FetchWikiDataErrorAction {
   payload: string,
 }
 
+interface SelectWeekendAction {
+  type: ActionType.SELECT_WEEKEND,
+  payload: Race,
+}
+
+interface OpenPopup {
+  type: ActionType.OPEN_POPUP,
+  payload: React.ReactNode,
+}
+
+interface ClosePopup {
+  type: ActionType.CLOSE_POPUP,
+}
+
 export type Action =
   | FetchStandingAction
   | FetchStandingSuccessAction
@@ -65,4 +76,6 @@ export type Action =
   | SelectWeekendAction
   | FetchWikiDataAction
   | FetchWikiDataSuccessAction
-  | FetchWikiDataErrorAction;
+  | FetchWikiDataErrorAction
+  | OpenPopup
+  | ClosePopup;

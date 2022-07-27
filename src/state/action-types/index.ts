@@ -5,8 +5,10 @@ export enum ActionType {
   FETCH_SCHEDULE = 'fetch_schedule',
   FETCH_SCHEDULE_SUCCESS = 'fetch_schedule_success',
   FETCH_SCHEDULE_ERROR = 'fetch_schedule_error',
-  SELECT_WEEKEND = 'select_weekend',
   FETCH_WIKIDATA = 'fetch_wikidata',
   FETCH_WIKIDATA_SUCCESS = 'fetch_wikidata_success',
   FETCH_WIKIDATA_ERROR = 'fetch_wikidata_error',
+  SELECT_WEEKEND = 'select_weekend',
+  OPEN_POPUP = 'open_popup',
+  CLOSE_POPUP = 'close_popup',
 }

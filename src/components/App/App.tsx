@@ -5,6 +5,7 @@ import './App.scss';
 import Header from '../Header/Header';
 import Standing from '../Standing/Standing';
 import Schedule from '../Schedule/Schedule';
+import Popup from '../Popup/Popup';
 
 function App(): JSX.Element {
   return (
@@ -22,6 +23,7 @@ function App(): JSX.Element {
           </Routes>
         </div>
       </main>
+      <Popup />
     </>
   );
 }

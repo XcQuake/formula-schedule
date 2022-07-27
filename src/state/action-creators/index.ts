@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dispatch } from 'redux';
 
 import * as wikiApi from '../../requests/wikiApi';
@@ -47,13 +48,6 @@ export const fetchSchedule = () => async (dispatch: Dispatch<Action>) => {
   }
 };
 
-export const selectWeekend = (weekend: Race) => (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.SELECT_WEEKEND,
-    payload: weekend,
-  });
-};
-
 export const fetchWikiData = (
   wikiTitle: string,
 ) => async (dispatch: Dispatch<Action>) => {
@@ -75,4 +69,26 @@ export const fetchWikiData = (
       payload: err,
     });
   }
+};
+
+export const selectWeekend = (weekend: Race) => (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.SELECT_WEEKEND,
+    payload: weekend,
+  });
+};
+
+export const openPopup = (
+  content: React.ReactNode,
+) => (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.OPEN_POPUP,
+    payload: content,
+  });
+};
+
+export const closePopup = () => (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.CLOSE_POPUP,
+  });
 };
