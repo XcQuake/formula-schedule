@@ -1,4 +1,11 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+/* eslint-disable import/no-unresolved */
+import React, { ReactElement, useEffect, useState, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import './Standing.scss';
 import { useActions } from '../../hooks/useActions';
@@ -21,11 +28,11 @@ const Standing = (): ReactElement => {
     fetchStanding('current', championship);
   }, [championship]);
 
-  const handleCHangeChampionship = (id: string): void => {
-    if (id === 'Drivers') {
+  const handleChangeChampionship = (): void => {
+    if (championship === 'constructor') {
       setChampionship('driver');
     }
-    if (id === 'Constructors') {
+    if (championship === 'driver') {
       setChampionship('constructor');
     }
   };
@@ -35,17 +42,31 @@ const Standing = (): ReactElement => {
     || (constructors && <ConstructorsList constructors={constructors} />)
   );
 
-  const newloading = true;
+  const prevRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
 
   return (
     <section className="standing">
       <ToggleButton
         labels={{ firstState: 'Drivers', secondState: 'Constructors' }}
-        onClick={handleCHangeChampionship}
+        onClick={handleChangeChampionship}
       />
       <div className="standing__wrapper">
         {loading && <Preloader />}
-        {!loading && !error && renderList}
+        {/* {!loading && !error && renderList} */}
+        <Swiper
+          className="mySwiper"
+          onSlideChange={() => { handleChangeChampionship(); }}
+          modules={[Navigation]}
+          dir="ltr"
+        >
+          <SwiperSlide>
+            {drivers && <DriversList drivers={drivers} />}
+          </SwiperSlide>
+          <SwiperSlide>
+            {constructors && <ConstructorsList constructors={constructors} />}
+          </SwiperSlide>
+        </Swiper>
       </div>
     </section>
   );
