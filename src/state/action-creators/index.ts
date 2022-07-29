@@ -48,6 +48,29 @@ export const fetchSchedule = () => async (dispatch: Dispatch<Action>) => {
   }
 };
 
+export const fetchRaceResult = (
+  season: string,
+  round: string,
+) => async (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.FETCH_RESULT,
+  });
+
+  try {
+    const response = await formulaApi.getRaceResult(season, round);
+    console.log(response);
+    dispatch({
+      type: ActionType.FETCH_RESULT_SUCCESS,
+      payload: response,
+    });
+  } catch (err: any) {
+    dispatch({
+      type: ActionType.FETCH_RESULT_ERROR,
+      payload: err.message,
+    });
+  }
+};
+
 export const fetchWikiData = (
   wikiTitle: string,
 ) => async (dispatch: Dispatch<Action>) => {

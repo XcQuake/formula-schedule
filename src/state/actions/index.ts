@@ -4,6 +4,7 @@ import { ActionType } from '../action-types';
 import {
   Race,
   StandingList,
+  Result,
 } from '../../models/formulaApiTypes';
 
 export const foo = 'foo';
@@ -33,6 +34,20 @@ interface FetchScheduleSuccessAction {
 
 interface FetchScheduleErrorAction {
   type: ActionType.FETCH_SCHEDULE_ERROR;
+  payload: string,
+}
+
+interface FetchResultAction {
+  type: ActionType.FETCH_RESULT;
+}
+
+interface FetchResultSuccessAction {
+  type: ActionType.FETCH_RESULT_SUCCESS;
+  payload: Result[],
+}
+
+interface FetchResultErrorAction {
+  type: ActionType.FETCH_RESULT_ERROR,
   payload: string,
 }
 
@@ -73,6 +88,9 @@ export type Action =
   | FetchScheduleAction
   | FetchScheduleSuccessAction
   | FetchScheduleErrorAction
+  | FetchResultAction
+  | FetchResultSuccessAction
+  | FetchResultErrorAction
   | SelectWeekendAction
   | FetchWikiDataAction
   | FetchWikiDataSuccessAction

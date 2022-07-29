@@ -1,4 +1,4 @@
-import { MRData, Race, StandingList } from '../models/formulaApiTypes';
+import { MRData, Race, StandingList, Result } from '../models/formulaApiTypes';
 import { FORMULA_API_URL } from '../utils/constants';
 
 interface ApiConfig {
@@ -40,6 +40,14 @@ class FormulaApi {
     })
       .then((res: Response) => FormulaApi.processResult(res))
       .then((data) => data.MRData.RaceTable!.Races);
+  }
+
+  getRaceResult(season: string, round: string): Promise<Result[]> {
+    return fetch(`${this.link}/${season}/${round}/results.json`, {
+      method: 'GET',
+    })
+      .then((res: Response) => FormulaApi.processResult(res))
+      .then((data) => data.MRData.RaceTable!.Races[0].Results!);
   }
 }
 

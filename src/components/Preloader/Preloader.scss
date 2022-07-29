@@ -17,10 +17,12 @@
 }
 
 .preloader {
-    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
+    justify-self: center;
+    margin: auto;
 
     &__container {
         width: 100px;

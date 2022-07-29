@@ -14,25 +14,24 @@ type WeekendArgs = {
 
 function Weekend({ race }: WeekendArgs): JSX.Element {
   const { selectWeekend, openPopup } = useActions();
-
+  const [width, setWidth] = useState(window.innerWidth);
   const rawDate = `${race.date}T${race.time}`;
 
-  const weekendData = {
+  const weekendInfo = {
     name: race.raceName.replace('Grand Prix', ''),
     date: refactorDate(race.date, race.time),
+    rawDate: `${race.date}T${race.time}`,
     isCurrent: isSameWeek(new Date(), parseISO(rawDate), { weekStartsOn: 1 }),
     isOver: isPast(addHours(parseISO(rawDate), 3)),
     circuit: race.raceName.split(' ')[0].toLowerCase(),
   };
-
-  const [width, setWidth] = useState(window.innerWidth);
 
   const handleResizeWindow = (): void => {
     setWidth(window.innerWidth);
   };
 
   useEffect(() => {
-    if (weekendData.isCurrent) {
+    if (weekendInfo.isCurrent) {
       selectWeekend(race);
     }
     window.addEventListener('resize', handleResizeWindow);
@@ -63,21 +62,21 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
       >
         <img
           className="weekend__race-image"
-          src={circuits[weekendData.circuit as keyof typeof circuits]}
+          src={circuits[weekendInfo.circuit as keyof typeof circuits]}
           alt={race.Circuit.circuitName}
         />
         <div className="weekend__race-info">
           <div className="weekend__race-header">
-            <p className="weekend__race-title">{weekendData.name}</p>
+            <p className="weekend__race-title">{weekendInfo.name}</p>
             <p className="weekend__race-subtitle">Grand prix</p>
           </div>
           {
-            weekendData.isOver
+            weekendInfo.isOver
               ? <p className="weekend__race-finished">Finished</p>
               : (
                 <div className="weekend__race-date">
-                  <p className="weekend__date">{weekendData.date.date}</p>
-                  <p className="weekend__time">{weekendData.date.time}</p>
+                  <p className="weekend__date">{weekendInfo.date.date}</p>
+                  <p className="weekend__time">{weekendInfo.date.time}</p>
                 </div>
               )
           }

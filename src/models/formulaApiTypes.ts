@@ -64,6 +64,36 @@ export type Practice = {
   time: string,
 }
 
+export type Time = {
+  millis?: string,
+  time: string,
+}
+
+export type AverageSpeed = {
+  units: string,
+  speed: string,
+}
+
+export type FastestLap = {
+  rank: string,
+  lap: string,
+  Time: Time,
+  AverageSpeed: AverageSpeed,
+}
+
+export type Result = {
+  number: string,
+  position: string,
+  points: string,
+  Driver: Driver,
+  Constructor: Constructor,
+  grid: string,
+  laps: string,
+  status: string,
+  Time: Time,
+  FastestLap: FastestLap,
+}
+
 export type Race = {
   season: string,
   round: string,
@@ -72,6 +102,7 @@ export type Race = {
   Circuit: Circuit,
   date: string,
   time: string,
+  Results?: Result[],
   FirstPractice: Practice,
   SecondPractice: Practice,
   ThirdPractice?: Practice,
@@ -81,6 +112,7 @@ export type Race = {
 
 export type RaceTable = {
   season: string,
+  round?: string,
   Races: Race[],
 }
 
