@@ -12,6 +12,7 @@ const ConstructorsList:React.FC<props> = ({ constructors }) => {
   const renderedStanding: React.ReactNode = (
     constructors.map((constructor) => (
       <Constructor
+        key={constructor.Constructor.constructorId}
         stats={constructor}
       />
     ))
