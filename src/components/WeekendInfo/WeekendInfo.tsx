@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import './WeekendInfo.scss';
 import placeholder from '../../images/F1-logo.svg';

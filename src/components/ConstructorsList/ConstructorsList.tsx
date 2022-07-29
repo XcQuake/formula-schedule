@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ConstructorsList.scss';
 import Constructor from '../Constructor/Constructor';
-import { ConstructorStanding } from '../../models/apiTypes';
+import { ConstructorStanding } from '../../models/formulaApiTypes';
 
 interface props {
   constructors: ConstructorStanding[];

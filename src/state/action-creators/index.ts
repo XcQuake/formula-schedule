@@ -5,7 +5,7 @@ import * as wikiApi from '../../requests/wikiApi';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import formulaApi from '../../requests/formulaApi';
-import { Race } from '../../models/apiTypes';
+import { Race } from '../../models/formulaApiTypes';
 
 export const fetchStanding = (
   season: string,

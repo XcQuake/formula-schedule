@@ -1,4 +1,4 @@
-import { MRData, Race, StandingList } from '../models/apiTypes';
+import { MRData, Race, StandingList } from '../models/formulaApiTypes';
 import { FORMULA_API_URL } from '../utils/constants';
 
 interface ApiConfig {

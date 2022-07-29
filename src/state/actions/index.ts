@@ -4,7 +4,7 @@ import { ActionType } from '../action-types';
 import {
   Race,
   StandingList,
-} from '../../models/apiTypes';
+} from '../../models/formulaApiTypes';
 
 export const foo = 'foo';
 

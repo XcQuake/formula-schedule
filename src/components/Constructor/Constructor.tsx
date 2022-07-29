@@ -2,7 +2,7 @@ import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
 import './Constructor.scss';
-import { ConstructorStanding } from '../../models/apiTypes';
+import { ConstructorStanding } from '../../models/formulaApiTypes';
 
 interface props {
   stats: ConstructorStanding;

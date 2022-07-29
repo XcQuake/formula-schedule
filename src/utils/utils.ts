@@ -1,5 +1,5 @@
 import { parseISO, format } from 'date-fns';
-import { Race } from '../models/apiTypes';
+import { Race } from '../models/formulaApiTypes';
 
 type refactoredDate = {
   date: string,

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import './DriversList.scss';
-import { DriverStanding } from '../../models/apiTypes';
+import { DriverStanding } from '../../models/formulaApiTypes';
 import Driver from '../Driver/Driver';
 
 interface props {

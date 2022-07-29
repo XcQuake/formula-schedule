@@ -1,6 +1,6 @@
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
-import { Race } from '../../models/apiTypes';
+import { Race } from '../../models/formulaApiTypes';
 
 const weekendReducer = (
   state: Race | null = null,
