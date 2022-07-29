@@ -3,7 +3,7 @@ import React from 'react';
 
 import './DriversList.scss';
 import { DriverStanding } from '../../models/formulaApiTypes';
-import Driver from '../Driver/Driver';
+import DriversListElement from '../DriversListElement/DriversListElement';
 
 interface props {
   drivers: DriverStanding[];
@@ -13,7 +13,7 @@ const DriversList: React.FC<props> = ({ drivers }) => {
   const renderedStanding: React.ReactNode = (
     drivers.map(
       (driver) => (
-        <Driver
+        <DriversListElement
           key={driver.Driver.driverId}
           stats={driver}
         />

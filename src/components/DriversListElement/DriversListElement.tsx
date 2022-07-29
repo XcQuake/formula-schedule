@@ -1,14 +1,14 @@
 import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
-import './Driver.scss';
+import './DriversListElement.scss';
 import { DriverStanding } from '../../models/formulaApiTypes';
 
 type DriverData = {
   stats: DriverStanding;
 };
 
-function Driver({ stats }: DriverData): JSX.Element {
+function DriversListElement({ stats }: DriverData): JSX.Element {
   const bio = stats.Driver;
   const team = stats.Constructors[0];
   const flagUrl = findFlagUrlByNationality(bio.nationality);
@@ -29,4 +29,4 @@ function Driver({ stats }: DriverData): JSX.Element {
   );
 }
 
-export default Driver;
+export default DriversListElement;

@@ -1,14 +1,14 @@
 import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
-import './Constructor.scss';
+import './ConstructorsListElement.scss';
 import { ConstructorStanding } from '../../models/formulaApiTypes';
 
 interface props {
   stats: ConstructorStanding;
 }
 
-const Constructor: React.FC<props> = ({ stats }) => {
+const ConstructorsListElement: React.FC<props> = ({ stats }) => {
   const team = stats.Constructor;
   const flagUrl = findFlagUrlByNationality(team.nationality);
 
@@ -25,4 +25,4 @@ const Constructor: React.FC<props> = ({ stats }) => {
   );
 };
 
-export default Constructor;
+export default ConstructorsListElement;

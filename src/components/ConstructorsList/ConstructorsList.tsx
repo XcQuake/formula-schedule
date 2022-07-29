@@ -1,7 +1,8 @@
 import React from 'react';
 
 import './ConstructorsList.scss';
-import Constructor from '../Constructor/Constructor';
+import ConstructorsListElement
+  from '../ConstructorsListElement/ConstructorsListElement';
 import { ConstructorStanding } from '../../models/formulaApiTypes';
 
 interface props {
@@ -11,7 +12,7 @@ interface props {
 const ConstructorsList:React.FC<props> = ({ constructors }) => {
   const renderedStanding: React.ReactNode = (
     constructors.map((constructor) => (
-      <Constructor
+      <ConstructorsListElement
         key={constructor.Constructor.constructorId}
         stats={constructor}
       />
