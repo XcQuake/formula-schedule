@@ -2,17 +2,13 @@
 import React, { ReactElement, useEffect, useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 import './Standing.scss';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import DriversList from '../DriversList/DriversList';
 import Preloader from '../Preloader/Preloader';
-import ToggleButton from '../Buttons/ToggleButton/ToggleButton';
 import ConstructorsList from '../ConstructorsList/ConstructorsList';
 
 const Standing = (): ReactElement => {
@@ -23,6 +19,8 @@ const Standing = (): ReactElement => {
   const [championship, setChampionship] = useState('driver');
   const drivers = standingList?.DriverStandings;
   const constructors = standingList?.ConstructorStandings;
+  const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     fetchStanding('current', championship);
@@ -37,26 +35,30 @@ const Standing = (): ReactElement => {
     }
   };
 
-  const renderList: React.ReactNode = (
-    (drivers && <DriversList drivers={drivers} />)
-    || (constructors && <ConstructorsList constructors={constructors} />)
-  );
-
-  const prevRef = useRef<HTMLDivElement>(null);
-  const nextRef = useRef<HTMLDivElement>(null);
-
   return (
     <section className="standing">
-      <ToggleButton
-        labels={{ firstState: 'Drivers', secondState: 'Constructors' }}
-        onClick={handleChangeChampionship}
-      />
+      <div className="standing__navigation">
+        <button
+          className="standing__button standing__button_prev"
+          ref={(node) => setPrevEl(node)}
+          type="button"
+        >
+          Drivers
+        </button>
+        <button
+          className="standing__button standing__button_next"
+          ref={(node) => setNextEl(node)}
+          type="button"
+        >
+          Constructors
+        </button>
+      </div>
       <div className="standing__wrapper">
         {loading && <Preloader />}
-        {/* {!loading && !error && renderList} */}
         <Swiper
           className="mySwiper"
           onSlideChange={() => { handleChangeChampionship(); }}
+          navigation={{ prevEl, nextEl }}
           modules={[Navigation]}
           dir="ltr"
         >
