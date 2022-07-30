@@ -13,7 +13,7 @@ type WeekendArgs = {
 }
 
 function Weekend({ race }: WeekendArgs): JSX.Element {
-  const { selectWeekend, openPopup } = useActions();
+  const { selectElement, openPopup } = useActions();
   const [width, setWidth] = useState(window.innerWidth);
   const rawDate = `${race.date}T${race.time}`;
 
@@ -32,7 +32,7 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
 
   useEffect(() => {
     if (weekendInfo.isCurrent) {
-      selectWeekend(race);
+      selectElement(race);
     }
     window.addEventListener('resize', handleResizeWindow);
     return () => {
@@ -45,7 +45,7 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
   );
 
   const onClick = (): void => {
-    selectWeekend(race);
+    selectElement(race);
     if (width < 699) {
       openPopup(weekInfo);
     }

@@ -5,15 +5,16 @@ import './WeekendInfo.scss';
 import placeholder from '../../images/F1-logo.svg';
 import { refactorWeekendDates } from '../../utils/utils';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import Session from '../Session/Session';
 import { useActions } from '../../hooks/useActions';
+import { Race } from '../../models/ergastApiTypes';
+import Session from '../Session/Session';
 import ResultsList from '../ResultsList/ResultsList';
 import Preloader from '../Preloader/Preloader';
 
 const WeekendInfo: React.FC = () => {
   const { fetchWikiData, fetchRaceResult } = useActions();
 
-  const weekend = useTypedSelector((state) => state.weekend);
+  const weekend = useTypedSelector((state) => state.element) as Race;
   const { wikiData } = useTypedSelector((state) => state.wikiData);
   const {
     resultLoading,

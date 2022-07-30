@@ -5,6 +5,7 @@ import {
   Race,
   StandingList,
   Result,
+  Driver,
 } from '../../models/ergastApiTypes';
 import {
   RapidDriver,
@@ -84,9 +85,9 @@ interface FetchWikiDataErrorAction {
   payload: string,
 }
 
-interface SelectWeekendAction {
-  type: ActionType.SELECT_WEEKEND,
-  payload: Race,
+interface SelectElementAction {
+  type: ActionType.SELECT_ELEMENT,
+  payload: Race | Driver,
 }
 
 interface OpenPopup {
@@ -111,7 +112,7 @@ export type Action =
   | FetchDriverAction
   | FetchDriverSuccessAction
   | FetchDriverErrorAction
-  | SelectWeekendAction
+  | SelectElementAction
   | FetchWikiDataAction
   | FetchWikiDataSuccessAction
   | FetchWikiDataErrorAction

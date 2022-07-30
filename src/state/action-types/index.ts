@@ -14,7 +14,7 @@ export enum ActionType {
   FETCH_DRIVER = 'fetch_driver',
   FETCH_DRIVER_SUCCESS = 'fetch_driver_success',
   FETCH_DRIVER_ERROR = 'fetch_driver_error',
-  SELECT_WEEKEND = 'select_weekend',
+  SELECT_ELEMENT = 'select_element',
   OPEN_POPUP = 'open_popup',
   CLOSE_POPUP = 'close_popup',
 }

@@ -12,7 +12,7 @@ function DriversListElement({ stats }: DriverData): JSX.Element {
   const bio = stats.Driver;
   const team = stats.Constructors[0];
   const flagUrl = findFlagUrlByNationality(bio.nationality);
-  console.log(stats);
+
   return (
     <li className={`driver team_${team.constructorId}`}>
       <div className="driver__param text_center">{stats.position}</div>

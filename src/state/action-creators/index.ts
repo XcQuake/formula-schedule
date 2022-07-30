@@ -5,7 +5,7 @@ import * as wikiApi from '../../requests/wikiApi';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import formulaApi from '../../requests/ergastApi';
-import { Race } from '../../models/ergastApiTypes';
+import { Race, Driver } from '../../models/ergastApiTypes';
 import rapidApi from '../../requests/rapidApi';
 
 export const fetchStanding = (
@@ -115,10 +115,12 @@ export const fetchWikiData = (
   }
 };
 
-export const selectWeekend = (weekend: Race) => (dispatch: Dispatch<Action>) => {
+export const selectElement = (
+  element: Race | Driver,
+) => (dispatch: Dispatch<Action>) => {
   dispatch({
-    type: ActionType.SELECT_WEEKEND,
-    payload: weekend,
+    type: ActionType.SELECT_ELEMENT,
+    payload: element,
   });
 };
 
