@@ -6,6 +6,7 @@ import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import formulaApi from '../../requests/ergastApi';
 import { Race } from '../../models/ergastApiTypes';
+import rapidApi from '../../requests/rapidApi';
 
 export const fetchStanding = (
   season: string,
@@ -65,6 +66,27 @@ export const fetchRaceResult = (
   } catch (err: any) {
     dispatch({
       type: ActionType.FETCH_RESULT_ERROR,
+      payload: err.message,
+    });
+  }
+};
+
+export const fetchDriver = (
+  driverCode: string,
+) => async (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.FETCH_DRIVER,
+  });
+
+  try {
+    const response = await rapidApi.getDriverInfo(driverCode);
+    dispatch({
+      type: ActionType.FETCH_DRIVER_SUCCESS,
+      payload: response,
+    });
+  } catch (err: any) {
+    dispatch({
+      type: ActionType.FETCH_DRIVER_ERROR,
       payload: err.message,
     });
   }

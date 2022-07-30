@@ -6,6 +6,9 @@ import {
   StandingList,
   Result,
 } from '../../models/ergastApiTypes';
+import {
+  RapidDriver,
+} from '../../models/rapidApiTypes';
 
 export const foo = 'foo';
 
@@ -51,6 +54,20 @@ interface FetchResultErrorAction {
   payload: string,
 }
 
+interface FetchDriverAction {
+  type: ActionType.FETCH_DRIVER,
+}
+
+interface FetchDriverSuccessAction {
+  type: ActionType.FETCH_DRIVER_SUCCESS,
+  payload: RapidDriver,
+}
+
+interface FetchDriverErrorAction {
+  type: ActionType.FETCH_DRIVER_ERROR,
+  payload: string,
+}
+
 interface FetchWikiDataAction {
   type: ActionType.FETCH_WIKIDATA,
 }
@@ -91,6 +108,9 @@ export type Action =
   | FetchResultAction
   | FetchResultSuccessAction
   | FetchResultErrorAction
+  | FetchDriverAction
+  | FetchDriverSuccessAction
+  | FetchDriverErrorAction
   | SelectWeekendAction
   | FetchWikiDataAction
   | FetchWikiDataSuccessAction

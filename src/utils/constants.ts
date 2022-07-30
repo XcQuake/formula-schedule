@@ -12,3 +12,6 @@ export const TEAM_COLORS = {
 };
 
 export const ERGAST_API_URL = 'https://ergast.com/api/f1';
+export const RAPID_API_URL = 'https://v1.formula-1.api-sports.io/';
+export const RAPID_API_KEY = '447628fdc062d14280776d9175086d89';
+export const RAPID_API_HOST = 'api-formula-1.p.rapidapi.com';
