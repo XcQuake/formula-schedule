@@ -17,6 +17,9 @@
   }
   &__header {
     margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
   }
 
   &__container {
@@ -31,5 +34,13 @@
     display: flex;
     justify-content: space-between;
     margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &__flag {
+    width: 20px;
+    height: 10px;
+    margin-right: 5px;
   }
 }
