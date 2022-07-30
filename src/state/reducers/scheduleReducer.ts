@@ -1,4 +1,4 @@
-import { Race } from '../../models/formulaApiTypes';
+import { Race } from '../../models/ergastApiTypes';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 

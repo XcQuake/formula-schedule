@@ -4,8 +4,8 @@ import { Dispatch } from 'redux';
 import * as wikiApi from '../../requests/wikiApi';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
-import formulaApi from '../../requests/formulaApi';
-import { Race } from '../../models/formulaApiTypes';
+import formulaApi from '../../requests/ergastApi';
+import { Race } from '../../models/ergastApiTypes';
 
 export const fetchStanding = (
   season: string,
@@ -58,7 +58,6 @@ export const fetchRaceResult = (
 
   try {
     const response = await formulaApi.getRaceResult(season, round);
-    console.log(response);
     dispatch({
       type: ActionType.FETCH_RESULT_SUCCESS,
       payload: response,

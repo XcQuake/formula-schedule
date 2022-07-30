@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './ResultsList.scss';
-import { Result } from '../../models/formulaApiTypes';
+import { Result } from '../../models/ergastApiTypes';
 import ResultsListElement from '../ResultsListElement/ResultsListElement';
 
 interface Props {

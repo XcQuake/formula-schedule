@@ -5,7 +5,7 @@ import {
   Race,
   StandingList,
   Result,
-} from '../../models/formulaApiTypes';
+} from '../../models/ergastApiTypes';
 
 export const foo = 'foo';
 

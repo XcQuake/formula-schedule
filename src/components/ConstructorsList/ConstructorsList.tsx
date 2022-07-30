@@ -3,7 +3,7 @@ import React from 'react';
 import './ConstructorsList.scss';
 import ConstructorsListElement
   from '../ConstructorsListElement/ConstructorsListElement';
-import { ConstructorStanding } from '../../models/formulaApiTypes';
+import { ConstructorStanding } from '../../models/ergastApiTypes';
 
 interface props {
   constructors: ConstructorStanding[];

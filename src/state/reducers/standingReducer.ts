@@ -1,4 +1,4 @@
-import { StandingList } from '../../models/formulaApiTypes';
+import { StandingList } from '../../models/ergastApiTypes';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 

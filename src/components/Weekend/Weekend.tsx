@@ -3,7 +3,7 @@ import { isPast, isSameWeek, parseISO, addHours } from 'date-fns';
 
 import './Weekend.scss';
 import { refactorDate } from '../../utils/utils';
-import { Race } from '../../models/formulaApiTypes';
+import { Race } from '../../models/ergastApiTypes';
 import * as circuits from '../../utils/circuits';
 import { useActions } from '../../hooks/useActions';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';

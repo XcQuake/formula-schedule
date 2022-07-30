@@ -1,5 +1,5 @@
 import React from 'react';
-import { Result } from '../../models/formulaApiTypes';
+import { Result } from '../../models/ergastApiTypes';
 
 import './ResultsListElement.scss';
 

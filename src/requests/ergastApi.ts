@@ -1,5 +1,5 @@
-import { MRData, Race, StandingList, Result } from '../models/formulaApiTypes';
-import { FORMULA_API_URL } from '../utils/constants';
+import { MRData, Race, StandingList, Result } from '../models/ergastApiTypes';
+import { ERGAST_API_URL } from '../utils/constants';
 
 interface ApiConfig {
   baseUrl: string,
@@ -8,7 +8,7 @@ interface ApiConfig {
   }
 }
 
-class FormulaApi {
+class ErgastApi {
   private link: string;
 
   private headers: {
@@ -30,7 +30,7 @@ class FormulaApi {
     return fetch(`${this.link}/${season}/${championship}Standings.json`, {
       method: 'GET',
     })
-      .then((res: Response) => FormulaApi.processResult(res))
+      .then((res: Response) => ErgastApi.processResult(res))
       .then((data) => data.MRData.StandingsTable!.StandingsLists[0]);
   }
 
@@ -38,7 +38,7 @@ class FormulaApi {
     return fetch(`${this.link}/current.json`, {
       method: 'GET',
     })
-      .then((res: Response) => FormulaApi.processResult(res))
+      .then((res: Response) => ErgastApi.processResult(res))
       .then((data) => data.MRData.RaceTable!.Races);
   }
 
@@ -46,16 +46,16 @@ class FormulaApi {
     return fetch(`${this.link}/${season}/${round}/results.json`, {
       method: 'GET',
     })
-      .then((res: Response) => FormulaApi.processResult(res))
+      .then((res: Response) => ErgastApi.processResult(res))
       .then((data) => data.MRData.RaceTable!.Races[0].Results!);
   }
 }
 
-const formulaApi = new FormulaApi({
-  baseUrl: FORMULA_API_URL,
+const ergastApi = new ErgastApi({
+  baseUrl: ERGAST_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-export default formulaApi;
+export default ergastApi;

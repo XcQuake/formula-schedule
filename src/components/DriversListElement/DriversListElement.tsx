@@ -2,7 +2,7 @@ import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
 import './DriversListElement.scss';
-import { DriverStanding } from '../../models/formulaApiTypes';
+import { DriverStanding } from '../../models/ergastApiTypes';
 
 type DriverData = {
   stats: DriverStanding;

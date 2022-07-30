@@ -1,4 +1,4 @@
-import { Result } from '../../models/formulaApiTypes';
+import { Result } from '../../models/ergastApiTypes';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
