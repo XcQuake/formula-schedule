@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
 import './DriversListElement.scss';
+import { useActions } from '../../hooks/useActions';
 import { DriverStanding } from '../../models/ergastApiTypes';
 
 type DriverData = {
@@ -9,12 +11,24 @@ type DriverData = {
 };
 
 function DriversListElement({ stats }: DriverData): JSX.Element {
+  const { selectElement } = useActions();
+
   const bio = stats.Driver;
   const team = stats.Constructors[0];
   const flagUrl = findFlagUrlByNationality(bio.nationality);
 
+  function handleClick(): void {
+    selectElement(stats.Driver);
+  }
+
   return (
-    <li className={`driver team_${team.constructorId}`}>
+    <div
+      className={`driver team_${team.constructorId}`}
+      role="button"
+      tabIndex={0}
+      onClick={handleClick}
+      onKeyDown={handleClick}
+    >
       <div className="driver__param text_center">{stats.position}</div>
       <div className="driver__param">
         {`${bio.givenName} ${bio.familyName}`}
@@ -25,7 +39,7 @@ function DriversListElement({ stats }: DriverData): JSX.Element {
       <div className="driver__param text_center">
         <img className="driver__flag" src={flagUrl} alt={bio.nationality} />
       </div>
-    </li>
+    </div>
   );
 }
 
