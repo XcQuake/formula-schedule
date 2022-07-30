@@ -54,7 +54,6 @@ const Standing = (): ReactElement => {
         </button>
       </div>
       <div className="standing__wrapper">
-        {loading && <Preloader />}
         <Swiper
           className="mySwiper"
           onSlideChange={() => { handleChangeChampionship(); }}
@@ -62,11 +61,20 @@ const Standing = (): ReactElement => {
           modules={[Navigation]}
           dir="ltr"
         >
+          {loading && <Preloader />}
           <SwiperSlide>
-            {drivers && <DriversList drivers={drivers} />}
+            {
+              !loading
+              && drivers
+              && <DriversList drivers={drivers} />
+            }
           </SwiperSlide>
           <SwiperSlide>
-            {constructors && <ConstructorsList constructors={constructors} />}
+            {
+              !loading
+              && constructors
+              && <ConstructorsList constructors={constructors} />
+            }
           </SwiperSlide>
         </Swiper>
       </div>

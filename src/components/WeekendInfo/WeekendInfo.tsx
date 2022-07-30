@@ -14,8 +14,12 @@ const WeekendInfo: React.FC = () => {
   const { fetchWikiData, fetchRaceResult } = useActions();
 
   const weekend = useTypedSelector((state) => state.weekend);
-  const { loading, wikiData, error } = useTypedSelector((state) => state.wikiData);
-  const { resultLoading, raceResult, resultError } = useTypedSelector((state) => state.result);
+  const { wikiData } = useTypedSelector((state) => state.wikiData);
+  const {
+    resultLoading,
+    raceResult,
+    resultError,
+  } = useTypedSelector((state) => state.result);
 
   const wikiTitle = weekend?.raceName.replace(' ', '_');
   const rawDate = weekend && `${weekend.date}T${weekend.time}`;

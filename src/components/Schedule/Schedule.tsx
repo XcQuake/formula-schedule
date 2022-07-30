@@ -42,8 +42,15 @@ const Schedule: React.FC = () => {
   return (
     <section className="schedule">
       <div className="schedule__wrapper">
-        {loading && <Preloader />}
-        {!loading && !error && weekendList}
+        {
+          loading
+          && <Preloader />
+        }
+        {
+          !loading
+          && !error
+          && weekendList
+        }
       </div>
       {(width > 699) && <WeekendInfo />}
     </section>
