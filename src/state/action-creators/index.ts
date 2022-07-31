@@ -12,9 +12,7 @@ export const fetchStanding = (
   season: string,
   championship: string,
 ) => async (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.FETCH_STANDING,
-  });
+  dispatch({ type: ActionType.FETCH_STANDING });
 
   try {
     const response = await formulaApi.getStanding(season, championship);
@@ -53,9 +51,7 @@ export const fetchRaceResult = (
   season: string,
   round: string,
 ) => async (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.FETCH_RESULT,
-  });
+  dispatch({ type: ActionType.FETCH_RESULT });
 
   try {
     const response = await formulaApi.getRaceResult(season, round);
@@ -74,9 +70,7 @@ export const fetchRaceResult = (
 export const fetchDriver = (
   driverCode: string,
 ) => async (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.FETCH_DRIVER,
-  });
+  dispatch({ type: ActionType.FETCH_DRIVER });
 
   try {
     const response = await rapidApi.getDriverInfo(driverCode);
@@ -95,9 +89,7 @@ export const fetchDriver = (
 export const fetchWikiData = (
   wikiTitle: string,
 ) => async (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.FETCH_WIKIDATA,
-  });
+  dispatch({ type: ActionType.FETCH_WIKIDATA });
 
   try {
     const imgSource = await wikiApi.getImage(wikiTitle);
@@ -134,7 +126,5 @@ export const openPopup = (
 };
 
 export const closePopup = () => (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.CLOSE_POPUP,
-  });
+  dispatch({ type: ActionType.CLOSE_POPUP });
 };
