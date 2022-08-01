@@ -5,29 +5,31 @@ import { findFlagUrlByNationality } from 'country-flags-svg';
 import './DriverInfo.scss';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
-import { Driver } from '../../models/ergastApiTypes';
+import { normalizeString } from '../../utils/utils';
 
 const DriverInfo: React.FC = () => {
-  const { fetchDriver } = useActions();
+  const { fetchDriverInfo } = useActions();
 
-  const { driverId } = useTypedSelector((state) => state.driver);
-  const {
-    driverInfoLoading,
-    driverInfo,
-    driverInfoError,
-  } = useTypedSelector((state) => state.driverInfo);
+  const { driver } = useTypedSelector((state) => state.driver);
+  const { driversInfo } = useTypedSelector((state) => state.driverInfo);
+
+  const fullName = driver && normalizeString(
+    `${driver.givenName} ${driver.familyName}`,
+  ).toLowerCase();
+
+  const driverInfo = driversInfo.find(
+    (el) => el.name.toLowerCase() === fullName || el.abbr === driver?.code,
+  ) || null;
 
   const flagUrl = driverInfo && findFlagUrlByNationality(driverInfo.nationality);
-
   useEffect(() => {
-    if (driverId) {
-      fetchDriver(driverId.replace('_', ' '));
+    if (fullName && !driverInfo) {
+      fetchDriverInfo(fullName);
     }
-  }, [driverId]);
+  }, [driver]);
 
   return (
-    driverInfo
-    && (
+    driverInfo && (
       <div className="driver-info">
         <img
           className="driver-info__image"

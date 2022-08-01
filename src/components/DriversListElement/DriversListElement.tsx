@@ -18,8 +18,7 @@ function DriversListElement({ stats }: DriverData): JSX.Element {
   const flagUrl = findFlagUrlByNationality(bio.nationality);
 
   function handleClick(): void {
-    console.log(stats.Driver);
-    selectDriver(stats.Driver.driverId);
+    selectDriver(stats.Driver);
   }
 
   return (

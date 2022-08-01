@@ -1,12 +1,13 @@
+import { Driver } from '../../models/ergastApiTypes';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
 interface DriverState {
-  driverId: string | null;
+  driver: Driver | null;
 }
 
 const initialState = {
-  driverId: null,
+  driver: null,
 };
 
 const driverReducer = (
@@ -15,7 +16,7 @@ const driverReducer = (
 ): DriverState => {
   switch (action.type) {
     case ActionType.SELECT_DRIVER:
-      return { driverId: action.payload };
+      return { driver: action.payload };
     default:
       return state;
   }

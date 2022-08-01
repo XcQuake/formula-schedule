@@ -4,15 +4,11 @@ import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
 interface DriverInfoState {
-  driverInfoLoading: boolean;
-  driverInfoError: string | null;
-  driverInfo: RapidDriver | null;
+  driversInfo: RapidDriver[];
 }
 
 const initialState = {
-  driverInfoLoading: false,
-  driverInfoError: null,
-  driverInfo: null,
+  driversInfo: [],
 };
 
 const driverinfoReducer = (
@@ -20,24 +16,8 @@ const driverinfoReducer = (
   action: Action,
 ): DriverInfoState => {
   switch (action.type) {
-    case ActionType.FETCH_DRIVER:
-      return {
-        driverInfoLoading: true,
-        driverInfoError: null,
-        driverInfo: null,
-      };
-    case ActionType.FETCH_DRIVER_ERROR:
-      return {
-        driverInfoLoading: false,
-        driverInfoError: action.payload,
-        driverInfo: null,
-      };
-    case ActionType.FETCH_DRIVER_SUCCESS:
-      return {
-        driverInfoLoading: false,
-        driverInfoError: null,
-        driverInfo: action.payload,
-      };
+    case ActionType.FETCH_DRIVERINFO:
+      return { driversInfo: [...state.driversInfo, action.payload] };
     default:
       return state;
   }

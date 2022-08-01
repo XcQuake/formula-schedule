@@ -67,23 +67,14 @@ export const fetchRaceResult = (
   }
 };
 
-export const fetchDriver = (
+export const fetchDriverInfo = (
   driverCode: string,
 ) => async (dispatch: Dispatch<Action>) => {
-  dispatch({ type: ActionType.FETCH_DRIVER });
-
-  try {
-    const response = await rapidApi.getDriverInfo(driverCode);
-    dispatch({
-      type: ActionType.FETCH_DRIVER_SUCCESS,
-      payload: response,
-    });
-  } catch (err: any) {
-    dispatch({
-      type: ActionType.FETCH_DRIVER_ERROR,
-      payload: err.message,
-    });
-  }
+  const response = await rapidApi.getDriverInfo(driverCode);
+  dispatch({
+    type: ActionType.FETCH_DRIVERINFO,
+    payload: response,
+  });
 };
 
 export const fetchWikiData = (
@@ -117,11 +108,11 @@ export const selectWeekend = (
 };
 
 export const selectDriver = (
-  driverId: string,
+  driver: Driver,
 ) => (dispatch: Dispatch<Action>) => {
   dispatch({
     type: ActionType.SELECT_DRIVER,
-    payload: driverId,
+    payload: driver,
   });
 };
 

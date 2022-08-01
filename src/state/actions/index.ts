@@ -55,18 +55,9 @@ interface FetchResultErrorAction {
   payload: string,
 }
 
-interface FetchDriverAction {
-  type: ActionType.FETCH_DRIVER,
-}
-
-interface FetchDriverSuccessAction {
-  type: ActionType.FETCH_DRIVER_SUCCESS,
+interface FetchDriverInfoAction {
+  type: ActionType.FETCH_DRIVERINFO,
   payload: RapidDriver,
-}
-
-interface FetchDriverErrorAction {
-  type: ActionType.FETCH_DRIVER_ERROR,
-  payload: string,
 }
 
 interface FetchWikiDataAction {
@@ -92,7 +83,7 @@ interface SelectWeekendAction {
 
 interface SelectDriverAction {
   type: ActionType.SELECT_DRIVER,
-  payload: string,
+  payload: Driver,
 }
 
 interface OpenPopup {
@@ -114,9 +105,7 @@ export type Action =
   | FetchResultAction
   | FetchResultSuccessAction
   | FetchResultErrorAction
-  | FetchDriverAction
-  | FetchDriverSuccessAction
-  | FetchDriverErrorAction
+  | FetchDriverInfoAction
   | SelectWeekendAction
   | SelectDriverAction
   | FetchWikiDataAction
