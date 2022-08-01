@@ -4,16 +4,18 @@ import scheduleReducer from './scheduleReducer';
 import wikiDataReducer from './wikiDataReducer';
 import popupReducer from './popupReducer';
 import resultReducer from './resultReducer';
+import driverInfoReducer from './driverInfoReducer';
+import weekendReducer from './weekendReducer';
 import driverReducer from './driverReducer';
-import elementReducer from './elementReducer';
 
 const reducers = combineReducers({
   standing: standingReducer,
   schedule: scheduleReducer,
   result: resultReducer,
-  element: elementReducer,
+  weekend: weekendReducer,
   wikiData: wikiDataReducer,
   popup: popupReducer,
+  driverInfo: driverInfoReducer,
   driver: driverReducer,
 });
 

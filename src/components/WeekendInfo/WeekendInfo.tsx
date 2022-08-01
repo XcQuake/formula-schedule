@@ -14,7 +14,7 @@ import Preloader from '../Preloader/Preloader';
 const WeekendInfo: React.FC = () => {
   const { fetchWikiData, fetchRaceResult } = useActions();
 
-  const weekend = useTypedSelector((state) => state.element) as Race;
+  const { weekend } = useTypedSelector((state) => state.weekend);
   const { wikiData } = useTypedSelector((state) => state.wikiData);
   const {
     resultLoading,

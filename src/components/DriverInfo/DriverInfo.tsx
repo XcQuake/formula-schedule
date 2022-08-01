@@ -10,21 +10,20 @@ import { Driver } from '../../models/ergastApiTypes';
 const DriverInfo: React.FC = () => {
   const { fetchDriver } = useActions();
 
-  const driver = useTypedSelector((state) => state.element) as Driver;
+  const { driverId } = useTypedSelector((state) => state.driver);
   const {
-    driverLoading,
+    driverInfoLoading,
     driverInfo,
-    driverError,
-  } = useTypedSelector((state) => state.driver);
+    driverInfoError,
+  } = useTypedSelector((state) => state.driverInfo);
 
-  const flagUrl = driverInfo && findFlagUrlByNationality(driver.nationality);
+  const flagUrl = driverInfo && findFlagUrlByNationality(driverInfo.nationality);
 
   useEffect(() => {
-    console.log(driver);
-    if (driver) {
-      fetchDriver(driver.driverId.replace('_', ' '));
+    if (driverId) {
+      fetchDriver(driverId.replace('_', ' '));
     }
-  }, [driver]);
+  }, [driverId]);
 
   return (
     driverInfo

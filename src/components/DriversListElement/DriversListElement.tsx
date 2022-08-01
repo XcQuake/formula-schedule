@@ -11,14 +11,15 @@ type DriverData = {
 };
 
 function DriversListElement({ stats }: DriverData): JSX.Element {
-  const { selectElement } = useActions();
+  const { selectDriver } = useActions();
 
   const bio = stats.Driver;
   const team = stats.Constructors[0];
   const flagUrl = findFlagUrlByNationality(bio.nationality);
 
   function handleClick(): void {
-    selectElement(stats.Driver);
+    console.log(stats.Driver);
+    selectDriver(stats.Driver.driverId);
   }
 
   return (

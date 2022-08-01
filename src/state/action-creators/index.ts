@@ -107,12 +107,21 @@ export const fetchWikiData = (
   }
 };
 
-export const selectElement = (
-  element: Race | Driver,
+export const selectWeekend = (
+  weekend: Race,
 ) => (dispatch: Dispatch<Action>) => {
   dispatch({
-    type: ActionType.SELECT_ELEMENT,
-    payload: element,
+    type: ActionType.SELECT_WEEKEND,
+    payload: weekend,
+  });
+};
+
+export const selectDriver = (
+  driverId: string,
+) => (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.SELECT_DRIVER,
+    payload: driverId,
   });
 };
 

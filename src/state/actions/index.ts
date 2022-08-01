@@ -85,9 +85,14 @@ interface FetchWikiDataErrorAction {
   payload: string,
 }
 
-interface SelectElementAction {
-  type: ActionType.SELECT_ELEMENT,
-  payload: Race | Driver,
+interface SelectWeekendAction {
+  type: ActionType.SELECT_WEEKEND,
+  payload: Race,
+}
+
+interface SelectDriverAction {
+  type: ActionType.SELECT_DRIVER,
+  payload: string,
 }
 
 interface OpenPopup {
@@ -112,7 +117,8 @@ export type Action =
   | FetchDriverAction
   | FetchDriverSuccessAction
   | FetchDriverErrorAction
-  | SelectElementAction
+  | SelectWeekendAction
+  | SelectDriverAction
   | FetchWikiDataAction
   | FetchWikiDataSuccessAction
   | FetchWikiDataErrorAction
