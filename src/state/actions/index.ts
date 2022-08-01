@@ -86,12 +86,12 @@ interface SelectDriverAction {
   payload: Driver,
 }
 
-interface OpenPopup {
+interface OpenPopupAction {
   type: ActionType.OPEN_POPUP,
   payload: React.ReactNode,
 }
 
-interface ClosePopup {
+interface ClosePopupAction {
   type: ActionType.CLOSE_POPUP,
 }
 
@@ -111,5 +111,5 @@ export type Action =
   | FetchWikiDataAction
   | FetchWikiDataSuccessAction
   | FetchWikiDataErrorAction
-  | OpenPopup
-  | ClosePopup;
+  | OpenPopupAction
+  | ClosePopupAction;
