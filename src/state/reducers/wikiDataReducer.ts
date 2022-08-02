@@ -2,17 +2,11 @@ import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
 interface wikiDataState {
-  loading: boolean;
-  wikiData: {
-    imgSource: string,
-  } | null;
-  error: string | null;
+  wikiImage: string | null;
 }
 
 const initialState = {
-  loading: false,
-  wikiData: null,
-  error: null,
+  wikiImage: null,
 };
 
 const wikiDataReducer = (
@@ -20,13 +14,10 @@ const wikiDataReducer = (
   action: Action,
 ): wikiDataState => {
   switch (action.type) {
-    case ActionType.FETCH_WIKIDATA:
-      return { loading: true, wikiData: null, error: null };
-    case ActionType.FETCH_WIKIDATA_SUCCESS:
-      return { loading: false, wikiData: action.payload, error: null };
-    case ActionType.FETCH_WIKIDATA_ERROR:
-      return { loading: false, wikiData: null, error: action.payload };
-    default: return state;
+    case ActionType.FETCH_WIKI_IMAGE:
+      return { wikiImage: action.payload };
+    default:
+      return state;
   }
 };
 

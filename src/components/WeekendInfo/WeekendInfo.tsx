@@ -12,10 +12,10 @@ import ResultsList from '../ResultsList/ResultsList';
 import Preloader from '../Preloader/Preloader';
 
 const WeekendInfo: React.FC = () => {
-  const { fetchWikiData, fetchRaceResult } = useActions();
+  const { fetchWikiImage, fetchRaceResult } = useActions();
 
   const { weekend } = useTypedSelector((state) => state.weekend);
-  const { wikiData } = useTypedSelector((state) => state.wikiData);
+  const { wikiImage } = useTypedSelector((state) => state.wikiData);
   const {
     resultLoading,
     raceResult,
@@ -34,9 +34,11 @@ const WeekendInfo: React.FC = () => {
     if (weekend) {
       if (weekendInfo?.isOver) {
         fetchRaceResult(weekend.season, weekend.round);
+      } else {
+        fetchWikiImage(wikiTitle!);
       }
-      fetchWikiData(wikiTitle!);
     }
+    console.log(wikiImage);
   }, [weekend]);
 
   return (
@@ -50,7 +52,7 @@ const WeekendInfo: React.FC = () => {
           <figure className="weekend-info__figure">
             <img
               className="weekend-info__image"
-              src={wikiData ? wikiData.imgSource : placeholder}
+              src={wikiImage || placeholder}
               alt={weekend?.Circuit.circuitName}
             />
             <h5 className="weekend-info__circuit-name">

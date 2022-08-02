@@ -60,19 +60,8 @@ export interface FetchDriverInfoAction {
   payload: RapidDriver,
 }
 
-export interface FetchWikiDataAction {
-  type: ActionType.FETCH_WIKIDATA,
-}
-
-export interface FetchWikiDataSuccessAction {
-  type: ActionType.FETCH_WIKIDATA_SUCCESS,
-  payload: {
-    imgSource: string,
-  }
-}
-
-export interface FetchWikiDataErrorAction {
-  type: ActionType.FETCH_WIKIDATA_ERROR,
+export interface FetchWikiImageAction {
+  type: ActionType.FETCH_WIKI_IMAGE,
   payload: string,
 }
 
@@ -108,8 +97,6 @@ export type Action =
   | FetchDriverInfoAction
   | SelectWeekendAction
   | SelectDriverAction
-  | FetchWikiDataAction
-  | FetchWikiDataSuccessAction
-  | FetchWikiDataErrorAction
+  | FetchWikiImageAction
   | OpenPopupAction
   | ClosePopupAction;

@@ -83,25 +83,14 @@ export const fetchDriverInfo = (
   });
 };
 
-export const fetchWikiData = (
+export const fetchWikiImage = (
   wikiTitle: string,
 ) => async (dispatch: Dispatch<Action>) => {
-  dispatch({ type: ActionType.FETCH_WIKIDATA });
-
-  try {
-    const imgSource = await wikiApi.getImage(wikiTitle);
-    dispatch({
-      type: ActionType.FETCH_WIKIDATA_SUCCESS,
-      payload: {
-        imgSource,
-      },
-    });
-  } catch (err: any) {
-    dispatch({
-      type: ActionType.FETCH_WIKIDATA_ERROR,
-      payload: err,
-    });
-  }
+  const imgSource = await wikiApi.getImage(wikiTitle);
+  dispatch({
+    type: ActionType.FETCH_WIKI_IMAGE,
+    payload: imgSource,
+  });
 };
 
 export const selectWeekend = (weekend: Race): SelectWeekendAction => ({
