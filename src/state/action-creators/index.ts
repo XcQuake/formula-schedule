@@ -3,7 +3,13 @@ import { Dispatch } from 'redux';
 
 import * as wikiApi from '../../requests/wikiApi';
 import { ActionType } from '../action-types';
-import { Action } from '../actions';
+import {
+  Action,
+  ClosePopupAction,
+  OpenPopupAction,
+  SelectDriverAction,
+  SelectWeekendAction,
+} from '../actions';
 import formulaApi from '../../requests/ergastApi';
 import { Race, Driver } from '../../models/ergastApiTypes';
 import rapidApi from '../../requests/rapidApi';
@@ -98,33 +104,21 @@ export const fetchWikiData = (
   }
 };
 
-export const selectWeekend = (
-  weekend: Race,
-) => (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.SELECT_WEEKEND,
-    payload: weekend,
-  });
-};
+export const selectWeekend = (weekend: Race): SelectWeekendAction => ({
+  type: ActionType.SELECT_WEEKEND,
+  payload: weekend,
+});
 
-export const selectDriver = (
-  driver: Driver,
-) => (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.SELECT_DRIVER,
-    payload: driver,
-  });
-};
+export const selectDriver = (driver: Driver): SelectDriverAction => ({
+  type: ActionType.SELECT_DRIVER,
+  payload: driver,
+});
 
-export const openPopup = (
-  content: React.ReactNode,
-) => (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.OPEN_POPUP,
-    payload: content,
-  });
-};
+export const openPopup = (content: React.ReactNode): OpenPopupAction => ({
+  type: ActionType.OPEN_POPUP,
+  payload: content,
+});
 
-export const closePopup = () => (dispatch: Dispatch<Action>) => {
-  dispatch({ type: ActionType.CLOSE_POPUP });
-};
+export const closePopup = (): ClosePopupAction => ({
+  type: ActionType.CLOSE_POPUP,
+});

@@ -13,85 +13,85 @@ import {
 
 export const foo = 'foo';
 
-interface FetchStandingAction {
+export interface FetchStandingAction {
   type: ActionType.FETCH_STANDING;
 }
 
-interface FetchStandingSuccessAction {
+export interface FetchStandingSuccessAction {
   type: ActionType.FETCH_STANDING_SUCCESS;
   payload: StandingList;
 }
 
-interface FetchStandingErrorAction {
+export interface FetchStandingErrorAction {
   type: ActionType.FETCH_STANDING_ERROR;
   payload: string;
 }
 
-interface FetchScheduleAction {
+export interface FetchScheduleAction {
   type: ActionType.FETCH_SCHEDULE;
 }
 
-interface FetchScheduleSuccessAction {
+export interface FetchScheduleSuccessAction {
   type: ActionType.FETCH_SCHEDULE_SUCCESS;
   payload: Race[],
 }
 
-interface FetchScheduleErrorAction {
+export interface FetchScheduleErrorAction {
   type: ActionType.FETCH_SCHEDULE_ERROR;
   payload: string,
 }
 
-interface FetchResultAction {
+export interface FetchResultAction {
   type: ActionType.FETCH_RESULT;
 }
 
-interface FetchResultSuccessAction {
+export interface FetchResultSuccessAction {
   type: ActionType.FETCH_RESULT_SUCCESS;
   payload: Result[],
 }
 
-interface FetchResultErrorAction {
+export interface FetchResultErrorAction {
   type: ActionType.FETCH_RESULT_ERROR,
   payload: string,
 }
 
-interface FetchDriverInfoAction {
+export interface FetchDriverInfoAction {
   type: ActionType.FETCH_DRIVERINFO,
   payload: RapidDriver,
 }
 
-interface FetchWikiDataAction {
+export interface FetchWikiDataAction {
   type: ActionType.FETCH_WIKIDATA,
 }
 
-interface FetchWikiDataSuccessAction {
+export interface FetchWikiDataSuccessAction {
   type: ActionType.FETCH_WIKIDATA_SUCCESS,
   payload: {
     imgSource: string,
   }
 }
 
-interface FetchWikiDataErrorAction {
+export interface FetchWikiDataErrorAction {
   type: ActionType.FETCH_WIKIDATA_ERROR,
   payload: string,
 }
 
-interface SelectWeekendAction {
+export interface SelectWeekendAction {
   type: ActionType.SELECT_WEEKEND,
   payload: Race,
 }
 
-interface SelectDriverAction {
+export interface SelectDriverAction {
   type: ActionType.SELECT_DRIVER,
   payload: Driver,
 }
 
-interface OpenPopupAction {
+export interface OpenPopupAction {
   type: ActionType.OPEN_POPUP,
   payload: React.ReactNode,
 }
 
-interface ClosePopupAction {
+export interface ClosePopupAction {
   type: ActionType.CLOSE_POPUP,
 }
 
