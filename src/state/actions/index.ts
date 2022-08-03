@@ -62,6 +62,10 @@ export interface FetchDriverInfoAction {
 
 export interface FetchWikiImageAction {
   type: ActionType.FETCH_WIKI_IMAGE,
+}
+
+export interface FetchWikiImageSuccessAction {
+  type: ActionType.FETCH_WIKI_IMAGE_SUCCESS,
   payload: string,
 }
 
@@ -98,5 +102,6 @@ export type Action =
   | SelectWeekendAction
   | SelectDriverAction
   | FetchWikiImageAction
+  | FetchWikiImageSuccessAction
   | OpenPopupAction
   | ClosePopupAction;

@@ -15,6 +15,8 @@ const wikiDataReducer = (
 ): wikiDataState => {
   switch (action.type) {
     case ActionType.FETCH_WIKI_IMAGE:
+      return { wikiImage: null };
+    case ActionType.FETCH_WIKI_IMAGE_SUCCESS:
       return { wikiImage: action.payload };
     default:
       return state;

@@ -9,6 +9,7 @@ export enum ActionType {
   FETCH_RESULT_SUCCESS = 'fetch_result_success',
   FETCH_RESULT_ERROR = 'fetch_result_error',
   FETCH_WIKI_IMAGE = 'fetch_wiki_image',
+  FETCH_WIKI_IMAGE_SUCCESS = 'fetch_wiki_image_success',
   FETCH_DRIVERINFO = 'fetch_driverinfo',
   SELECT_WEEKEND = 'select_weekend',
   SELECT_DRIVER = 'select_driver',
