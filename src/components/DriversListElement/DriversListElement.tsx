@@ -6,11 +6,11 @@ import './DriversListElement.scss';
 import { useActions } from '../../hooks/useActions';
 import { DriverStanding } from '../../models/ergastApiTypes';
 
-type DriverData = {
+interface Props {
   stats: DriverStanding;
-};
+}
 
-function DriversListElement({ stats }: DriverData): JSX.Element {
+const DriversListElement: React.FC<Props> = ({ stats }) => {
   const { selectDriver } = useActions();
 
   const bio = stats.Driver;
@@ -41,6 +41,6 @@ function DriversListElement({ stats }: DriverData): JSX.Element {
       </div>
     </div>
   );
-}
+};
 
 export default DriversListElement;

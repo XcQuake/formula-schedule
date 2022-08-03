@@ -5,11 +5,11 @@ import ConstructorsListElement
   from '../ConstructorsListElement/ConstructorsListElement';
 import { ConstructorStanding } from '../../models/ergastApiTypes';
 
-interface props {
+interface Props {
   constructors: ConstructorStanding[];
 }
 
-const ConstructorsList:React.FC<props> = ({ constructors }) => {
+const ConstructorsList: React.FC<Props> = ({ constructors }) => {
   const renderedStanding: React.ReactNode = (
     constructors.map((constructor) => (
       <ConstructorsListElement

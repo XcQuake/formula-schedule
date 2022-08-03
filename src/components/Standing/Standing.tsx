@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { ReactElement, useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
@@ -12,9 +12,9 @@ import Preloader from '../Preloader/Preloader';
 import ConstructorsList from '../ConstructorsList/ConstructorsList';
 import DriverInfo from '../DriverInfo/DriverInfo';
 
-const Standing = (): ReactElement => {
+const Standing: React.FC = () => {
   const { fetchStanding } = useActions();
-  const { standingList, loading, error } = useTypedSelector(
+  const { standingList, loading } = useTypedSelector(
     (state) => state.standing,
   );
   const [championship, setChampionship] = useState('driver');

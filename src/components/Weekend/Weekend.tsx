@@ -8,11 +8,11 @@ import * as circuits from '../../utils/circuits';
 import { useActions } from '../../hooks/useActions';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';
 
-type WeekendArgs = {
+interface Props {
   race: Race;
 }
 
-function Weekend({ race }: WeekendArgs): JSX.Element {
+const Weekend: React.FC<Props> = ({ race }) => {
   const { selectWeekend, openPopup } = useActions();
   const [width, setWidth] = useState(window.innerWidth);
   const rawDate = `${race.date}T${race.time}`;
@@ -40,14 +40,10 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
     };
   }, []);
 
-  const weekInfo = (
-    <WeekendInfo />
-  );
-
   const onClick = (): void => {
     selectWeekend(race);
     if (width < 699) {
-      openPopup(weekInfo);
+      openPopup(<WeekendInfo />);
     }
   };
 
@@ -84,6 +80,6 @@ function Weekend({ race }: WeekendArgs): JSX.Element {
       </div>
     </li>
   );
-}
+};
 
 export default React.memo(Weekend);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ToggleButton.scss';
 
-interface buttonProps {
+interface Props {
   labels: {
     firstState: string,
     secondState: string,
@@ -9,7 +9,7 @@ interface buttonProps {
   onClick: (id: string) => void;
 }
 
-const ToggleButton: React.FC<buttonProps> = ({ labels, onClick }) => {
+const ToggleButton: React.FC<Props> = ({ labels, onClick }) => {
   const [selected, setSelected] = useState(labels.firstState);
   const handleClickButton = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     setSelected(evt.target.id);

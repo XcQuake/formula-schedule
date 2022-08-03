@@ -5,11 +5,11 @@ import './DriversList.scss';
 import { DriverStanding } from '../../models/ergastApiTypes';
 import DriversListElement from '../DriversListElement/DriversListElement';
 
-interface props {
+interface Props {
   drivers: DriverStanding[];
 }
 
-const DriversList: React.FC<props> = ({ drivers }) => {
+const DriversList: React.FC<Props> = ({ drivers }) => {
   const renderedStanding: React.ReactNode = (
     drivers.map(
       (driver) => (

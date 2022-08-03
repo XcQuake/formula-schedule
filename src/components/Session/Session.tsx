@@ -1,14 +1,14 @@
 import React from 'react';
 import './Session.scss';
 
-type props = {
+type Props = {
   title: string;
   date: string;
   time: string;
   type: string;
 }
 
-const Session: React.FC<props> = ({ title, date, time, type }) => (
+const Session: React.FC<Props> = ({ title, date, time, type }) => (
   <li className={`session session_${type}`}>
     <p className="session__title">{title}</p>
     <p className="session__date">{date}</p>

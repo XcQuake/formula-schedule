@@ -7,25 +7,23 @@ import Standing from '../Standing/Standing';
 import Schedule from '../Schedule/Schedule';
 import Popup from '../Popup/Popup';
 
-function App(): JSX.Element {
-  return (
-    <>
-      <Header />
-      <main className="main">
-        <div className="main__wrapper">
-          <Routes>
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/standing" element={<Standing />} />
-            <Route
-              path="*"
-              element={<Navigate to="/schedule" replace />}
-            />
-          </Routes>
-        </div>
-      </main>
-      <Popup />
-    </>
-  );
-}
+const App: React.FC = () => (
+  <>
+    <Header />
+    <main className="main">
+      <div className="main__wrapper">
+        <Routes>
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/standing" element={<Standing />} />
+          <Route
+            path="*"
+            element={<Navigate to="/schedule" replace />}
+          />
+        </Routes>
+      </div>
+    </main>
+    <Popup />
+  </>
+);
 
 export default App;

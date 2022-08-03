@@ -4,11 +4,11 @@ import { findFlagUrlByNationality } from 'country-flags-svg';
 import './ConstructorsListElement.scss';
 import { ConstructorStanding } from '../../models/ergastApiTypes';
 
-interface props {
+interface Props {
   stats: ConstructorStanding;
 }
 
-const ConstructorsListElement: React.FC<props> = ({ stats }) => {
+const ConstructorsListElement: React.FC<Props> = ({ stats }) => {
   const team = stats.Constructor;
   const flagUrl = findFlagUrlByNationality(team.nationality);
 
