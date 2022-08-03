@@ -11,17 +11,18 @@ import DriversList from '../DriversList/DriversList';
 import Preloader from '../Preloader/Preloader';
 import ConstructorsList from '../ConstructorsList/ConstructorsList';
 import DriverInfo from '../DriverInfo/DriverInfo';
+import { useWindowWidth } from '../../hooks/useWindowWidth';
 
 const Standing: React.FC = () => {
   const { fetchStanding } = useActions();
-  const { standingList, loading } = useTypedSelector(
-    (state) => state.standing,
-  );
+  const { standingList, loading } = useTypedSelector((state) => state.standing);
   const [championship, setChampionship] = useState('driver');
-  const drivers = standingList?.DriverStandings;
-  const constructors = standingList?.ConstructorStandings;
+  const { windowWidth } = useWindowWidth();
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
+
+  const drivers = standingList?.DriverStandings;
+  const constructors = standingList?.ConstructorStandings;
 
   useEffect(() => {
     fetchStanding('current', championship);
@@ -81,7 +82,7 @@ const Standing: React.FC = () => {
           </Swiper>
         </div>
       </div>
-      <DriverInfo />
+      { windowWidth > 1199 && <DriverInfo /> }
     </section>
   );
 };

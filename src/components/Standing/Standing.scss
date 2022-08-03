@@ -6,24 +6,23 @@
   min-width: 290px;
   height: 100%;
   display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   box-sizing: border-box;
   color: white;
-  gap: 15px;
+  gap: 20px;
 
   &__wrapper {
     width: 100%;
+    max-width: 600px;
     min-height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    box-sizing: border-box;
   }
 
   &__container {
-    width: 100%;
+    max-width: 100%;
     background-color: black;
     padding: 20px;
     border-radius: 10px;

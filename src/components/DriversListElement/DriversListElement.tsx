@@ -1,17 +1,20 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
 import './DriversListElement.scss';
 import { useActions } from '../../hooks/useActions';
 import { DriverStanding } from '../../models/ergastApiTypes';
+import DriverInfo from '../DriverInfo/DriverInfo';
+import { useWindowWidth } from '../../hooks/useWindowWidth';
 
 interface Props {
   stats: DriverStanding;
 }
 
 const DriversListElement: React.FC<Props> = ({ stats }) => {
-  const { selectDriver } = useActions();
+  const { selectDriver, openPopup } = useActions();
+  const { windowWidth } = useWindowWidth();
 
   const bio = stats.Driver;
   const team = stats.Constructors[0];
@@ -19,6 +22,9 @@ const DriversListElement: React.FC<Props> = ({ stats }) => {
 
   function handleClick(): void {
     selectDriver(stats.Driver);
+    if (windowWidth < 1199) {
+      openPopup(<DriverInfo />);
+    }
   }
 
   return (

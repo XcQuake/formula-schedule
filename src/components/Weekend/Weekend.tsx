@@ -7,6 +7,7 @@ import { Race } from '../../models/ergastApiTypes';
 import * as circuits from '../../utils/circuits';
 import { useActions } from '../../hooks/useActions';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';
+import { useWindowWidth } from '../../hooks/useWindowWidth';
 
 interface Props {
   race: Race;
@@ -14,7 +15,7 @@ interface Props {
 
 const Weekend: React.FC<Props> = ({ race }) => {
   const { selectWeekend, openPopup } = useActions();
-  const [width, setWidth] = useState(window.innerWidth);
+  const { windowWidth } = useWindowWidth();
   const rawDate = `${race.date}T${race.time}`;
 
   const weekendInfo = {
@@ -26,23 +27,15 @@ const Weekend: React.FC<Props> = ({ race }) => {
     circuit: race.raceName.split(' ')[0].toLowerCase(),
   };
 
-  const handleResizeWindow = (): void => {
-    setWidth(window.innerWidth);
-  };
-
   useEffect(() => {
     if (weekendInfo.isCurrent) {
       selectWeekend(race);
     }
-    window.addEventListener('resize', handleResizeWindow);
-    return () => {
-      window.removeEventListener('resize', handleResizeWindow);
-    };
   }, []);
 
   const onClick = (): void => {
     selectWeekend(race);
-    if (width < 699) {
+    if (windowWidth < 699) {
       openPopup(<WeekendInfo />);
     }
   };

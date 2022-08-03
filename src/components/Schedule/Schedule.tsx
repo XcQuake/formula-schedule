@@ -5,25 +5,17 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import Preloader from '../Preloader/Preloader';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';
+import { useWindowWidth } from '../../hooks/useWindowWidth';
 
 const Schedule: React.FC = () => {
   const { fetchSchedule } = useActions();
   const { loading, error, schedule } = useTypedSelector(
     (state) => state.schedule,
   );
-
-  const [width, setWidth] = useState(window.innerWidth);
-
-  const handleResizeWindow = (): void => {
-    setWidth(window.innerWidth);
-  };
+  const { windowWidth } = useWindowWidth();
 
   useEffect(() => {
     fetchSchedule();
-    window.addEventListener('resize', handleResizeWindow);
-    return () => {
-      window.removeEventListener('resize', handleResizeWindow);
-    };
   }, []);
 
   const weekendList: React.ReactNode = (
@@ -52,7 +44,7 @@ const Schedule: React.FC = () => {
           && weekendList
         }
       </div>
-      {(width > 699) && <WeekendInfo />}
+      {(windowWidth > 699) && <WeekendInfo />}
     </section>
   );
 };
