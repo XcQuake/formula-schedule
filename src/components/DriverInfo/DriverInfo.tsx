@@ -21,7 +21,10 @@ const DriverInfo: React.FC = () => {
     (el) => el.name.toLowerCase() === fullName || el.abbr === driver?.code,
   ) || null;
 
-  const flagUrl = driverInfo && findFlagUrlByNationality(driverInfo.nationality);
+  const flagUrl = driverInfo && findFlagUrlByNationality(
+    normalizeString(driverInfo.nationality),
+  );
+
   useEffect(() => {
     if (fullName && !driverInfo) {
       fetchDriverInfo(fullName);
@@ -38,19 +41,45 @@ const DriverInfo: React.FC = () => {
         />
         <h3 className="driver-info__header">{driverInfo?.name}</h3>
         <div className="driver-info__container">
-          <p className="driver-info__parameter">
-            Nationality:
-            <span>
-              <img className="driver-info__flag" src={flagUrl} alt="flag" />
-              {driverInfo?.nationality}
-            </span>
-          </p>
-          <p className="driver-info__parameter">
-            Birth date:
-            <span>
-              {format(parseISO(driverInfo!.birthdate), 'd MMM yyyy')}
-            </span>
-          </p>
+          <div className="driver-info__bio">
+            <p className="driver-info__param">
+              Nationality:
+              <span className="driver-info__param-state">
+                <img className="driver-info__flag" src={flagUrl} alt="flag" />
+                {driverInfo?.nationality}
+              </span>
+            </p>
+            <p className="driver-info__param">
+              Born:
+              <span>
+                {format(parseISO(driverInfo!.birthdate), 'd MMM yyyy')}
+              </span>
+            </p>
+          </div>
+          <div className="driver-info__race-results">
+            <p className="driver-info__param">
+              Championships:
+              <span>{driverInfo.world_championships}</span>
+            </p>
+            <p className="driver-info__param">
+              Entries:
+              <span>{driverInfo.grands_prix_entered}</span>
+            </p>
+            <p className="driver-info__param">
+              Wins:
+              <span>
+                {
+                  driverInfo.highest_race_finish.position === 1
+                    ? driverInfo.highest_race_finish.number
+                    : 0
+                }
+              </span>
+            </p>
+            <p className="driver-info__param">
+              Podiums:
+              <span>{driverInfo.podiums}</span>
+            </p>
+          </div>
         </div>
       </div>
     )

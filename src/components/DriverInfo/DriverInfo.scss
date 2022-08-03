@@ -12,6 +12,7 @@
 
   &__image {
     width: 150px;
+    height: 150px;
     // background-color: white;
     border-radius: 10px;
   }
@@ -26,16 +27,35 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
   }
 
-  &__parameter {
+  &__bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1px
+  }
+
+  &__race-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  &__param {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 0;
     font-size: 14px;
     line-height: 16px;
+  }
+
+  &__param-state {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50%;
   }
 
   &__flag {
