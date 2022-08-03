@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
 import './DriversListElement.scss';

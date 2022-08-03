@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export const useWindowWidth = (): any => {
+export const useWindowWidth = (): { windowWidth: number } => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleResizeWindow = (): void => {
