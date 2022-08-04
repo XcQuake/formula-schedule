@@ -1,7 +1,7 @@
 import React from 'react';
-import { Result } from '../../models/ergastApiTypes';
 
 import './ResultsListElement.scss';
+import { Result } from '../../models/ergastApiTypes';
 
 interface Props {
   element: Result;
@@ -9,10 +9,7 @@ interface Props {
 
 const ResultsListElement: React.FC<Props> = ({ element }) => {
   const time = (): string => {
-    if (element.position === '1') {
-      return `LAP ${element.laps}`;
-    }
-    if (!element.Time) {
+    if (element.position === '1' || !element.Time) {
       return `LAP ${element.laps}`;
     }
     return element.Time.time;

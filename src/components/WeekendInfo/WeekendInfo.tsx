@@ -8,10 +8,10 @@ import { RootState } from '../../state';
 import { refactorWeekendDates } from '../../utils/utils';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
+import { Race } from '../../models/ergastApiTypes';
 import Session from '../Session/Session';
 import ResultsList from '../ResultsList/ResultsList';
 import Preloader from '../Preloader/Preloader';
-import { Race } from '../../models/ergastApiTypes';
 
 interface Props {
   weekend: Race | null;
@@ -66,50 +66,50 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
     </>
   );
 
-  const renderSessionDates: JSX.Element | null = weekendInfo && (
+  const renderSessionDates: JSX.Element = (
     <ul className="weekend-info__sessions">
       <Session
         title="FP1"
-        date={weekendInfo.dates.firstPractice.date}
-        time={weekendInfo.dates.firstPractice.time}
+        date={weekendInfo?.dates.firstPractice.date}
+        time={weekendInfo?.dates.firstPractice.time}
         type="practice"
       />
       <Session
         title="FP2"
-        date={weekendInfo.dates.secondPractice.date}
-        time={weekendInfo.dates.secondPractice.time}
+        date={weekendInfo?.dates.secondPractice.date}
+        time={weekendInfo?.dates.secondPractice.time}
         type="practice"
       />
       {
-        weekend.ThirdPractice && (
+        weekend?.ThirdPractice && (
           <Session
             title="FP3"
-            date={weekendInfo.dates.thirdPractice.date}
-            time={weekendInfo.dates.thirdPractice.time}
+            date={weekendInfo?.dates.thirdPractice.date}
+            time={weekendInfo?.dates.thirdPractice.time}
             type="practice"
           />
         )
       }
       {
-        weekend.Sprint && (
+        weekend?.Sprint && (
           <Session
             title="Sprint"
-            date={weekendInfo.dates.sprint.date}
-            time={weekendInfo.dates.sprint.time}
+            date={weekendInfo?.dates.sprint.date}
+            time={weekendInfo?.dates.sprint.time}
             type="sprint"
           />
         )
       }
       <Session
         title="QU"
-        date={weekendInfo.dates.qualifying.date}
-        time={weekendInfo.dates.qualifying.time}
+        date={weekendInfo?.dates.qualifying.date}
+        time={weekendInfo?.dates.qualifying.time}
         type="qualifying"
       />
       <Session
         title="RACE"
-        date={weekendInfo.dates.race.date}
-        time={weekendInfo.dates.race.time}
+        date={weekendInfo?.dates.race.date}
+        time={weekendInfo?.dates.race.time}
         type="race"
       />
     </ul>

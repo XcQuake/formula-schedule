@@ -35,12 +35,8 @@ const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
   }, [championship]);
 
   const handleChangeChampionship = (): void => {
-    if (championship === 'constructor') {
-      setChampionship('driver');
-    }
-    if (championship === 'driver') {
-      setChampionship('constructor');
-    }
+    if (championship === 'constructor') setChampionship('driver');
+    if (championship === 'driver') setChampionship('constructor');
   };
 
   return (
