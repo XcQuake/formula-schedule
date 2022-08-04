@@ -1,21 +1,27 @@
 /* eslint-disable import/no-unresolved */
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 
 import './Standing.scss';
 import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import DriversList from '../DriversList/DriversList';
 import Preloader from '../Preloader/Preloader';
 import ConstructorsList from '../ConstructorsList/ConstructorsList';
 import DriverInfo from '../DriverInfo/DriverInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
+import { RootState } from '../../state';
+import { StandingList } from '../../models/ergastApiTypes';
 
-const Standing: React.FC = () => {
+interface Props {
+  standingList: StandingList | null,
+  standingListLoading: boolean,
+}
+
+const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
   const { fetchStanding } = useActions();
-  const { standingList, loading } = useTypedSelector((state) => state.standing);
   const [championship, setChampionship] = useState('driver');
   const { windowWidth } = useWindowWidth();
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
@@ -64,17 +70,17 @@ const Standing: React.FC = () => {
             modules={[Navigation]}
             dir="ltr"
           >
-            {loading && <Preloader />}
+            {standingListLoading && <Preloader />}
             <SwiperSlide>
               {
-                !loading
+                !standingListLoading
                 && drivers
                 && <DriversList drivers={drivers} />
               }
             </SwiperSlide>
             <SwiperSlide>
               {
-                !loading
+                !standingListLoading
                 && constructors
                 && <ConstructorsList constructors={constructors} />
               }
@@ -87,4 +93,9 @@ const Standing: React.FC = () => {
   );
 };
 
-export default Standing;
+const mapStateToProps = (state: RootState): Props => ({
+  standingList: state.standing.standingList,
+  standingListLoading: state.standing.loading,
+});
+
+export default connect(mapStateToProps)(Standing);

@@ -87,7 +87,9 @@ export const fetchWikiImage = (
   wikiTitle: string,
 ) => async (dispatch: Dispatch<Action>) => {
   dispatch({ type: ActionType.FETCH_WIKI_IMAGE });
+
   const imgSource = await wikiApi.getImage(wikiTitle);
+
   dispatch({
     type: ActionType.FETCH_WIKI_IMAGE_SUCCESS,
     payload: imgSource,

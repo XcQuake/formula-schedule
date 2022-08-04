@@ -21,10 +21,9 @@ const Weekend: React.FC<Props> = ({ race }) => {
   const weekendInfo = {
     name: race.raceName.replace('Grand Prix', ''),
     date: refactorDate(race.date, race.time),
-    rawDate: `${race.date}T${race.time}`,
     isCurrent: isSameWeek(new Date(), parseISO(rawDate), { weekStartsOn: 1 }),
     isOver: isPast(addHours(parseISO(rawDate), 3)),
-    circuit: race.raceName.split(' ')[0].toLowerCase(),
+    circuitName: race.raceName.split(' ')[0].toLowerCase(),
   };
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const Weekend: React.FC<Props> = ({ race }) => {
       >
         <img
           className="weekend__race-image"
-          src={circuits[weekendInfo.circuit as keyof typeof circuits]}
+          src={circuits[weekendInfo.circuitName as keyof typeof circuits]}
           alt={race.Circuit.circuitName}
         />
         <div className="weekend__race-info">

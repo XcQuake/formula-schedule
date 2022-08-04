@@ -1,20 +1,25 @@
 import React, { useEffect } from 'react';
 import { isPast, parseISO, addHours } from 'date-fns';
+import { connect } from 'react-redux';
 
 import './WeekendInfo.scss';
 import placeholder from '../../images/F1-logo.svg';
+import { RootState } from '../../state';
 import { refactorWeekendDates } from '../../utils/utils';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import Session from '../Session/Session';
 import ResultsList from '../ResultsList/ResultsList';
 import Preloader from '../Preloader/Preloader';
+import { Race } from '../../models/ergastApiTypes';
 
-const WeekendInfo: React.FC = () => {
+interface Props {
+  weekend: Race | null;
+  wikiImage: string | null;
+}
+
+const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
   const { fetchWikiImage, fetchRaceResult } = useActions();
-
-  const { weekend } = useTypedSelector((state) => state.weekend);
-  const { wikiImage } = useTypedSelector((state) => state.wikiData);
   const {
     resultLoading,
     raceResult,
@@ -138,4 +143,9 @@ const WeekendInfo: React.FC = () => {
   );
 };
 
-export default WeekendInfo;
+const mapStateToProps = (state: RootState): Props => ({
+  weekend: state.weekend.weekend,
+  wikiImage: state.wikiData.wikiImage,
+});
+
+export default connect(mapStateToProps)(WeekendInfo);
