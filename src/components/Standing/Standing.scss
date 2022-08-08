@@ -63,9 +63,12 @@
   border-bottom: 2px solid $red;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .standing {
     &__wrapper {
+      gap: 15px;
+    }
+    &__container {
       padding: 10px;
     }
   }
