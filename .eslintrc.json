@@ -40,7 +40,8 @@
         "default-param-last": "off",
         "react/function-component-definition": "off",
         "jsx-a11y/label-has-associated-control": "off",
-        "react/jsx-one-expression-per-line": "off"
+        "react/jsx-one-expression-per-line": "off",
+        "jsx-a11y/click-events-have-key-events": "off"
     },
     "settings": {
         "import/resolver": { "typescript": {} }
