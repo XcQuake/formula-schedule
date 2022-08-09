@@ -40,35 +40,33 @@ const Weekend: React.FC<Props> = ({ race }) => {
   };
 
   return (
-    <li className="weekend">
-      <div
-        className="weekend__race"
-        role="button"
-        tabIndex={0}
-        onClick={() => onClick()}
-        onKeyDown={() => onClick()}
-      >
-        <img
-          className="weekend__race-image"
-          src={circuits[weekendInfo.circuitName as keyof typeof circuits]}
-          alt={race.Circuit.circuitName}
-        />
-        <div className="weekend__race-info">
-          <div className="weekend__race-header">
-            <p className="weekend__race-title">{weekendInfo.name}</p>
-            <p className="weekend__race-subtitle">Grand prix</p>
-          </div>
-          {
-            weekendInfo.isOver
-              ? <p className="weekend__race-finished">Finished</p>
-              : (
-                <div className="weekend__race-date">
-                  <p className="weekend__date">{weekendInfo.date.date}</p>
-                  <p className="weekend__time">{weekendInfo.date.time}</p>
-                </div>
-              )
-          }
+    <li
+      className="weekend"
+      role="button"
+      tabIndex={0}
+      onClick={() => onClick()}
+      onKeyUp={() => onClick()}
+    >
+      <img
+        className="weekend__image"
+        src={circuits[weekendInfo.circuitName as keyof typeof circuits]}
+        alt={race.Circuit.circuitName}
+      />
+      <div className="weekend__info">
+        <div className="weekend__header">
+          <p className="weekend__title">{weekendInfo.name}</p>
+          <p className="weekend__subtitle">Grand prix</p>
         </div>
+        {
+          weekendInfo.isOver
+            ? <p className="weekend__finished">Finished</p>
+            : (
+              <div className="weekend__date-info">
+                <p className="weekend__date">{weekendInfo.date.date}</p>
+                <p className="weekend__time">{weekendInfo.date.time}</p>
+              </div>
+            )
+        }
       </div>
     </li>
   );

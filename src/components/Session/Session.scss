@@ -8,23 +8,16 @@
   grid-template-columns: 1fr 1fr 1fr;
 
   &_qualifying {
-    padding: 5px 0;
     box-sizing: border-box;
     box-shadow: inset 1px 1px 2px black;
     color: $red;
   }
 
   &_sprint {
-    padding: 5px 0;
     color: rgb(11, 199, 36);
   }
 
-  &_practice {
-    padding: 5px 0;
-  }
-
   &_race {
-    padding: 5px 0;
     color: $red;
     font-weight: 500;
   } 
