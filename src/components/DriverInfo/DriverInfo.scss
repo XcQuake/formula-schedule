@@ -10,6 +10,8 @@
   align-items: center;
   box-sizing: border-box;
   gap: 15px;
+  position: sticky;
+  top: 20px;
 
   &__image {
     width: 150px;

@@ -33,7 +33,7 @@ const DriversListElement: React.FC<Props> = ({ stats }) => {
       role="button"
       tabIndex={0}
       onClick={handleClick}
-      onKeyDown={handleClick}
+      onKeyPress={handleClick}
     >
       <div className="driver__param text_center">{stats.position}</div>
       <div className="driver__param">
