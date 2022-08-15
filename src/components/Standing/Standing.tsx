@@ -14,6 +14,7 @@ import DriverInfo from '../DriverInfo/DriverInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { RootState } from '../../state';
 import { StandingList } from '../../models/ergastApiTypes';
+import Dropdown from '../Dropdown/Dropdown';
 
 interface Props {
   standingList: StandingList | null,
@@ -39,6 +40,8 @@ const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
     if (championship === 'driver') setChampionship('constructor');
   };
 
+  const dropdownOptions = ['2022', '2021', '2020', '2019', '2018'];
+
   return (
     <section className="standing">
       <div className="standing__wrapper">
@@ -57,6 +60,7 @@ const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
           >
             Constructors
           </button>
+          <Dropdown options={dropdownOptions} />
         </div>
         <div className="standing__container">
           <Swiper
