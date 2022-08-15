@@ -116,6 +116,15 @@ export type RaceTable = {
   Races: Race[],
 }
 
+export type Season = {
+  season: string,
+  url: string,
+}
+
+export type SeasonTable = {
+  Seasons: Season[],
+}
+
 export type MRData = {
   xmins: string,
   series: string,
@@ -125,6 +134,7 @@ export type MRData = {
   total: string,
   StandingsTable?: StandingsTable,
   RaceTable?: RaceTable,
+  SeasonTable?: SeasonTable,
 }
 
 export type StandingData =

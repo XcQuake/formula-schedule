@@ -6,6 +6,7 @@ import {
   StandingList,
   Result,
   Driver,
+  Season,
 } from '../../models/ergastApiTypes';
 import {
   RapidDriver,
@@ -69,6 +70,11 @@ export interface FetchWikiImageSuccessAction {
   payload: string,
 }
 
+export interface FetchSeasons {
+  type: ActionType.FETCH_SEASONS,
+  payload: Season[],
+}
+
 export interface SelectWeekendAction {
   type: ActionType.SELECT_WEEKEND,
   payload: Race,
@@ -99,9 +105,10 @@ export type Action =
   | FetchResultSuccessAction
   | FetchResultErrorAction
   | FetchDriverInfoAction
-  | SelectWeekendAction
-  | SelectDriverAction
   | FetchWikiImageAction
   | FetchWikiImageSuccessAction
+  | FetchSeasons
+  | SelectWeekendAction
+  | SelectDriverAction
   | OpenPopupAction
   | ClosePopupAction;

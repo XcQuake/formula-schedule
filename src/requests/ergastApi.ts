@@ -1,4 +1,9 @@
-import { MRData, Race, StandingList, Result } from '../models/ergastApiTypes';
+import {
+  MRData,
+  Race,
+  StandingList,
+  Result,
+  Season } from '../models/ergastApiTypes';
 import { ERGAST_API_URL } from '../utils/constants';
 
 interface ApiConfig {
@@ -48,6 +53,14 @@ class ErgastApi {
     })
       .then((res: Response) => ErgastApi.processResult(res))
       .then((data) => data.MRData.RaceTable!.Races[0].Results!);
+  }
+
+  getSeasons(): Promise<Season[]> {
+    return fetch(`${this.link}/seasons.json?limit=30&offset=69`, {
+      method: 'GET',
+    })
+      .then((res: Response) => ErgastApi.processResult(res))
+      .then((data) => data.MRData.SeasonTable!.Seasons);
   }
 }
 

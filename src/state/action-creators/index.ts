@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dispatch } from 'redux';
 
-import * as wikiApi from '../../requests/wikiApi';
 import { ActionType } from '../action-types';
 import {
   Action,
@@ -10,9 +9,10 @@ import {
   SelectDriverAction,
   SelectWeekendAction,
 } from '../actions';
-import formulaApi from '../../requests/ergastApi';
 import { Race, Driver } from '../../models/ergastApiTypes';
+import ergastApi from '../../requests/ergastApi';
 import rapidApi from '../../requests/rapidApi';
+import * as wikiApi from '../../requests/wikiApi';
 
 export const fetchStanding = (
   season: string,
@@ -21,7 +21,7 @@ export const fetchStanding = (
   dispatch({ type: ActionType.FETCH_STANDING });
 
   try {
-    const response = await formulaApi.getStanding(season, championship);
+    const response = await ergastApi.getStanding(season, championship);
     dispatch({
       type: ActionType.FETCH_STANDING_SUCCESS,
       payload: response,
@@ -40,7 +40,7 @@ export const fetchSchedule = () => async (dispatch: Dispatch<Action>) => {
   });
 
   try {
-    const response = await formulaApi.getSchedule();
+    const response = await ergastApi.getSchedule();
     dispatch({
       type: ActionType.FETCH_SCHEDULE_SUCCESS,
       payload: response,
@@ -60,7 +60,7 @@ export const fetchRaceResult = (
   dispatch({ type: ActionType.FETCH_RESULT });
 
   try {
-    const response = await formulaApi.getRaceResult(season, round);
+    const response = await ergastApi.getRaceResult(season, round);
     dispatch({
       type: ActionType.FETCH_RESULT_SUCCESS,
       payload: response,
@@ -93,6 +93,15 @@ export const fetchWikiImage = (
   dispatch({
     type: ActionType.FETCH_WIKI_IMAGE_SUCCESS,
     payload: imgSource,
+  });
+};
+
+export const fetchSeasons = () => async (dispatch: Dispatch<Action>) => {
+  const seasons = await ergastApi.getSeasons();
+
+  dispatch({
+    type: ActionType.FETCH_SEASONS,
+    payload: seasons,
   });
 };
 
