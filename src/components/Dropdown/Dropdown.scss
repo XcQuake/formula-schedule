@@ -1,24 +1,24 @@
 @import '../../styles/utils/colors.scss';
 
 .dropdown {
-  width: 125px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  font-size: 18px;
+  line-height: 20px;
 
   &__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 25px;
   }
 
   &__label {
     padding: 0;
     margin: 0;
-    font-size: 18px;
-    line-height: 20px;
   }
 
   &__selected {
@@ -30,8 +30,6 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 16px;
-    line-height: 18px;
   }
 
   &__icon {

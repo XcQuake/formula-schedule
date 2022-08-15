@@ -40,27 +40,29 @@ const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
     if (championship === 'driver') setChampionship('constructor');
   };
 
-  const dropdownOptions = ['2022', '2021', '2020', '2019', '2018'];
+  const seasons = ['2022', '2021', '2020', '2019', '2018'];
 
   return (
     <section className="standing">
       <div className="standing__wrapper">
         <div className="standing__navigation">
-          <button
-            className="standing__button standing__button_prev"
-            ref={(node) => setPrevEl(node)}
-            type="button"
-          >
-            Drivers
-          </button>
-          <button
-            className="standing__button standing__button_next"
-            ref={(node) => setNextEl(node)}
-            type="button"
-          >
-            Constructors
-          </button>
-          <Dropdown options={dropdownOptions} />
+          <div className="standing__swiper-buttons">
+            <button
+              className="standing__button standing__button_prev"
+              ref={(node) => setPrevEl(node)}
+              type="button"
+            >
+              Drivers
+            </button>
+            <button
+              className="standing__button standing__button_next"
+              ref={(node) => setNextEl(node)}
+              type="button"
+            >
+              Constructors
+            </button>
+          </div>
+          <Dropdown options={seasons} defaultOption="2022" />
         </div>
         <div className="standing__container">
           <Swiper

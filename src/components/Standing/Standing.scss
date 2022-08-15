@@ -38,8 +38,10 @@
   }
 
   &__navigation {
+    width: 100%;
     display: flex;
     gap: 15px;
+    justify-content: space-between;
   }
 
   &__button {
@@ -56,6 +58,11 @@
     padding: 0 0 5px;
     box-sizing: border-box;
     border-bottom: 2px solid transparent;
+  }
+
+  &__swiper-buttons {
+    display: flex;
+    gap: 20px;
   }
 }
 

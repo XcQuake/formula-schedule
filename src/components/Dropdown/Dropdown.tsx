@@ -1,21 +1,29 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './Dropdown.scss';
 
 interface Props {
   options: string[];
+  defaultOption: string;
 }
 
-const Dropdown: React.FC<Props> = ({ options }) => {
-  const [selected, setSelected] = useState<string>();
+const Dropdown: React.FC<Props> = ({ options, defaultOption }) => {
+  const [selected, setSelected] = useState<string>('null');
   const [isOpen, selectIsOpen] = useState(false);
+
+  useEffect(() => {
+    setSelected(defaultOption);
+  }, []);
+
+  const handleSelect = (option: string): void => {
+    setSelected(option);
+    selectIsOpen(false);
+  };
 
   return (
     <div className="dropdown">
       <div className="dropdown__wrapper">
-        <label className="dropdown__label">Year</label>
+        <label className="dropdown__label">Season</label>
         <button
           className="dropdown__selected"
           onClick={() => selectIsOpen(!isOpen)}
@@ -33,7 +41,7 @@ const Dropdown: React.FC<Props> = ({ options }) => {
             <li
               className="dropdown__option"
               key={option}
-              onClick={() => setSelected(option)}
+              onClick={() => handleSelect(option)}
             >
               {option}
             </li>
