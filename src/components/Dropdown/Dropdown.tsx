@@ -12,8 +12,8 @@ const Dropdown: React.FC<Props> = ({ options, defaultOption }) => {
   const [isOpen, selectIsOpen] = useState(false);
 
   useEffect(() => {
-    setSelected(defaultOption);
-  }, []);
+    if (defaultOption) setSelected(defaultOption);
+  }, [defaultOption]);
 
   const handleSelect = (option: string): void => {
     setSelected(option);

@@ -13,34 +13,40 @@ import ConstructorsList from '../ConstructorsList/ConstructorsList';
 import DriverInfo from '../DriverInfo/DriverInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { RootState } from '../../state';
-import { StandingList } from '../../models/ergastApiTypes';
+import { Season, StandingList } from '../../models/ergastApiTypes';
 import Dropdown from '../Dropdown/Dropdown';
 
 interface Props {
   standingList: StandingList | null,
   standingListLoading: boolean,
+  seasons: Season[],
 }
 
-const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
-  const { fetchStanding } = useActions();
+const Standing: React.FC<Props> = ({
+  standingList,
+  standingListLoading,
+  seasons,
+}) => {
+  const { fetchStanding, fetchSeasons } = useActions();
   const [championship, setChampionship] = useState('driver');
   const { windowWidth } = useWindowWidth();
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
+  const seasonOptions: string[] = [];
   const drivers = standingList?.DriverStandings;
   const constructors = standingList?.ConstructorStandings;
 
   useEffect(() => {
     fetchStanding('current', championship);
+    fetchSeasons();
   }, [championship]);
 
+  seasons.forEach((item) => seasonOptions.unshift(item.season));
   const handleChangeChampionship = (): void => {
     if (championship === 'constructor') setChampionship('driver');
     if (championship === 'driver') setChampionship('constructor');
   };
-
-  const seasons = ['2022', '2021', '2020', '2019', '2018'];
 
   return (
     <section className="standing">
@@ -62,7 +68,10 @@ const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
               Constructors
             </button>
           </div>
-          <Dropdown options={seasons} defaultOption="2022" />
+          <Dropdown
+            options={seasonOptions}
+            defaultOption={seasonOptions[0]}
+          />
         </div>
         <div className="standing__container">
           <Swiper
@@ -98,6 +107,7 @@ const Standing: React.FC<Props> = ({ standingList, standingListLoading }) => {
 const mapStateToProps = (state: RootState): Props => ({
   standingList: state.standing.standingList,
   standingListLoading: state.standing.loading,
+  seasons: state.seasons.seasons,
 });
 
 export default connect(mapStateToProps)(Standing);
