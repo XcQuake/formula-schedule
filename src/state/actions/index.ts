@@ -85,6 +85,14 @@ export interface SelectDriverAction {
   payload: Driver,
 }
 
+export interface SelectDropdownOptionAction {
+  type: ActionType.SELECT_DROPDOWN_OPTION,
+  payload: {
+    name: string,
+    option: string,
+  }
+}
+
 export interface OpenPopupAction {
   type: ActionType.OPEN_POPUP,
   payload: React.ReactNode,
@@ -110,5 +118,6 @@ export type Action =
   | FetchSeasons
   | SelectWeekendAction
   | SelectDriverAction
+  | SelectDropdownOptionAction
   | OpenPopupAction
   | ClosePopupAction;

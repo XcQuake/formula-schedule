@@ -7,6 +7,7 @@ import {
   ClosePopupAction,
   OpenPopupAction,
   SelectDriverAction,
+  SelectDropdownOptionAction,
   SelectWeekendAction,
 } from '../actions';
 import { Race, Driver } from '../../models/ergastApiTypes';
@@ -113,6 +114,14 @@ export const selectWeekend = (weekend: Race): SelectWeekendAction => ({
 export const selectDriver = (driver: Driver): SelectDriverAction => ({
   type: ActionType.SELECT_DRIVER,
   payload: driver,
+});
+
+export const selectDropdownOption = (
+  name: string,
+  option: string,
+): SelectDropdownOptionAction => ({
+  type: ActionType.SELECT_DROPDOWN_OPTION,
+  payload: { name, option },
 });
 
 export const openPopup = (content: React.ReactNode): OpenPopupAction => ({

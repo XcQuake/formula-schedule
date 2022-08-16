@@ -20,12 +20,14 @@ interface Props {
   standingList: StandingList | null,
   standingListLoading: boolean,
   seasons: Season[],
+  selectedSeason: string,
 }
 
 const Standing: React.FC<Props> = ({
   standingList,
   standingListLoading,
   seasons,
+  selectedSeason,
 }) => {
   const { fetchStanding, fetchSeasons } = useActions();
   const [championship, setChampionship] = useState('driver');
@@ -38,9 +40,9 @@ const Standing: React.FC<Props> = ({
   const constructors = standingList?.ConstructorStandings;
 
   useEffect(() => {
-    fetchStanding('current', championship);
     fetchSeasons();
-  }, [championship]);
+    if (selectedSeason) fetchStanding(selectedSeason, championship);
+  }, [championship, selectedSeason]);
 
   seasons.forEach((item) => seasonOptions.unshift(item.season));
   const handleChangeChampionship = (): void => {
@@ -71,6 +73,7 @@ const Standing: React.FC<Props> = ({
           <Dropdown
             options={seasonOptions}
             defaultOption={seasonOptions[0]}
+            fieldName="season"
           />
         </div>
         <div className="standing__container">
@@ -108,6 +111,7 @@ const mapStateToProps = (state: RootState): Props => ({
   standingList: state.standing.standingList,
   standingListLoading: state.standing.loading,
   seasons: state.seasons.seasons,
+  selectedSeason: state.dropdown.season,
 });
 
 export default connect(mapStateToProps)(Standing);

@@ -14,6 +14,7 @@ export enum ActionType {
   FETCH_SEASONS = 'fetch_seasons',
   SELECT_WEEKEND = 'select_weekend',
   SELECT_DRIVER = 'select_driver',
+  SELECT_DROPDOWN_OPTION = 'select_dropdown_option',
   OPEN_POPUP = 'open_popup',
   CLOSE_POPUP = 'close_popup',
 }

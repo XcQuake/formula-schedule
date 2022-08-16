@@ -8,6 +8,7 @@ import driverInfoReducer from './driverInfoReducer';
 import weekendReducer from './weekendReducer';
 import driverReducer from './driverReducer';
 import seasonsReducer from './seasonsReducer';
+import dropdownReducer from './dropdownReducer';
 
 const reducers = combineReducers({
   standing: standingReducer,
@@ -19,6 +20,7 @@ const reducers = combineReducers({
   driverInfo: driverInfoReducer,
   driver: driverReducer,
   seasons: seasonsReducer,
+  dropdown: dropdownReducer,
 });
 
 export default reducers;
