@@ -56,7 +56,7 @@ class ErgastApi {
   }
 
   getSeasons(): Promise<Season[]> {
-    return fetch(`${this.link}/seasons.json?limit=30&offset=69`, {
+    return fetch(`${this.link}/seasons.json?limit=30&offset=70`, {
       method: 'GET',
     })
       .then((res: Response) => ErgastApi.processResult(res))
