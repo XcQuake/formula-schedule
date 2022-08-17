@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
   }
 
   &__label {
@@ -97,6 +97,17 @@
 
     &:hover {
       opacity: 0.7;
+    }
+  }
+}
+
+@media (max-width: 525px) {
+  .dropdown {
+    font-size: 16px;
+    line-height: 18px;
+
+    &__wrapper {
+      gap: 15px;
     }
   }
 }
