@@ -38,4 +38,12 @@
   &_williams {
     @include team-color($williams);
   }
+
+  &_racing_point {
+    @include team-color($racing-point);
+  }
+
+  &_renault {
+    @include team-color($alpine);
+  }
 }
