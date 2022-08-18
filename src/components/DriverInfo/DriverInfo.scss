@@ -17,7 +17,9 @@
     width: 150px;
     height: 150px;
     border-radius: 10px;
+    object-fit: contain;
   }
+
   &__header {
     margin: 0;
     font-weight: 500;

@@ -58,7 +58,7 @@ export interface FetchResultErrorAction {
 
 export interface FetchDriverInfoAction {
   type: ActionType.FETCH_DRIVERINFO,
-  payload: RapidDriver,
+  payload: RapidDriver | null,
 }
 
 export interface FetchWikiImageAction {

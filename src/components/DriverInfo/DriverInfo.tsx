@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { parseISO, format } from 'date-fns';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
@@ -11,23 +11,26 @@ const DriverInfo: React.FC = () => {
   const { fetchDriverInfo } = useActions();
 
   const { driver } = useTypedSelector((state) => state.driver);
-  const { driversInfo } = useTypedSelector((state) => state.driverInfo);
+  const driverInfo = useTypedSelector((state) => state.driverInfo.driver);
 
   const fullName = driver && normalizeString(
     `${driver.givenName} ${driver.familyName}`,
   ).toLowerCase();
 
-  const driverInfo = driversInfo.find(
-    (el) => el.name.toLowerCase() === fullName || el.abbr === driver?.code,
-  ) || null;
-
   const flagUrl = driverInfo && findFlagUrlByNationality(
     normalizeString(driverInfo.nationality),
   );
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (fullName && !driverInfo) {
-      fetchDriverInfo(fullName);
+    if (fullName) {
+      const timer = setTimeout(() => {
+        fetchDriverInfo(fullName);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timer);
+      };
     }
   }, [driver]);
 

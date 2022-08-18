@@ -28,7 +28,7 @@ class RapidApi {
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
   };
 
-  getDriverInfo(driverCode: string): any {
+  getDriverInfo(driverCode: string): Promise<RapidDriver> {
     return fetch(`${this.link}/drivers?search=${driverCode}`, {
       method: 'GET',
       headers: this.headers,

@@ -80,7 +80,7 @@ export const fetchDriverInfo = (
   const response = await rapidApi.getDriverInfo(driverCode);
   dispatch({
     type: ActionType.FETCH_DRIVERINFO,
-    payload: response,
+    payload: response || null,
   });
 };
 
