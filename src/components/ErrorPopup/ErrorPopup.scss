@@ -1,0 +1,55 @@
+.error-popup {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  max-width: 200px;
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  padding: 15px;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s linear;
+
+  &_open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__button {
+    width: 10px;
+    height: 15px;
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    background-color: black;
+    background-image: url(../../images/close-icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    background-image: url(../../images/error_icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    align-self: flex-start;
+  }
+
+  &__message {
+    width: 100%;
+    min-width: 100px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+  }
+}

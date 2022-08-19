@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import Standing from '../Standing/Standing';
 import Schedule from '../Schedule/Schedule';
 import Popup from '../Popup/Popup';
+import ErrorPopup from '../ErrorPopup/ErrorPopup';
 
 const App: React.FC = () => (
   <>
@@ -21,6 +22,7 @@ const App: React.FC = () => (
           />
         </Routes>
       </div>
+      <ErrorPopup />
     </main>
     <Popup />
   </>

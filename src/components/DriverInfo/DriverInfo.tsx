@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { parseISO, format } from 'date-fns';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 
