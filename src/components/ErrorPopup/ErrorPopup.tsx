@@ -1,21 +1,43 @@
-import React, { useState } from 'react';
-import './ErrorPopup.scss';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
-const ErrorPopup: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+import './ErrorPopup.scss';
+import { useActions } from '../../hooks/useActions';
+import { RootState } from '../../state';
+
+interface Props {
+  isOpen: boolean,
+  message: string | null,
+}
+
+const ErrorPopup: React.FC<Props> = ({
+  isOpen,
+  message,
+}) => {
+  const { closeErrorPopup } = useActions();
+  setTimeout(() => {
+    closeErrorPopup();
+  }, 3000);
+
   return (
     <div className={isOpen ? 'error-popup error-popup_open' : 'error-popup'}>
       <button
         className="error-popup__button"
         type="button"
         aria-label="close"
+        onClick={() => closeErrorPopup()}
       />
       <i className="error-popup__icon" />
       <p className="error-popup__message">
-        An error occured while loading data
+        {message || 'An error occured while loading data'}
       </p>
     </div>
   );
 };
 
-export default ErrorPopup;
+const mapStateToProps = (state: RootState): Props => ({
+  isOpen: state.errorPopup.isOpen,
+  message: state.errorPopup.message,
+});
+
+export default connect(mapStateToProps)(ErrorPopup);

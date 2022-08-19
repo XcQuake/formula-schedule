@@ -4,7 +4,9 @@ import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import {
   Action,
+  CloseErrorPopupAction,
   ClosePopupAction,
+  OpenErrorPopupAction,
   OpenPopupAction,
   SelectDriverAction,
   SelectDropdownOptionAction,
@@ -74,26 +76,6 @@ export const fetchRaceResult = (
   }
 };
 
-export const fetchDriverInfo = (
-  driverCode: string,
-) => async (dispatch: Dispatch<Action>) => {
-  dispatch({
-    type: ActionType.FETCH_DRIVERINFO,
-  });
-  try {
-    const response = await rapidApi.getDriverInfo(driverCode);
-    dispatch({
-      type: ActionType.FETCH_DRIVERINFO_SUCCESS,
-      payload: response,
-    });
-  } catch (err: any) {
-    dispatch({
-      type: ActionType.FETCH_DRIVERINFO_ERROR,
-      payload: err,
-    });
-  }
-};
-
 export const fetchWikiImage = (
   wikiTitle: string,
 ) => async (dispatch: Dispatch<Action>) => {
@@ -142,3 +124,33 @@ export const openPopup = (content: React.ReactNode): OpenPopupAction => ({
 export const closePopup = (): ClosePopupAction => ({
   type: ActionType.CLOSE_POPUP,
 });
+
+export const openErrorPopup = (message: string | null): OpenErrorPopupAction => ({
+  type: ActionType.OPEN_ERROR_POPUP,
+  payload: message,
+});
+
+export const closeErrorPopup = (): CloseErrorPopupAction => ({
+  type: ActionType.CLOSE_ERROR_POPUP,
+});
+
+export const fetchDriverInfo = (
+  driverCode: string,
+) => async (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.FETCH_DRIVERINFO,
+  });
+  try {
+    const response = await rapidApi.getDriverInfo(driverCode);
+    dispatch({
+      type: ActionType.FETCH_DRIVERINFO_SUCCESS,
+      payload: response,
+    });
+  } catch (err: any) {
+    dispatch(openErrorPopup(null));
+    dispatch({
+      type: ActionType.FETCH_DRIVERINFO_ERROR,
+      payload: err,
+    });
+  }
+};

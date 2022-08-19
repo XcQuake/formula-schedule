@@ -9,7 +9,7 @@ import { normalizeString } from '../../utils/utils';
 import Preloader from '../Preloader/Preloader';
 
 const DriverInfo: React.FC = () => {
-  const { fetchDriverInfo } = useActions();
+  const { fetchDriverInfo, openErrorPopup } = useActions();
 
   const { driver } = useTypedSelector((state) => state.driver);
   const {

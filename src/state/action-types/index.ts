@@ -19,4 +19,6 @@ export enum ActionType {
   SELECT_DROPDOWN_OPTION = 'select_dropdown_option',
   OPEN_POPUP = 'open_popup',
   CLOSE_POPUP = 'close_popup',
+  OPEN_ERROR_POPUP = 'open_error_popup',
+  CLOSE_ERROR_POPUP = 'close_error_popup',
 }

@@ -111,6 +111,15 @@ export interface ClosePopupAction {
   type: ActionType.CLOSE_POPUP,
 }
 
+export interface OpenErrorPopupAction {
+  type: ActionType.OPEN_ERROR_POPUP,
+  payload: string | null,
+}
+
+export interface CloseErrorPopupAction {
+  type: ActionType.CLOSE_ERROR_POPUP,
+}
+
 export type Action =
   | FetchStandingAction
   | FetchStandingSuccessAction
@@ -131,4 +140,6 @@ export type Action =
   | SelectDriverAction
   | SelectDropdownOptionAction
   | OpenPopupAction
-  | ClosePopupAction;
+  | ClosePopupAction
+  | OpenErrorPopupAction
+  | CloseErrorPopupAction;
