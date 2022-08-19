@@ -11,6 +11,8 @@ export enum ActionType {
   FETCH_WIKI_IMAGE = 'fetch_wiki_image',
   FETCH_WIKI_IMAGE_SUCCESS = 'fetch_wiki_image_success',
   FETCH_DRIVERINFO = 'fetch_driverinfo',
+  FETCH_DRIVERINFO_SUCCESS = 'fetch_driverinfo_success',
+  FETCH_DRIVERINFO_ERROR = 'fetch_driverinfo_error',
   FETCH_SEASONS = 'fetch_seasons',
   SELECT_WEEKEND = 'select_weekend',
   SELECT_DRIVER = 'select_driver',

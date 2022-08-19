@@ -77,11 +77,21 @@ export const fetchRaceResult = (
 export const fetchDriverInfo = (
   driverCode: string,
 ) => async (dispatch: Dispatch<Action>) => {
-  const response = await rapidApi.getDriverInfo(driverCode);
   dispatch({
     type: ActionType.FETCH_DRIVERINFO,
-    payload: response || null,
   });
+  try {
+    const response = await rapidApi.getDriverInfo(driverCode);
+    dispatch({
+      type: ActionType.FETCH_DRIVERINFO_SUCCESS,
+      payload: response,
+    });
+  } catch (err: any) {
+    dispatch({
+      type: ActionType.FETCH_DRIVERINFO_ERROR,
+      payload: err,
+    });
+  }
 };
 
 export const fetchWikiImage = (

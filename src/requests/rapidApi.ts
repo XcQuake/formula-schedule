@@ -23,7 +23,7 @@ class RapidApi {
   }
 
   private static processResult = (res: Response):
-    Promise<RapidApiResponse> => {
+  Promise<RapidApiResponse> => {
     if (res.ok) return res.json();
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
   };
@@ -34,7 +34,10 @@ class RapidApi {
       headers: this.headers,
     })
       .then((res: Response) => RapidApi.processResult(res))
-      .then((data) => data.response[0]);
+      .then((data) => {
+        if (data.errors) throw new Error('Api Error');
+        return data.response[0];
+      });
   }
 }
 

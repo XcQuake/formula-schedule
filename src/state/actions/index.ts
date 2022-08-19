@@ -58,7 +58,16 @@ export interface FetchResultErrorAction {
 
 export interface FetchDriverInfoAction {
   type: ActionType.FETCH_DRIVERINFO,
-  payload: RapidDriver | null,
+}
+
+export interface FetchDriverInfoSuccessAction {
+  type: ActionType.FETCH_DRIVERINFO_SUCCESS,
+  payload: RapidDriver,
+}
+
+export interface FetchDriverInfoErrorAction {
+  type: ActionType.FETCH_DRIVERINFO_ERROR,
+  payload: string,
 }
 
 export interface FetchWikiImageAction {
@@ -113,6 +122,8 @@ export type Action =
   | FetchResultSuccessAction
   | FetchResultErrorAction
   | FetchDriverInfoAction
+  | FetchDriverInfoSuccessAction
+  | FetchDriverInfoErrorAction
   | FetchWikiImageAction
   | FetchWikiImageSuccessAction
   | FetchSeasons
