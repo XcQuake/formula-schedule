@@ -7,7 +7,7 @@ import Standing from '../Standing/Standing';
 import Schedule from '../Schedule/Schedule';
 import Popup from '../Popup/Popup';
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
-import Canvas from '../Canvas/Canvas';
+import CursorFollower from '../CursorFollower/CursorFollower';
 
 const App: React.FC = () => {
   // const ref = useRef<HTMLDivElement>(null);
@@ -55,7 +55,7 @@ const App: React.FC = () => {
         </div>
         <ErrorPopup />
       </main>
-      <Canvas />
+      <CursorFollower />
       <Popup />
     </>
   );
