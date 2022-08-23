@@ -15,9 +15,9 @@ const CursorFollower: React.FC = () => {
   });
 
   const mouseHandler = (event: MouseEvent): void => {
-    const { clientX, clientY } = event;
-    const mouseX = clientX;
-    const mouseY = clientY;
+    const { pageX, pageY } = event;
+    const mouseX = pageX;
+    const mouseY = pageY;
 
     if (followerRef.current) {
       positionRef.current.mouseX = mouseX;
