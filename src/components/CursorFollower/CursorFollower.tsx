@@ -4,17 +4,6 @@ import './CursorFollower.scss';
 
 const CursorFollower: React.FC = () => {
   const carRef = React.useRef<HTMLDivElement>(null);
-  const positionRef = useRef({
-    mouseX: 0,
-    mouseY: 0,
-    destinationX: 0,
-    destinationY: 0,
-    distanceX: 0,
-    distanceY: 0,
-    key: -1,
-    windowHeight: 0,
-    windowWidth: 0,
-  });
 
   const [mouse, setMouse] = useState({
     X: 0,
