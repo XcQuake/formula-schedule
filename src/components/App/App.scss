@@ -1,13 +1,15 @@
+@import '../../styles/utils/colors.scss';
+
 .main {
   width: 100%;
   margin: 0;
   padding: 25px 30px;
   box-sizing: border-box;
   display: flex;
-  // position: relative;
+  position: relative;
   flex-direction: column;
   align-items: center;
-  cursor: crosshair;
+  cursor: none;
 
   &__wrapper {
     width: 100%;
