@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import './CursorFollower.scss';
 
 const CursorFollower: React.FC = () => {
-  const followerRef = React.useRef<HTMLDivElement>(null);
+  const followerRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef({
     mouseX: 0,
     mouseY: 0,
@@ -15,9 +15,9 @@ const CursorFollower: React.FC = () => {
   });
 
   const mouseHandler = (event: MouseEvent): void => {
-    const { pageX, pageY } = event;
-    const mouseX = pageX;
-    const mouseY = pageY;
+    const { clientX, clientY } = event;
+    const mouseX = clientX;
+    const mouseY = clientY;
 
     if (followerRef.current) {
       positionRef.current.mouseX = mouseX;
@@ -27,7 +27,6 @@ const CursorFollower: React.FC = () => {
 
   useEffect(() => {
     document.addEventListener('mousemove', (event) => mouseHandler(event));
-
     return () => {
       document.removeEventListener('mousemove', mouseHandler);
     };
@@ -50,12 +49,12 @@ const CursorFollower: React.FC = () => {
         positionRef.current.destinationX = mouseX;
         positionRef.current.destinationY = mouseY;
       } else {
-        positionRef.current.distanceX = (mouseX - destinationX) * 0.1;
-        positionRef.current.distanceY = (mouseY - destinationY) * 0.1;
+        positionRef.current.distanceX = (mouseX - destinationX) * 0.08;
+        positionRef.current.distanceY = (mouseY - destinationY) * 0.08;
 
         if (
           Math.abs(positionRef.current.distanceX)
-          + Math.abs(positionRef.current.distanceY) < 0.1
+          + Math.abs(positionRef.current.distanceY) < 0.08
         ) {
           positionRef.current.destinationX = mouseX;
           positionRef.current.destinationY = mouseY;
@@ -75,10 +74,12 @@ const CursorFollower: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className="follower"
-      ref={followerRef}
-    />
+    <div className="background">
+      <div
+        className="cursor-follower"
+        ref={followerRef}
+      />
+    </div>
   );
 };
 

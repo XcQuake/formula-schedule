@@ -25,8 +25,8 @@ const App: React.FC = () => (
       </div>
       <ErrorPopup />
     </main>
-    <CursorFollower />
     <Popup />
+    <CursorFollower />
   </>
 );
 
