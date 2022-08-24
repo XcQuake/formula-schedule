@@ -39,7 +39,7 @@ export interface RapidApiResponse {
   },
   errors: {
     search: string,
-  },
+  }[],
   results: number,
   response: RapidDriver[],
 }
