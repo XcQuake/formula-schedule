@@ -10,6 +10,21 @@
   }
 }
 
+@keyframes tire-stop {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
 .background {
   position: fixed;
   top: 0;
@@ -38,9 +53,10 @@
   width: 60px;
   height: 60px;
   z-index: -100;
+  transform: translate(-50%, -50%);
   background-image: url(../../images/tire.svg);
   background-repeat: no-repeat;
   background-size: contain;
-  animation: tire-rotation linear 0.6s infinite;
+  // animation: tire-stop linear 0.6s infinite;
   cursor: none;
 }
