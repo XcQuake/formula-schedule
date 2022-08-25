@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
@@ -12,8 +12,9 @@ interface Props {
 
 const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
   const { selectDropdownOption } = useActions();
-  const [isOpen, selectIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const selectedOption = useTypedSelector((state) => state.dropdown[fieldName]);
+  const dropdownButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (defaultOption) selectDropdownOption(fieldName, defaultOption);
@@ -21,8 +22,24 @@ const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
 
   const handleSelect = (option: string): void => {
     selectDropdownOption(fieldName, option);
-    selectIsOpen(false);
+    setIsOpen(false);
   };
+
+  const handleClickOutside = (event: MouseEvent): void => {
+    if (
+      event.target !== dropdownButtonRef.current?.children[0]
+      && event.target !== dropdownButtonRef.current
+    ) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+    return (() => document.removeEventListener('click', handleClickOutside));
+  }, [isOpen]);
 
   return (
     <div className="dropdown">
@@ -32,7 +49,8 @@ const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
         </label>
         <button
           className="dropdown__selected"
-          onClick={() => selectIsOpen(!isOpen)}
+          onClick={() => setIsOpen(!isOpen)}
+          ref={dropdownButtonRef}
           type="button"
         >
           {selectedOption}
