@@ -62,13 +62,17 @@ const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
       >
         {
           options.map((option) => (
-            <li
+            <button
               className="dropdown__option"
               key={option}
               onClick={() => handleSelect(option)}
+              onFocus={() => setIsOpen(true)}
+              onBlur={() => setIsOpen(false)}
+              tabIndex={isOpen ? 0 : -1}
+              type="button"
             >
               {option}
-            </li>
+            </button>
           ))
         }
       </ul>
