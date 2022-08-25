@@ -5,7 +5,6 @@ import './CursorFollower.scss';
 const CursorFollower: React.FC = () => {
   const followerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const backgroundRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef({
     mouseX: 0,
     mouseY: 0,
@@ -17,8 +16,6 @@ const CursorFollower: React.FC = () => {
   });
 
   const mouseHandler = (event: MouseEvent): void => {
-    // console.log(event.target);
-    // if (backgroundRef.current !== event.target) return;
     const { clientX, clientY } = event;
     const mouseX = clientX;
     const mouseY = clientY;
@@ -84,7 +81,7 @@ const CursorFollower: React.FC = () => {
   }, []);
 
   return (
-    <div className="background" ref={backgroundRef}>
+    <div className="background">
       <div
         className="cursor-follower"
         ref={followerRef}

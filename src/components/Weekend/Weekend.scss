@@ -19,8 +19,7 @@
   opacity: 1;
 
   &:hover {
-    opacity: 0.7;
-    // transform: scale(1.05);
+    box-shadow: 0 0 10px black;
   }
 
   &:focus-visible {
