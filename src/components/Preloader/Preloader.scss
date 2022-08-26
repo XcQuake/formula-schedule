@@ -16,6 +16,15 @@
     }
 }
 
+@keyframes tire-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .preloader {
     display: flex;
     align-items: center;
@@ -23,39 +32,17 @@
     align-self: center;
     justify-self: center;
     margin: auto;
+    border-radius: 50%;
 
     &__container {
         width: 100px;
         height: 100px;
         position: relative;
-        display: flex;
-        justify-content: space-between;
         z-index: 100;
         overflow: hidden;
         border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.26);
-        box-shadow: 0 0 3px black;
-
-        &::after,
-        &::before {
-            content: '';
-            width: 25px;
-            height: 100px;
-            background-color: #ff0000;
-            transform: skewX(-20deg) translateY(-100%);
-            animation: preloader-sides 1s linear infinite;
-        }
-        &::after {
-            transform: skewX(-20deg) translateY(100%);
-            animation-delay: 0.5s;
-        }
-    }
-
-    &__middle {
-        width: 25px;
-        height: 100px;
-        background-color: #ff0000;
-        transform: skewX(-20deg) translateY(100%);
-        animation: preloader-middle 1s 0.25s linear infinite;
+        background-image: url(../../images/tire.svg);
+        background-size: contain;
+        animation: tire-rotate 0.7s linear infinite;
     }
 }
