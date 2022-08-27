@@ -109,11 +109,11 @@ export const selectDriver = (driver: Driver): SelectDriverAction => ({
 });
 
 export const selectDropdownOption = (
-  name: string,
-  option: string,
+  title: string,
+  option: {name: string, value: string},
 ): SelectDropdownOptionAction => ({
   type: ActionType.SELECT_DROPDOWN_OPTION,
-  payload: { name, option },
+  payload: { title, option },
 });
 
 export const openPopup = (content: React.ReactNode): OpenPopupAction => ({

@@ -20,7 +20,7 @@ interface Props {
   standingList: StandingList | null,
   standingListLoading: boolean,
   seasons: Season[],
-  selectedSeason: string,
+  selectedSeason: { name: string, value: string },
 }
 
 const Standing: React.FC<Props> = ({
@@ -35,16 +35,25 @@ const Standing: React.FC<Props> = ({
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
-  const seasonOptions: string[] = [];
+  const seasonOptions: {
+    name: string, value: string,
+  }[] = [];
   const drivers = standingList?.DriverStandings;
   const constructors = standingList?.ConstructorStandings;
 
   useEffect(() => {
-    fetchSeasons();
-    if (selectedSeason) fetchStanding(selectedSeason, championship);
+    if (selectedSeason) fetchStanding(selectedSeason.value, championship);
   }, [championship, selectedSeason]);
 
-  seasons.forEach((item) => seasonOptions.unshift(item.season));
+  useEffect(() => {
+    fetchSeasons();
+  }, []);
+
+  seasons.forEach((item) => seasonOptions.unshift({
+    name: item.season,
+    value: item.season,
+  }));
+
   const handleChangeChampionship = (): void => {
     if (championship === 'constructor') setChampionship('driver');
     if (championship === 'driver') setChampionship('constructor');
@@ -70,11 +79,12 @@ const Standing: React.FC<Props> = ({
               Constructors
             </button>
           </div>
-          <Dropdown
-            options={seasonOptions}
-            defaultOption={seasonOptions[0]}
-            fieldName="season"
-          />
+          { seasonOptions.length > 0 && (
+            <Dropdown
+              title="Season"
+              options={seasonOptions}
+            />
+          )}
         </div>
         <div className="standing__container">
           <Swiper

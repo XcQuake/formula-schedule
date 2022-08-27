@@ -1,27 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 import './Dropdown.scss';
 
 interface Props {
-  options: string[];
-  defaultOption: string;
-  fieldName: string;
+  options: {
+    name: string,
+    value: string,
+  }[];
+  defaultOption?: {
+    name: string,
+    value: string,
+  } | null;
+  title: string;
 }
 
-const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
+const Dropdown: React.FC<Props> = ({
+  title,
+  options,
+  defaultOption = options[0],
+}) => {
   const { selectDropdownOption } = useActions();
   const [isOpen, setIsOpen] = useState(false);
-  const selectedOption = useTypedSelector((state) => state.dropdown[fieldName]);
+  const selectedOption = useTypedSelector((state) => state.dropdown.season);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
+  const stateTitle = title[0].toLowerCase() + title.slice(1);
 
   useEffect(() => {
-    if (defaultOption) selectDropdownOption(fieldName, defaultOption);
-  }, [defaultOption]);
+    if (defaultOption) selectDropdownOption(stateTitle, defaultOption);
+  }, []);
 
-  const handleSelect = (option: string): void => {
-    selectDropdownOption(fieldName, option);
+  const handleSelect = (option: { name: string, value: string}): void => {
+    selectDropdownOption(stateTitle, option);
     setIsOpen(false);
   };
 
@@ -45,7 +56,7 @@ const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
     <div className="dropdown">
       <div className="dropdown__wrapper">
         <label className="dropdown__label">
-          {fieldName[0].toUpperCase() + fieldName.slice(1)}
+          {title}
         </label>
         <button
           className="dropdown__selected"
@@ -53,7 +64,7 @@ const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
           ref={dropdownButtonRef}
           type="button"
         >
-          {selectedOption}
+          {selectedOption && selectedOption.name}
           <i className="dropdown__icon" />
         </button>
       </div>
@@ -64,14 +75,14 @@ const Dropdown: React.FC<Props> = ({ options, defaultOption, fieldName }) => {
           options.map((option) => (
             <button
               className="dropdown__option"
-              key={option}
+              key={option.name}
               onClick={() => handleSelect(option)}
               onFocus={() => setIsOpen(true)}
               onBlur={() => setIsOpen(false)}
               tabIndex={isOpen ? 0 : -1}
               type="button"
             >
-              {option}
+              {option.name}
             </button>
           ))
         }

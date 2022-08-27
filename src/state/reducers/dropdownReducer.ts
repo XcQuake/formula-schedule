@@ -1,12 +1,19 @@
+/* eslint-disable no-param-reassign */
 import { ActionType } from '../action-types';
 import { SelectDropdownOptionAction } from '../actions';
 
 interface DropdownState {
-  [key: string]: string;
+  [key: string]: {
+    name: string,
+    value: string,
+  };
 }
 
 const intialState = {
-  initial: 'initial',
+  initial: {
+    name: 'initial',
+    value: 'initial',
+  },
 };
 
 const dropdownReducer = (
@@ -15,8 +22,8 @@ const dropdownReducer = (
 ): DropdownState => {
   switch (action.type) {
     case ActionType.SELECT_DROPDOWN_OPTION: {
-      const { name, option } = action.payload;
-      return { ...state, [name]: option };
+      const { title, option } = action.payload;
+      return { ...state, [title]: option };
     }
     default: return state;
   }

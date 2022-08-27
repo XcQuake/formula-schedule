@@ -97,8 +97,8 @@ export interface SelectDriverAction {
 export interface SelectDropdownOptionAction {
   type: ActionType.SELECT_DROPDOWN_OPTION,
   payload: {
-    name: string,
-    option: string,
+    title: string,
+    option: { name: string, value: string },
   }
 }
 
