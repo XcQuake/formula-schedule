@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
@@ -21,11 +21,11 @@ const Dropdown: React.FC<Props> = ({
   options,
   defaultOption = options[0],
 }) => {
+  const stateTitle = title[0].toLowerCase() + title.slice(1);
   const { selectDropdownOption } = useActions();
   const [isOpen, setIsOpen] = useState(false);
-  const selectedOption = useTypedSelector((state) => state.dropdown.season);
+  const selectedOption = useTypedSelector((state) => state.dropdown[stateTitle]);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
-  const stateTitle = title[0].toLowerCase() + title.slice(1);
 
   useEffect(() => {
     if (defaultOption) selectDropdownOption(stateTitle, defaultOption);
