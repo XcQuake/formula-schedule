@@ -38,8 +38,12 @@ const WeekendResults: React.FC<Props> = ({ weekend }) => {
 
   const renderResults = (): JSX.Element => {
     if (!resultLoading) {
-      if (raceResult) return <RaceResults results={raceResult} />;
-      if (qualifyResult) return <QualifyResults results={qualifyResult} />;
+      if (session.value === 'race' && raceResult) {
+        return <RaceResults results={raceResult} />;
+      }
+      if (session.value === 'qualifying' && qualifyResult) {
+        return <QualifyResults results={qualifyResult} />;
+      }
     }
     return <Preloader />;
   };

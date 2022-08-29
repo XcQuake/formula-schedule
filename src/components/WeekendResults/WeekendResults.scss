@@ -5,3 +5,8 @@
   align-items: center;
   gap: 15px;
 }
+
+.result__param {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
