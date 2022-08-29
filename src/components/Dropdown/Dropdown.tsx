@@ -56,7 +56,7 @@ const Dropdown: React.FC<Props> = ({
     <div className="dropdown">
       <div className="dropdown__wrapper">
         <label className="dropdown__label">
-          {title}
+          {title}:
         </label>
         <button
           className="dropdown__selected"

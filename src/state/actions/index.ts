@@ -7,6 +7,7 @@ import {
   Result,
   Driver,
   Season,
+  QualifyingResult,
 } from '../../models/ergastApiTypes';
 import {
   RapidDriver,
@@ -46,9 +47,14 @@ export interface FetchResultAction {
   type: ActionType.FETCH_RESULT;
 }
 
-export interface FetchResultSuccessAction {
-  type: ActionType.FETCH_RESULT_SUCCESS;
+export interface FetchRaceResult {
+  type: ActionType.FETCH_RESULT_RACE;
   payload: Result[],
+}
+
+export interface FetchQualifyResult {
+  type: ActionType.FETCH_RESULT_QUALIFY;
+  payload: QualifyingResult[],
 }
 
 export interface FetchResultErrorAction {
@@ -128,7 +134,8 @@ export type Action =
   | FetchScheduleSuccessAction
   | FetchScheduleErrorAction
   | FetchResultAction
-  | FetchResultSuccessAction
+  | FetchRaceResult
+  | FetchQualifyResult
   | FetchResultErrorAction
   | FetchDriverInfoAction
   | FetchDriverInfoSuccessAction

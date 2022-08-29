@@ -1,11 +1,11 @@
-.result {
+.qualify-result {
   display: grid;
   width: 100%;
-  grid-template-columns: 25px 0.5fr 0.5fr 1fr;
+  grid-template-columns: 25px 0.5fr 0.5fr 0.5fr 0.5fr;
   gap: 10px;
   font-size: 14px;
   line-height: 16px;
-  text-shadow: 0 0 2px black;
+  text-shadow: 0 0 5px black;
   border-radius: 3px 3px 15px 3px;
   padding: 2px;
 }

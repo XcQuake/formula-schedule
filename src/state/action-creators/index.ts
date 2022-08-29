@@ -59,15 +59,25 @@ export const fetchSchedule = () => async (dispatch: Dispatch<Action>) => {
 export const fetchRaceResult = (
   season: string,
   round: string,
+  session: string,
 ) => async (dispatch: Dispatch<Action>) => {
   dispatch({ type: ActionType.FETCH_RESULT });
 
   try {
-    const response = await ergastApi.getRaceResult(season, round);
-    dispatch({
-      type: ActionType.FETCH_RESULT_SUCCESS,
-      payload: response,
-    });
+    if (session === 'race') {
+      const response = await ergastApi.getRaceResult(season, round);
+      dispatch({
+        type: ActionType.FETCH_RESULT_RACE,
+        payload: response,
+      });
+    }
+    if (session === 'qualifying') {
+      const response = await ergastApi.getQualifyResult(season, round);
+      dispatch({
+        type: ActionType.FETCH_RESULT_QUALIFY,
+        payload: response,
+      });
+    }
   } catch (err: any) {
     dispatch({
       type: ActionType.FETCH_RESULT_ERROR,

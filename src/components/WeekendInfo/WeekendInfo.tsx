@@ -10,8 +10,8 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import { Race } from '../../models/ergastApiTypes';
 import Session from '../Session/Session';
-import ResultsList from '../ResultsList/ResultsList';
 import Preloader from '../Preloader/Preloader';
+import WeekendResults from '../WeekendResults/WeekendResults';
 
 interface Props {
   weekend: Race | null;
@@ -19,11 +19,7 @@ interface Props {
 }
 
 const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
-  const { fetchWikiImage, fetchRaceResult } = useActions();
-  const {
-    resultLoading,
-    raceResult,
-  } = useTypedSelector((state) => state.result);
+  const { fetchWikiImage } = useActions();
 
   const wikiTitle = weekend?.raceName.replace(' ', '_');
   const rawDate = weekend && `${weekend.date}T${weekend.time}`;
@@ -34,12 +30,8 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
   };
 
   useEffect(() => {
-    if (weekend) {
-      if (weekendInfo?.isOver) {
-        fetchRaceResult(weekend.season, weekend.round);
-      } else {
-        fetchWikiImage(wikiTitle!);
-      }
+    if (weekend && !weekendInfo?.isOver) {
+      fetchWikiImage(wikiTitle!);
     }
   }, [weekend]);
 
@@ -119,24 +111,15 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
     weekend && weekendInfo && (
       <div className="weekend-info">
         <h3 className="weekend-info__header">{weekend.raceName}</h3>
-        {
-          !weekendInfo.isOver
-          && renderCircuitInfo
-        }
-        {
-          !weekendInfo.isOver
-          && renderSessionDates
-        }
+        { !weekendInfo.isOver && (
+          <div className="weekend-info__wrapper">
+            {renderCircuitInfo}
+            {renderSessionDates}
+          </div>
+        )}
         {
           weekendInfo.isOver
-          && resultLoading
-          && <Preloader />
-        }
-        {
-          weekendInfo.isOver
-          && !resultLoading
-          && raceResult
-          && <ResultsList results={raceResult} />
+          && <WeekendResults weekend={weekend} />
         }
       </div>
     )

@@ -1,8 +1,8 @@
 .weekend-info {
   height: 100%;
   min-height: 250px;
-  width: 100%;
-  max-width: 300px;
+  // width: 100%;
+  // max-width: 300px;
   background-color: black;
   border-radius: 10px;
   position: sticky;
@@ -20,6 +20,11 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
+  }
+
+  &__wrapper {
+    min-width: 250px;
+    max-width: 300px;
   }
 
   &__figure {

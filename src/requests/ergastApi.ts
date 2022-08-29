@@ -3,7 +3,8 @@ import {
   Race,
   StandingList,
   Result,
-  Season } from '../models/ergastApiTypes';
+  Season,
+  QualifyingResult } from '../models/ergastApiTypes';
 import { ERGAST_API_URL } from '../utils/constants';
 
 interface ApiConfig {
@@ -53,6 +54,14 @@ class ErgastApi {
     })
       .then((res: Response) => ErgastApi.processResult(res))
       .then((data) => data.MRData.RaceTable!.Races[0].Results!);
+  }
+
+  getQualifyResult(season: string, round: string): Promise<QualifyingResult[]> {
+    return fetch(`${this.link}/${season}/${round}/qualifying.json`, {
+      method: 'GET',
+    })
+      .then((res: Response) => ErgastApi.processResult(res))
+      .then((data) => data.MRData.RaceTable!.Races[0].QualifyingResults!);
   }
 
   getSeasons(): Promise<Season[]> {
