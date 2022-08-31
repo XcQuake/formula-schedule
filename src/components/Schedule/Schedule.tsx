@@ -6,6 +6,7 @@ import { useActions } from '../../hooks/useActions';
 import Preloader from '../Preloader/Preloader';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
+import { BREAKPOINTS } from '../../utils/constants';
 
 const Schedule: React.FC = () => {
   const { fetchSchedule } = useActions();
@@ -44,7 +45,7 @@ const Schedule: React.FC = () => {
           && weekendList
         }
       </div>
-      {(windowWidth > 699) && <WeekendInfo />}
+      {(windowWidth > BREAKPOINTS.mobile) && <WeekendInfo />}
     </section>
   );
 };

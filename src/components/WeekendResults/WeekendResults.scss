@@ -17,3 +17,10 @@
     min-width: 320px;
   }
 }
+
+@media (max-width: 605px) {
+  .weekend-results {
+    width: 100%;
+    grid-template-columns: 0.5fr 0.5fr 1fr 1fr 1fr;
+  }
+}

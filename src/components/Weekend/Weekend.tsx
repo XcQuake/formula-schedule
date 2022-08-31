@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { isPast, isSameWeek, parseISO, addHours } from 'date-fns';
+import { useHistory } from 'react-router-dom';
 
 import './Weekend.scss';
 import { refactorDate } from '../../utils/utils';
@@ -8,6 +9,7 @@ import * as circuits from '../../utils/circuits';
 import { useActions } from '../../hooks/useActions';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
+import { BREAKPOINTS } from '../../utils/constants';
 
 interface Props {
   race: Race;
@@ -17,6 +19,7 @@ const Weekend: React.FC<Props> = ({ race }) => {
   const { selectWeekend, openPopup } = useActions();
   const { windowWidth } = useWindowWidth();
   const rawDate = `${race.date}T${race.time}`;
+  const history = useHistory();
 
   const weekendInfo = {
     name: race.raceName.replace('Grand Prix', ''),
@@ -34,8 +37,9 @@ const Weekend: React.FC<Props> = ({ race }) => {
 
   const onClick = (): void => {
     selectWeekend(race);
-    if (windowWidth < 699) {
+    if (windowWidth < BREAKPOINTS.mobile) {
       openPopup(<WeekendInfo />);
+      history.push('/popup');
     }
   };
 

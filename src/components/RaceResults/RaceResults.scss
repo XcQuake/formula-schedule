@@ -1,5 +1,7 @@
+@import '../../styles/utils/breakpoints.scss';
+
 .results-list {
-  // width: 100%;
+  width: 100%;
   min-width: 250px;
   list-style: none;
   margin: 0;
@@ -7,4 +9,10 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+@media (max-width: $mobile) {
+  .results-list {
+    gap: 7px
+  }
 }

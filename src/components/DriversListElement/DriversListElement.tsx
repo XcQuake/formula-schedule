@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
+import { useHistory } from 'react-router-dom';
 
 import './DriversListElement.scss';
 import { useActions } from '../../hooks/useActions';
@@ -15,6 +16,7 @@ interface Props {
 const DriversListElement: React.FC<Props> = ({ stats }) => {
   const { selectDriver, openPopup } = useActions();
   const { windowWidth } = useWindowWidth();
+  const history = useHistory();
 
   const bio = stats.Driver;
   const team = stats.Constructors[0];
@@ -24,6 +26,7 @@ const DriversListElement: React.FC<Props> = ({ stats }) => {
     selectDriver(stats.Driver);
     if (windowWidth < 1199) {
       openPopup(<DriverInfo />);
+      history.push('/popup');
     }
   }
 

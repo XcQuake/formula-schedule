@@ -1,3 +1,5 @@
+@import '../../styles/utils/breakpoints.scss';
+
 .race-result {
   display: grid;
   width: 100%;
@@ -10,10 +12,18 @@
   padding: 2px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $desktop) {
   .race-result {
     font-size: 12px;
     line-height: 14px;
     grid-template-columns: 25px 35px 25px 80px 80px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .race-result {
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr 1fr;
+    font-size: 14px;
+    line-height: 16px;
   }
 }
