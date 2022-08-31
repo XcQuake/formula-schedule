@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import './WeekendResults.scss';
 import { Race } from '../../models/ergastApiTypes';

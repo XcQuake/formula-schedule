@@ -6,11 +6,9 @@ import './WeekendInfo.scss';
 import placeholder from '../../images/F1-logo.svg';
 import { RootState } from '../../state';
 import { refactorWeekendDates } from '../../utils/utils';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import { Race } from '../../models/ergastApiTypes';
 import Session from '../Session/Session';
-import Preloader from '../Preloader/Preloader';
 import WeekendResults from '../WeekendResults/WeekendResults';
 
 interface Props {
