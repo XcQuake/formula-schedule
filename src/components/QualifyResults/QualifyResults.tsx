@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './QualifyResults.scss';
 import { QualifyingResult } from '../../models/ergastApiTypes';
 import QualifyResultsElement from './QualifyResultsElement';
 

@@ -17,7 +17,7 @@ const RaceResults: React.FC<Props> = ({ results }) => {
 
   return (
     <ul className="results-list">
-      <li className="result result_head">
+      <li className="race-result result_head">
         <div className="result__param text_center">Pos</div>
         <div className="result__param text_center">Name</div>
         <div className="result__param text_center">Pts</div>

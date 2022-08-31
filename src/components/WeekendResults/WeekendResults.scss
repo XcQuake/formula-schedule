@@ -1,5 +1,5 @@
 .weekend-results {
-  min-width: 400px;
+  min-width: 370px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,4 +9,11 @@
 .result__param {
   white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .weekend-results {
+    min-width: 320px;
+  }
 }

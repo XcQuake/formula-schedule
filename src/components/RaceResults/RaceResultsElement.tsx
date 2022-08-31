@@ -16,7 +16,7 @@ const RaceResultsElement: React.FC<Props> = ({ element }) => {
   };
 
   return (
-    <li className={`result team_${element.Constructor.constructorId}`}>
+    <li className={`race-result team_${element.Constructor.constructorId}`}>
       <div className="result__param text_center">{element.position}</div>
       <div className="result__param text_center">{element.Driver.code}</div>
       <div className="result__param text_center">{element.points}</div>
