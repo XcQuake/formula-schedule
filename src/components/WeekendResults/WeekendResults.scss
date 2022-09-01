@@ -4,6 +4,23 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+
+  &__swiper {
+    width: 370px
+  }
+
+  &__swiper-buttons {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__button {
+    border: none;
+    background-color: inherit;
+    color: white;
+    cursor: pointer;
+    padding: 0 0 5px;
+  }
 }
 
 .result__param {
@@ -22,5 +39,9 @@
   .weekend-results {
     width: 100%;
     grid-template-columns: 0.5fr 0.5fr 1fr 1fr 1fr;
+
+    &__swiper {
+      width: calc(100vw - 15px);
+    }
   }
 }

@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px;
+  padding: 10px;
   background: black;
-  height: calc(100vh - 100px);
+  height: 100vh;
   visibility: hidden;
   opacity: 0;
   transition: visibility .1s, opacity .1s linear;
