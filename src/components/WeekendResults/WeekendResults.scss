@@ -9,6 +9,13 @@
     width: 370px
   }
 
+  &__slide {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__swiper-buttons {
     display: flex;
     gap: 15px;
@@ -21,6 +28,7 @@
     cursor: pointer;
     padding: 0 0 5px;
   }
+
 }
 
 .result__param {

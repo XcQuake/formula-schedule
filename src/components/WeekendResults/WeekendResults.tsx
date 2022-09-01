@@ -8,6 +8,7 @@ import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import RaceResults from '../RaceResults/RaceResults';
 import QualifyResults from '../QualifyResults/QualifyResults';
+import Preloader from '../Preloader/Preloader';
 
 interface Props {
   weekend: Race;
@@ -62,15 +63,19 @@ const WeekendResults: React.FC<Props> = ({ weekend }) => {
         modules={[Navigation]}
         dir="ltr"
       >
-        <SwiperSlide>
+        <SwiperSlide className="weekend-results__slide">
+          { resultLoading && <Preloader /> }
           {
             raceResult
+            && !resultLoading
             && <RaceResults results={raceResult} />
           }
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="weekend-results__slide">
+          { resultLoading && <Preloader /> }
           {
             qualifyResult
+            && !resultLoading
             && <QualifyResults results={qualifyResult} />
           }
         </SwiperSlide>
