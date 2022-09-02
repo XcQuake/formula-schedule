@@ -56,6 +56,7 @@ const CursorFollower: React.FC = () => {
         if (
           Math.abs(positionRef.current.distanceX)
           + Math.abs(positionRef.current.distanceY) < 0.08
+          && followerRef.current
         ) {
           positionRef.current.destinationX = mouseX;
           positionRef.current.destinationY = mouseY;
