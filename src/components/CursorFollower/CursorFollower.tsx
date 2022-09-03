@@ -60,11 +60,11 @@ const CursorFollower: React.FC = () => {
         ) {
           positionRef.current.destinationX = mouseX;
           positionRef.current.destinationY = mouseY;
-          followerRef.current!.style.animation = 'tire-stop 2s linear';
-        } else {
+          followerRef.current.style.animation = 'tire-stop 2s linear';
+        } else if (followerRef.current) {
           positionRef.current.destinationX += distanceX;
           positionRef.current.destinationY += distanceY;
-          followerRef.current!.style.animation = `
+          followerRef.current.style.animation = `
             tire-rotation 0.5s linear infinite
           `;
         }

@@ -1,16 +1,14 @@
 .footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   z-index: 10;
   height: 50px;
   width: 100%;
-  margin-top: -50px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color: black;
   color: white;
-  // border-top: 1px solid #FF0000;
   box-shadow: 0 0 3px 1px #ff0000;
   box-sizing: border-box;
 
@@ -22,7 +20,7 @@
   }
 
   &__link {
-    color: white;
+    color: #ff0000;
     text-decoration: none;
     font-size: 10px;
     line-height: 12px;
