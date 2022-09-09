@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
-import './Popup.scss';
+import './Stats.scss';
 
-const Popup: React.FC = () => {
+const Stats: React.FC = () => {
   const history = useHistory();
   const { closePopup } = useActions();
   const { isOpen, content } = useTypedSelector((state) => state.popup);
@@ -38,4 +38,4 @@ const Popup: React.FC = () => {
   );
 };
 
-export default Popup;
+export default Stats;

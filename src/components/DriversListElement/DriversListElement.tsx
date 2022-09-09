@@ -8,6 +8,7 @@ import { useActions } from '../../hooks/useActions';
 import { DriverStanding } from '../../models/ergastApiTypes';
 import DriverInfo from '../DriverInfo/DriverInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
+import { URLS } from '../../utils/constants';
 
 interface Props {
   stats: DriverStanding;
@@ -26,7 +27,7 @@ const DriversListElement: React.FC<Props> = ({ stats }) => {
     selectDriver(stats.Driver);
     if (windowWidth < 1199) {
       openPopup(<DriverInfo />);
-      history.push('/popup');
+      history.push(URLS.stats);
     }
   }
 

@@ -3,15 +3,14 @@ import { Route } from 'react-router-dom';
 
 import './App.scss';
 import Header from '../Header/Header';
-import Popup from '../Popup/Popup';
-import Main from '../Main/Main';
+import Stats from '../Stats/Stats';
 import Schedule from '../Schedule/Schedule';
 import Standing from '../Standing/Standing';
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
 import CursorFollower from '../CursorFollower/CursorFollower';
 import Footer from '../Footer/Footer';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
-import { BREAKPOINTS } from '../../utils/constants';
+import { BREAKPOINTS, URLS } from '../../utils/constants';
 
 const App: React.FC = () => {
   const { windowWidth } = useWindowWidth();
@@ -20,16 +19,16 @@ const App: React.FC = () => {
       <Header />
       <main className="main">
         <div className="main__wrapper">
-          <Route path="/schedule">
+          <Route path={URLS.schedule}>
             <Schedule />
           </Route>
-          <Route path="/standing">
+          <Route path={URLS.standing}>
             <Standing />
           </Route>
           <ErrorPopup />
         </div>
-        <Route path="/popup">
-          <Popup />
+        <Route path={URLS.stats}>
+          <Stats />
         </Route>
         {windowWidth > BREAKPOINTS.mobile && <CursorFollower />}
       </main>

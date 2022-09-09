@@ -19,3 +19,9 @@ export const RAPID_API_HOST = 'api-formula-1.p.rapidapi.com';
 export const BREAKPOINTS = {
   mobile: 605,
 };
+
+export const URLS = {
+  schedule: '/schedule',
+  standing: '/standing',
+  stats: '/stats',
+};

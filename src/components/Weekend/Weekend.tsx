@@ -9,7 +9,7 @@ import * as circuits from '../../utils/circuits';
 import { useActions } from '../../hooks/useActions';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
-import { BREAKPOINTS } from '../../utils/constants';
+import { BREAKPOINTS, URLS } from '../../utils/constants';
 
 interface Props {
   race: Race;
@@ -39,7 +39,7 @@ const Weekend: React.FC<Props> = ({ race }) => {
     selectWeekend(race);
     if (windowWidth < BREAKPOINTS.mobile) {
       openPopup(<WeekendInfo />);
-      history.push('/popup');
+      history.push(URLS.stats);
     }
   };
 
