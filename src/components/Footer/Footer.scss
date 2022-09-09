@@ -16,10 +16,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 80%;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    box-sizing: border-box;
   }
 
   &__link {
+    width: 100%;
     color: #ff0000;
     text-decoration: none;
     font-size: 10px;
@@ -27,6 +31,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      border-radius: 50px;
+      background-color: rgba(29, 29, 29, 0.575);
+    }
   }
 
   &__icon {
