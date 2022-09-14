@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import './App.scss';
 import Header from '../Header/Header';
@@ -30,6 +30,7 @@ const App: React.FC = () => {
         <Route path={URLS.stats}>
           <Stats />
         </Route>
+        <Redirect to="/schedule" />
         {windowWidth > BREAKPOINTS.mobile && <CursorFollower />}
       </main>
       {windowWidth <= BREAKPOINTS.mobile && <Footer />}
