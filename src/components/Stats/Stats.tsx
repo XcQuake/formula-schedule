@@ -8,27 +8,16 @@ import './Stats.scss';
 
 const Stats: React.FC = () => {
   const history = useHistory();
-  const { closePopup } = useActions();
-  const { isOpen, content } = useTypedSelector((state) => state.popup);
+  const { content } = useTypedSelector((state) => state.popup);
 
   const handleClose = (): void => {
     history.goBack();
-    closePopup();
   };
 
-  useEffect(() => {
-    if (!content) {
-      history.goBack();
-    }
-  }, []);
-
   return (
-    <div
-      className={`popup ${isOpen && 'popup_open'}`}
-      role="button"
-    >
+    <div className="stats stats_open">
       <button
-        className="popup__close-button"
+        className="stats__back-button"
         aria-label="close"
         type="button"
         onClick={handleClose}

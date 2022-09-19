@@ -1,6 +1,6 @@
 @import '../../styles/utils/colors.scss';
 
-.popup {
+.stats {
   min-height: 100%;
   height: calc(100vh - 90px);
   width: 100%;
@@ -9,30 +9,10 @@
   justify-content: center;
   align-items: center;
   background: black;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility .1s, opacity .1s linear;
   color: white;
   box-sizing: border-box;
 
-  &_open {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  &__wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    color: white;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 2px $red;
-  }
-
-  &__close-button {
+  &__back-button {
     position: absolute;
     top: 15px;
     left: 15px;

@@ -30,7 +30,7 @@ const App: React.FC = () => {
         <Route path={URLS.stats}>
           <Stats />
         </Route>
-        <Redirect to="/schedule" />
+        <Redirect to={URLS.schedule} />
         {windowWidth > BREAKPOINTS.mobile && <CursorFollower />}
       </main>
       {windowWidth <= BREAKPOINTS.mobile && <Footer />}
