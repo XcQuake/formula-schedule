@@ -16,7 +16,7 @@ const Schedule: React.FC = () => {
   const { windowWidth } = useWindowWidth();
 
   useEffect(() => {
-    fetchSchedule();
+    if (schedule.length === 0) fetchSchedule();
   }, []);
 
   const weekendList: React.ReactNode = (

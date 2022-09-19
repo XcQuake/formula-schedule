@@ -26,7 +26,7 @@ const WeekendResults: React.FC<Props> = ({ weekend }) => {
   const [session, setSession] = useState('race');
 
   useEffect(() => {
-    if (session) {
+    if (!raceResult || !qualifyResult) {
       fetchRaceResult(weekend.season, weekend.round, session);
     }
   }, [session, weekend]);
