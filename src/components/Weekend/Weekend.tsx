@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Weekend: React.FC<Props> = ({ race }) => {
-  const { selectWeekend, openPopup } = useActions();
+  const { selectWeekend, transferContent } = useActions();
   const { windowWidth } = useWindowWidth();
   const rawDate = `${race.date}T${race.time}`;
   const history = useHistory();
@@ -38,7 +38,7 @@ const Weekend: React.FC<Props> = ({ race }) => {
   const onClick = (): void => {
     selectWeekend(race);
     if (windowWidth < BREAKPOINTS.mobile) {
-      openPopup(<WeekendInfo />);
+      transferContent(<WeekendInfo />);
       history.push(URLS.stats);
     }
   };

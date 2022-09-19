@@ -5,9 +5,8 @@ import { ActionType } from '../action-types';
 import {
   Action,
   CloseErrorPopupAction,
-  ClosePopupAction,
   OpenErrorPopupAction,
-  OpenPopupAction,
+  TransferContentAction,
   SelectDriverAction,
   SelectDropdownOptionAction,
   SelectWeekendAction,
@@ -126,13 +125,11 @@ export const selectDropdownOption = (
   payload: { title, option },
 });
 
-export const openPopup = (content: React.ReactNode): OpenPopupAction => ({
-  type: ActionType.OPEN_POPUP,
+export const transferContent = (
+  content: React.ReactNode,
+): TransferContentAction => ({
+  type: ActionType.TRANSFER_CONTENT,
   payload: content,
-});
-
-export const closePopup = (): ClosePopupAction => ({
-  type: ActionType.CLOSE_POPUP,
 });
 
 export const openErrorPopup = (message: string | null): OpenErrorPopupAction => ({

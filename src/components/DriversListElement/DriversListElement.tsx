@@ -15,7 +15,7 @@ interface Props {
 }
 
 const DriversListElement: React.FC<Props> = ({ stats }) => {
-  const { selectDriver, openPopup } = useActions();
+  const { selectDriver, transferContent } = useActions();
   const { windowWidth } = useWindowWidth();
   const history = useHistory();
 
@@ -26,7 +26,7 @@ const DriversListElement: React.FC<Props> = ({ stats }) => {
   function handleClick(): void {
     selectDriver(stats.Driver);
     if (windowWidth < 1199) {
-      openPopup(<DriverInfo />);
+      transferContent(<DriverInfo />);
       history.push(URLS.stats);
     }
   }

@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 import './Stats.scss';
 
 const Stats: React.FC = () => {
   const history = useHistory();
-  const { content } = useTypedSelector((state) => state.popup);
+  const { content } = useTypedSelector((state) => state.stats);
 
   const handleClose = (): void => {
     history.goBack();

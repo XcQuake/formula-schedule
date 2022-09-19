@@ -108,13 +108,9 @@ export interface SelectDropdownOptionAction {
   }
 }
 
-export interface OpenPopupAction {
-  type: ActionType.OPEN_POPUP,
+export interface TransferContentAction {
+  type: ActionType.TRANSFER_CONTENT,
   payload: React.ReactNode,
-}
-
-export interface ClosePopupAction {
-  type: ActionType.CLOSE_POPUP,
 }
 
 export interface OpenErrorPopupAction {
@@ -146,7 +142,6 @@ export type Action =
   | SelectWeekendAction
   | SelectDriverAction
   | SelectDropdownOptionAction
-  | OpenPopupAction
-  | ClosePopupAction
+  | TransferContentAction
   | OpenErrorPopupAction
   | CloseErrorPopupAction;

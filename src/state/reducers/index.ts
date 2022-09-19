@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import standingReducer from './standingReducer';
 import scheduleReducer from './scheduleReducer';
 import wikiDataReducer from './wikiDataReducer';
-import popupReducer from './popupReducer';
+import statsReducer from './statsReducer';
 import resultReducer from './resultReducer';
 import driverInfoReducer from './driverInfoReducer';
 import weekendReducer from './weekendReducer';
@@ -17,7 +17,7 @@ const reducers = combineReducers({
   result: resultReducer,
   weekend: weekendReducer,
   wikiData: wikiDataReducer,
-  popup: popupReducer,
+  stats: statsReducer,
   driverInfo: driverInfoReducer,
   driver: driverReducer,
   seasons: seasonsReducer,

@@ -18,8 +18,7 @@ export enum ActionType {
   SELECT_WEEKEND = 'select_weekend',
   SELECT_DRIVER = 'select_driver',
   SELECT_DROPDOWN_OPTION = 'select_dropdown_option',
-  OPEN_POPUP = 'open_popup',
-  CLOSE_POPUP = 'close_popup',
+  TRANSFER_CONTENT = 'transfer_content',
   OPEN_ERROR_POPUP = 'open_error_popup',
   CLOSE_ERROR_POPUP = 'close_error_popup',
 }
