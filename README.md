@@ -2,16 +2,11 @@
 # Formula1 - Schedule & Standings
 [Website](https://formula-schedule.vercel.app/schedule) with schedule and statistics of Formula 1 races.
 
-<table style="border: none; max-width: 500px">
-  <tr>
-    <td style="border: none">Desktop</td>
-    <td style="border: none">Mobile</td>
-  </tr>
-  <tr>
-    <td style="border: none;"><img src="./src/images/previews/desktop_schedule.png" width="400" height="200"></td>
-    <td style="border: none;"><img src="./src/images/previews/mobile_standing.png" width="150" height="200"></td>
-  </tr>
-</table>
+##### Desktop version
+<img src="./src/images/previews/desktop_schedule.png" width="400" height="250">
+
+##### Mobile version
+<img src="./src/images/previews/mobile_standing.png" width="150" height="250">
 
 #### Used API's
 * [Ergast Developer API](https://ergast.com/mrd/)
