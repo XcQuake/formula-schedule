@@ -3,10 +3,10 @@
 [Website](https://formula-schedule.vercel.app/schedule) with schedule and statistics of Formula 1 races.
 
 ##### Desktop version
-<img src="./src/images/previews/desktop_schedule.png" width="400" height="250">
+<img src="./src/images/previews/desktop_schedule.png" width="500" height="350">
 
 ##### Mobile version
-<img src="./src/images/previews/mobile_standing.png" width="150" height="250">
+<img src="./src/images/previews/mobile_standing.png" width="250" height="400">
 
 #### Used API's
 * [Ergast Developer API](https://ergast.com/mrd/)
