@@ -13,8 +13,6 @@ import {
   RapidDriver,
 } from '../../models/rapidApiTypes';
 
-export const foo = 'foo';
-
 export interface FetchStandingAction {
   type: ActionType.FETCH_STANDING;
 }
