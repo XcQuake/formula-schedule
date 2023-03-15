@@ -10,6 +10,7 @@ import { useActions } from '../../hooks/useActions';
 import { Race } from '../../models/ergastApiTypes';
 import Session from '../Session/Session';
 import WeekendResults from '../WeekendResults/WeekendResults';
+import Placeholder from '../Placeholder/Placeholder';
 
 interface Props {
   weekend: Race | null;
@@ -106,7 +107,7 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
   );
 
   return (
-    weekend && weekendInfo && (
+    weekend && weekendInfo ? (
       <div className="weekend-info">
         <h3 className="weekend-info__header">{weekend.raceName}</h3>
         { !weekendInfo.isOver && (
@@ -120,6 +121,11 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
           && <WeekendResults weekend={weekend} />
         }
       </div>
+    ) : (
+      <Placeholder.Rect
+        height="415px"
+        style={{ width: '390px', borderRadius: '10px' }}
+      />
     )
   );
 };

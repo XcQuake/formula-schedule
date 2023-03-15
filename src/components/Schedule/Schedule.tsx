@@ -30,7 +30,13 @@ const Schedule: React.FC = () => {
   const listPlaceholder: React.ReactNode = (
     <ul className="schedule__list">
       {Array(23).fill('').map(
-        () => <Placeholder.Rect height="180px" style={{ borderRadius: '10px' }} />,
+        () => (
+          <Placeholder.Rect
+            key={Math.random()}
+            height="180px"
+            style={{ borderRadius: '10px' }}
+          />
+        ),
       )}
     </ul>
   );
