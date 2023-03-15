@@ -84,6 +84,16 @@
   border-bottom: 2px solid $red;
 }
 
+.placeholder {
+  &__standing {
+    &_drivers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .standing {
     &__wrapper {

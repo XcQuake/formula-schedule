@@ -8,24 +8,19 @@ import 'swiper/css';
 import './Standing.scss';
 import { useActions } from '../../hooks/useActions';
 import DriversList from '../DriversList/DriversList';
-import Preloader from '../Preloader/Preloader';
 import ConstructorsList from '../ConstructorsList/ConstructorsList';
 import DriverInfo from '../DriverInfo/DriverInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { RootState } from '../../state';
-import { Season, StandingList } from '../../models/ergastApiTypes';
+import { Season } from '../../models/ergastApiTypes';
 import Dropdown from '../Dropdown/Dropdown';
 
 interface Props {
-  standingList: StandingList | null,
-  standingListLoading: boolean,
   seasons: Season[],
   selectedSeason: { name: string, value: string },
 }
 
 const Standing: React.FC<Props> = ({
-  standingList,
-  standingListLoading,
   seasons,
   selectedSeason,
 }) => {
@@ -38,8 +33,6 @@ const Standing: React.FC<Props> = ({
   const seasonOptions: {
     name: string, value: string,
   }[] = [];
-  const drivers = standingList?.DriverStandings;
-  const constructors = standingList?.ConstructorStandings;
 
   useEffect(() => {
     if (selectedSeason) fetchStanding(selectedSeason.value, championship);
@@ -94,20 +87,11 @@ const Standing: React.FC<Props> = ({
             modules={[Navigation]}
             dir="ltr"
           >
-            {standingListLoading && <Preloader />}
             <SwiperSlide>
-              {
-                !standingListLoading
-                && drivers
-                && <DriversList drivers={drivers} />
-              }
+              <DriversList />
             </SwiperSlide>
             <SwiperSlide>
-              {
-                !standingListLoading
-                && constructors
-                && <ConstructorsList constructors={constructors} />
-              }
+              <ConstructorsList />
             </SwiperSlide>
           </Swiper>
         </div>
@@ -118,8 +102,6 @@ const Standing: React.FC<Props> = ({
 };
 
 const mapStateToProps = (state: RootState): Props => ({
-  standingList: state.standing.standingList,
-  standingListLoading: state.standing.loading,
   seasons: state.seasons.seasons,
   selectedSeason: state.dropdown.season,
 });

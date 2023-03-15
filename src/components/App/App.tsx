@@ -16,6 +16,7 @@ const App: React.FC = () => {
   const { windowWidth } = useWindowWidth();
   return (
     <>
+      <Background />
       <Header />
       <main className="main">
         <div className="main__wrapper">
@@ -31,7 +32,6 @@ const App: React.FC = () => {
           <Stats />
         </Route>
         <Redirect to={URLS.schedule} />
-        <Background />
       </main>
       {windowWidth <= BREAKPOINTS.mobile && <Footer />}
     </>

@@ -1,23 +1,24 @@
 import React from 'react';
 
 import './DriversList.scss';
-import { DriverStanding } from '../../models/ergastApiTypes';
 import DriversListElement from '../DriversListElement/DriversListElement';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import Placeholder from '../Placeholder/Placeholder';
 
-interface Props {
-  drivers: DriverStanding[];
-}
+const DriversList: React.FC = () => {
+  const { standingList } = useTypedSelector((state) => state.standing);
 
-const DriversList: React.FC<Props> = ({ drivers }) => {
   const renderedStanding: React.ReactNode = (
-    drivers.map(
+    standingList ? standingList.DriverStandings?.map(
       (driver) => (
         <DriversListElement
           key={driver.Driver.driverId}
           stats={driver}
         />
       ),
-    )
+    ) : Array(20).fill('').map((el) => (
+      <Placeholder.Rect height="30px" />
+    ))
   );
 
   return (

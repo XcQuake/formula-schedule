@@ -3,15 +3,13 @@ import React from 'react';
 import './ConstructorsList.scss';
 import ConstructorsListElement
   from '../ConstructorsListElement/ConstructorsListElement';
-import { ConstructorStanding } from '../../models/ergastApiTypes';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
-interface Props {
-  constructors: ConstructorStanding[];
-}
+const ConstructorsList: React.FC = () => {
+  const { standingList } = useTypedSelector((state) => state.standing);
 
-const ConstructorsList: React.FC<Props> = ({ constructors }) => {
   const renderedStanding: React.ReactNode = (
-    constructors.map((constructor) => (
+    standingList && standingList.ConstructorStandings?.map((constructor) => (
       <ConstructorsListElement
         key={constructor.Constructor.constructorId}
         stats={constructor}
