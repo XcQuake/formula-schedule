@@ -1,0 +1,36 @@
+@import '../../styles/utils/colors.scss';
+
+@keyframes shine {
+  from {
+    background-position-x: 100%;
+  }
+  to {
+    background-position-x: -100%;
+  }
+}
+
+%background {
+  animation: 1.5s shine linear infinite;
+  background-color: black;
+  background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(93, 93, 93, 0.522) 50%,
+      rgba(255, 255, 255, 0) 60%
+    )
+    black;
+  background-size: 200% 100%;
+  background-position-x: 180%;
+}
+
+.placeholder {
+  &-rect {
+    height: 100%;
+    @extend %background;
+  }
+
+  &-circle {
+    border-radius: 50%;
+    @extend %background;
+  }
+}
