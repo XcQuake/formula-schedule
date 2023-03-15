@@ -1,12 +1,12 @@
-import './Schedule.scss';
 import React, { useEffect } from 'react';
-import Weekend from '../Weekend/Weekend';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
-import Preloader from '../Preloader/Preloader';
-import WeekendInfo from '../WeekendInfo/WeekendInfo';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { BREAKPOINTS } from '../../utils/constants';
+import Placeholder from '../Placeholder/Placeholder';
+import Weekend from '../Weekend/Weekend';
+import WeekendInfo from '../WeekendInfo/WeekendInfo';
+import './Schedule.scss';
 
 const Schedule: React.FC = () => {
   const { fetchSchedule } = useActions();
@@ -21,31 +21,27 @@ const Schedule: React.FC = () => {
 
   const weekendList: React.ReactNode = (
     <ul className="schedule__list">
-      {
-        schedule.map((race) => (
-          <Weekend
-            key={race.date}
-            race={race}
-          />
-        ))
-      }
+      {schedule.map((race) => (
+        <Weekend key={race.date} race={race} />
+      ))}
+    </ul>
+  );
+
+  const listPlaceholder: React.ReactNode = (
+    <ul className="schedule__list">
+      {Array(23).fill('').map(
+        () => <Placeholder.Rect height="180px" style={{ borderRadius: '10px' }} />,
+      )}
     </ul>
   );
 
   return (
     <section className="schedule">
       <div className="schedule__wrapper">
-        {
-          loading
-          && <Preloader />
-        }
-        {
-          !loading
-          && !error
-          && weekendList
-        }
+        {loading && listPlaceholder}
+        {!loading && !error && weekendList}
       </div>
-      {(windowWidth > BREAKPOINTS.mobile) && <WeekendInfo />}
+      {windowWidth > BREAKPOINTS.mobile && <WeekendInfo />}
     </section>
   );
 };
