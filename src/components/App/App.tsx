@@ -7,7 +7,7 @@ import Stats from '../Stats/Stats';
 import Schedule from '../Schedule/Schedule';
 import Standing from '../Standing/Standing';
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
-import CursorFollower from '../CursorFollower/CursorFollower';
+import Background from '../Background/Background';
 import Footer from '../Footer/Footer';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { BREAKPOINTS, URLS } from '../../utils/constants';
@@ -31,7 +31,7 @@ const App: React.FC = () => {
           <Stats />
         </Route>
         <Redirect to={URLS.schedule} />
-        {windowWidth > BREAKPOINTS.mobile && <CursorFollower />}
+        <Background />
       </main>
       {windowWidth <= BREAKPOINTS.mobile && <Footer />}
     </>

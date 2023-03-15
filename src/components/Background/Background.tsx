@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
-import './CursorFollower.scss';
+import './Background.scss';
+import { useWindowWidth } from '../../hooks/useWindowWidth';
+import { BREAKPOINTS } from '../../utils/constants';
 
-const CursorFollower: React.FC = () => {
+const Background: React.FC = () => {
   const followerRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef({
@@ -14,6 +16,7 @@ const CursorFollower: React.FC = () => {
     distanceY: 0,
     key: -1,
   });
+  const { windowWidth } = useWindowWidth();
 
   const mouseHandler = (event: MouseEvent): void => {
     const { clientX, clientY } = event;
@@ -83,21 +86,25 @@ const CursorFollower: React.FC = () => {
 
   return (
     <div className="background">
-      <div
-        className="cursor-follower"
-        ref={followerRef}
-      />
-      <div
-        className="cursor"
-        ref={cursorRef}
-      >
-        <span className="cursor__point" />
-        <span className="cursor__point" />
-        <span className="cursor__point" />
-        <span className="cursor__point" />
-      </div>
+      { windowWidth > BREAKPOINTS.mobile && (
+        <>
+          <div
+            className="cursor-follower"
+            ref={followerRef}
+          />
+          <div
+            className="cursor"
+            ref={cursorRef}
+          >
+            <span className="cursor__point" />
+            <span className="cursor__point" />
+            <span className="cursor__point" />
+            <span className="cursor__point" />
+          </div>
+        </>
+      ) }
     </div>
   );
 };
 
-export default CursorFollower;
+export default Background;
