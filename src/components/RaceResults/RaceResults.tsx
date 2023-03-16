@@ -1,18 +1,26 @@
 import React from 'react';
 
 import './RaceResults.scss';
-import { Result } from '../../models/ergastApiTypes';
 import RaceResultsElement from './RaceResultsElement';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import Placeholder from '../Placeholder/Placeholder';
 
-interface Props {
-  results: Result[],
-}
+const RaceResults: React.FC = () => {
+  const {
+    loading,
+    raceResult,
+  } = useTypedSelector((state) => state.result);
 
-const RaceResults: React.FC<Props> = ({ results }) => {
   const renderedResults: React.ReactNode = (
-    results.map((result) => (
-      <RaceResultsElement key={result.position} element={result} />
-    ))
+    !loading && raceResult
+      ? raceResult.map((result) => (
+        <RaceResultsElement key={result.position} element={result} />
+      )) : Array(20).fill('').map(() => (
+        <Placeholder.Rect
+          key={Math.random()}
+          height="20px"
+        />
+      ))
   );
 
   return (

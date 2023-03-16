@@ -9,7 +9,7 @@ const DriversList: React.FC = () => {
   const { drivers, error, loading } = useTypedSelector((state) => state.standing);
 
   const renderedStanding: React.ReactNode = (
-    drivers ? drivers.map(
+    !loading && drivers ? drivers.map(
       (driver) => (
         <DriversListElement
           key={driver.Driver.driverId}

@@ -5,10 +5,8 @@ import { Navigation } from 'swiper';
 import './WeekendResults.scss';
 import { Race } from '../../models/ergastApiTypes';
 import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import RaceResults from '../RaceResults/RaceResults';
 import QualifyResults from '../QualifyResults/QualifyResults';
-import Preloader from '../Preloader/Preloader';
 
 interface Props {
   weekend: Race;
@@ -16,20 +14,14 @@ interface Props {
 
 const WeekendResults: React.FC<Props> = ({ weekend }) => {
   const { fetchRaceResult } = useActions();
-  const {
-    resultLoading,
-    raceResult,
-    qualifyResult,
-  } = useTypedSelector((state) => state.result);
+
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
   const [session, setSession] = useState('race');
 
   useEffect(() => {
-    if (!raceResult || !qualifyResult) {
-      fetchRaceResult(weekend.season, weekend.round, session);
-    }
-  }, [session, weekend]);
+    fetchRaceResult(weekend.season, weekend.round);
+  }, [weekend]);
 
   const handleChangeSession = (): void => {
     if (session === 'race') setSession('qualifying');
@@ -64,20 +56,10 @@ const WeekendResults: React.FC<Props> = ({ weekend }) => {
         dir="ltr"
       >
         <SwiperSlide className="weekend-results__slide">
-          { resultLoading && <Preloader /> }
-          {
-            raceResult
-            && !resultLoading
-            && <RaceResults results={raceResult} />
-          }
+          <RaceResults />
         </SwiperSlide>
         <SwiperSlide className="weekend-results__slide">
-          { resultLoading && <Preloader /> }
-          {
-            qualifyResult
-            && !resultLoading
-            && <QualifyResults results={qualifyResult} />
-          }
+          <QualifyResults />
         </SwiperSlide>
       </Swiper>
     </div>
