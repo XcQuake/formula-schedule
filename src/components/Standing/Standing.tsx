@@ -35,8 +35,8 @@ const Standing: React.FC<Props> = ({
   }[] = [];
 
   useEffect(() => {
-    if (selectedSeason) fetchStanding(selectedSeason.value, championship);
-  }, [championship, selectedSeason]);
+    if (selectedSeason) fetchStanding(selectedSeason.value);
+  }, [selectedSeason]);
 
   useEffect(() => {
     fetchSeasons();
@@ -86,6 +86,7 @@ const Standing: React.FC<Props> = ({
             navigation={{ prevEl, nextEl }}
             modules={[Navigation]}
             dir="ltr"
+            autoHeight
           >
             <SwiperSlide>
               <DriversList />
