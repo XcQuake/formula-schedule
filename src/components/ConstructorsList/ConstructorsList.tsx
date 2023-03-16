@@ -3,15 +3,22 @@ import React from 'react';
 import './ConstructorsList.scss';
 import ConstructorsListElement from './ConstructorsListElement';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import Placeholder from '../Placeholder/Placeholder';
 
 const ConstructorsList: React.FC = () => {
-  const { standingList } = useTypedSelector((state) => state.standing);
+  const { constructors } = useTypedSelector((state) => state.standing);
 
   const renderedStanding: React.ReactNode = (
-    standingList && standingList.ConstructorStandings?.map((constructor) => (
+    constructors ? constructors.map((constructor) => (
       <ConstructorsListElement
         key={constructor.Constructor.constructorId}
         stats={constructor}
+      />
+    )) : Array(10).fill('').map(() => (
+      <Placeholder.Rect
+        key={Math.random()}
+        height="30px"
+        style={{ borderRadius: '3px 3px 15px 3px' }}
       />
     ))
   );

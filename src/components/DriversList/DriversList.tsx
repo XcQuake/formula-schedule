@@ -6,18 +6,22 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Placeholder from '../Placeholder/Placeholder';
 
 const DriversList: React.FC = () => {
-  const { standingList } = useTypedSelector((state) => state.standing);
+  const { drivers } = useTypedSelector((state) => state.standing);
 
   const renderedStanding: React.ReactNode = (
-    standingList ? standingList.DriverStandings?.map(
+    drivers ? drivers.map(
       (driver) => (
         <DriversListElement
           key={driver.Driver.driverId}
           stats={driver}
         />
       ),
-    ) : Array(20).fill('').map((el) => (
-      <Placeholder.Rect height="30px" />
+    ) : Array(20).fill('').map(() => (
+      <Placeholder.Rect
+        key={Math.random()}
+        height="30px"
+        style={{ borderRadius: '3px 3px 15px 3px' }}
+      />
     ))
   );
 
