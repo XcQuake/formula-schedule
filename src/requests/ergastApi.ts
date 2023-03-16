@@ -4,7 +4,9 @@ import {
   StandingList,
   Result,
   Season,
-  QualifyingResult } from '../models/ergastApiTypes';
+  QualifyingResult,
+  DriverStanding,
+  ConstructorStanding } from '../models/ergastApiTypes';
 import { ERGAST_API_URL } from '../utils/constants';
 
 interface ApiConfig {
@@ -32,12 +34,20 @@ class ErgastApi {
     return Promise.reject(new Error(`Ошибка: ${res.status}`));
   };
 
-  getStanding(season: string, championship: string): Promise<StandingList> {
-    return fetch(`${this.link}/${season}/${championship}Standings.json`, {
+  getDriverStanding(season: string): Promise<DriverStanding[]> {
+    return fetch(`${this.link}/${season}/driverStandings.json`, {
       method: 'GET',
     })
       .then((res: Response) => ErgastApi.processResult(res))
-      .then((data) => data.MRData.StandingsTable!.StandingsLists[0]);
+      .then((data) => data.MRData.StandingsTable!.StandingsLists[0].DriverStandings!);
+  }
+
+  getConstructorStanding(season: string): Promise<ConstructorStanding[]> {
+    return fetch(`${this.link}/${season}/constructorStandings.json`, {
+      method: 'GET',
+    })
+      .then((res: Response) => ErgastApi.processResult(res))
+      .then((data) => data.MRData.StandingsTable!.StandingsLists[0].ConstructorStandings!);
   }
 
   getSchedule(): Promise<Race[]> {

@@ -18,15 +18,19 @@ import * as wikiApi from '../../requests/wikiApi';
 
 export const fetchStanding = (
   season: string,
-  championship: string,
 ) => async (dispatch: Dispatch<Action>) => {
   dispatch({ type: ActionType.FETCH_STANDING });
 
   try {
-    const response = await ergastApi.getStanding(season, championship);
+    const driversStanding = await ergastApi.getDriverStanding(season);
+    const constructorsStanding = await ergastApi.getConstructorStanding(season);
+
     dispatch({
       type: ActionType.FETCH_STANDING_SUCCESS,
-      payload: response,
+      payload: {
+        drivers: driversStanding,
+        constructors: constructorsStanding,
+      },
     });
   } catch (err: any) {
     dispatch({

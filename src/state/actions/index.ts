@@ -3,11 +3,12 @@ import React from 'react';
 import { ActionType } from '../action-types';
 import {
   Race,
-  StandingList,
   Result,
   Driver,
   Season,
   QualifyingResult,
+  DriverStanding,
+  ConstructorStanding,
 } from '../../models/ergastApiTypes';
 import {
   RapidDriver,
@@ -19,7 +20,10 @@ export interface FetchStandingAction {
 
 export interface FetchStandingSuccessAction {
   type: ActionType.FETCH_STANDING_SUCCESS;
-  payload: StandingList;
+  payload: {
+    drivers: DriverStanding[];
+    constructors: ConstructorStanding[];
+  };
 }
 
 export interface FetchStandingErrorAction {
