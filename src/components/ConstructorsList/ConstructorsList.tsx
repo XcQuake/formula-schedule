@@ -1,8 +1,7 @@
 import React from 'react';
 
 import './ConstructorsList.scss';
-import ConstructorsListElement
-  from '../ConstructorsListElement/ConstructorsListElement';
+import ConstructorsListElement from './ConstructorsListElement';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const ConstructorsList: React.FC = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './DriversList.scss';
-import DriversListElement from '../DriversListElement/DriversListElement';
+import DriversListElement from './DriversListElement';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Placeholder from '../Placeholder/Placeholder';
 

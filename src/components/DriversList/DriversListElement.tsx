@@ -3,7 +3,6 @@ import React from 'react';
 import { findFlagUrlByNationality } from 'country-flags-svg';
 import { useHistory } from 'react-router-dom';
 
-import './DriversListElement.scss';
 import { useActions } from '../../hooks/useActions';
 import { DriverStanding } from '../../models/ergastApiTypes';
 import DriverInfo from '../DriverInfo/DriverInfo';
