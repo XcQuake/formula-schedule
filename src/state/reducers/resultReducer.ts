@@ -3,15 +3,15 @@ import { ActionType } from '../action-types';
 import { Action } from '../actions';
 
 interface ResultState {
-  resultLoading: boolean;
-  resultError: string | null;
+  loading: boolean;
+  error: string | null;
   raceResult: Result[] | null;
   qualifyResult: QualifyingResult[] | null;
 }
 
 const initialState = {
-  resultLoading: false,
-  resultError: null,
+  loading: false,
+  error: null,
   raceResult: null,
   qualifyResult: null,
 };
@@ -23,29 +23,22 @@ const resultReducer = (
   switch (action.type) {
     case ActionType.FETCH_RESULT:
       return {
-        resultLoading: true,
-        resultError: null,
-        raceResult: state.raceResult,
-        qualifyResult: state.qualifyResult,
+        loading: true,
+        error: null,
+        raceResult: null,
+        qualifyResult: null,
       };
-    case ActionType.FETCH_RESULT_RACE:
+    case ActionType.FETCH_RESULT_SUCCESS:
       return {
-        resultLoading: false,
-        resultError: null,
-        raceResult: action.payload,
-        qualifyResult: state.qualifyResult,
-      };
-    case ActionType.FETCH_RESULT_QUALIFY:
-      return {
-        resultLoading: false,
-        resultError: null,
-        raceResult: state.raceResult,
-        qualifyResult: action.payload,
+        loading: false,
+        error: null,
+        raceResult: action.payload.race,
+        qualifyResult: action.payload.qualify,
       };
     case ActionType.FETCH_RESULT_ERROR:
       return {
-        resultLoading: false,
-        resultError: action.payload,
+        loading: false,
+        error: action.payload,
         raceResult: null,
         qualifyResult: null,
       };

@@ -49,14 +49,12 @@ export interface FetchResultAction {
   type: ActionType.FETCH_RESULT;
 }
 
-export interface FetchRaceResult {
-  type: ActionType.FETCH_RESULT_RACE;
-  payload: Result[],
-}
-
-export interface FetchQualifyResult {
-  type: ActionType.FETCH_RESULT_QUALIFY;
-  payload: QualifyingResult[],
+export interface FetchResultSuccessAction {
+  type: ActionType.FETCH_RESULT_SUCCESS;
+  payload: {
+    race: Result[],
+    qualify: QualifyingResult[],
+  },
 }
 
 export interface FetchResultErrorAction {
@@ -132,8 +130,7 @@ export type Action =
   | FetchScheduleSuccessAction
   | FetchScheduleErrorAction
   | FetchResultAction
-  | FetchRaceResult
-  | FetchQualifyResult
+  | FetchResultSuccessAction
   | FetchResultErrorAction
   | FetchDriverInfoAction
   | FetchDriverInfoSuccessAction
