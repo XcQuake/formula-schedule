@@ -14,15 +14,18 @@ import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { RootState } from '../../state';
 import { Season } from '../../models/ergastApiTypes';
 import Dropdown from '../Dropdown/Dropdown';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 interface Props {
   seasons: Season[],
   selectedSeason: { name: string, value: string },
+  error: string | null,
 }
 
 const Standing: React.FC<Props> = ({
   seasons,
   selectedSeason,
+  error,
 }) => {
   const { fetchStanding, fetchSeasons } = useActions();
   const [championship, setChampionship] = useState('driver');
@@ -89,10 +92,10 @@ const Standing: React.FC<Props> = ({
             autoHeight
           >
             <SwiperSlide>
-              <DriversList />
+              {!error ? <DriversList /> : <ErrorMessage />}
             </SwiperSlide>
             <SwiperSlide>
-              <ConstructorsList />
+              {!error ? <ConstructorsList /> : <ErrorMessage />}
             </SwiperSlide>
           </Swiper>
         </div>
@@ -105,6 +108,7 @@ const Standing: React.FC<Props> = ({
 const mapStateToProps = (state: RootState): Props => ({
   seasons: state.seasons.seasons,
   selectedSeason: state.dropdown.season,
+  error: state.standing.error,
 });
 
 export default connect(mapStateToProps)(Standing);

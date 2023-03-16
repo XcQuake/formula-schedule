@@ -9,7 +9,6 @@ import weekendReducer from './weekendReducer';
 import driverReducer from './driverReducer';
 import seasonsReducer from './seasonsReducer';
 import dropdownReducer from './dropdownReducer';
-import errorPopupReducer from './errorPopupReducer';
 
 const reducers = combineReducers({
   standing: standingReducer,
@@ -22,7 +21,6 @@ const reducers = combineReducers({
   driver: driverReducer,
   seasons: seasonsReducer,
   dropdown: dropdownReducer,
-  errorPopup: errorPopupReducer,
 });
 
 export default reducers;

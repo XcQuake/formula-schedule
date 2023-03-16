@@ -1,7 +1,6 @@
 import {
   MRData,
   Race,
-  StandingList,
   Result,
   Season,
   QualifyingResult,

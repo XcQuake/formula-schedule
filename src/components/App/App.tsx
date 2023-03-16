@@ -6,7 +6,6 @@ import Header from '../Header/Header';
 import Stats from '../Stats/Stats';
 import Schedule from '../Schedule/Schedule';
 import Standing from '../Standing/Standing';
-import ErrorPopup from '../ErrorPopup/ErrorPopup';
 import Background from '../Background/Background';
 import Footer from '../Footer/Footer';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
@@ -26,7 +25,6 @@ const App: React.FC = () => {
           <Route path={URLS.standing}>
             <Standing />
           </Route>
-          <ErrorPopup />
         </div>
         <Route path={URLS.stats}>
           <Stats />

@@ -136,15 +136,6 @@ export const transferContent = (
   payload: content,
 });
 
-export const openErrorPopup = (message: string | null): OpenErrorPopupAction => ({
-  type: ActionType.OPEN_ERROR_POPUP,
-  payload: message,
-});
-
-export const closeErrorPopup = (): CloseErrorPopupAction => ({
-  type: ActionType.CLOSE_ERROR_POPUP,
-});
-
 export const fetchDriverInfo = (
   driverCode: string,
 ) => async (dispatch: Dispatch<Action>) => {
@@ -158,7 +149,6 @@ export const fetchDriverInfo = (
       payload: response,
     });
   } catch (err: any) {
-    dispatch(openErrorPopup(null));
     dispatch({
       type: ActionType.FETCH_DRIVERINFO_ERROR,
       payload: err,

@@ -1,0 +1,13 @@
+.errormessage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  &__title {
+    margin: 0;
+  }
+
+  &__message {
+    margin: 0;
+  }
+}

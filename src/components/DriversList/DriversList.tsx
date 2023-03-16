@@ -6,7 +6,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Placeholder from '../Placeholder/Placeholder';
 
 const DriversList: React.FC = () => {
-  const { drivers } = useTypedSelector((state) => state.standing);
+  const { drivers, error, loading } = useTypedSelector((state) => state.standing);
 
   const renderedStanding: React.ReactNode = (
     drivers ? drivers.map(
@@ -35,7 +35,7 @@ const DriversList: React.FC = () => {
         <div className="driver__param driver__param_team">Team</div>
         <div className="driver__param text_center">Nat</div>
       </li>
-      {renderedStanding}
+      {!error && renderedStanding}
     </ul>
   );
 };
