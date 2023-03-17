@@ -1,16 +1,16 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 import './Stats.scss';
 
 const Stats: React.FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { content } = useTypedSelector((state) => state.stats);
 
   const handleClose = (): void => {
-    history.goBack();
+    navigate(-1);
   };
 
   return (

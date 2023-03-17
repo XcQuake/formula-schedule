@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.scss';
 import Header from '../Header/Header';
@@ -19,17 +19,13 @@ const App: React.FC = () => {
       <Header />
       <main className="main">
         <div className="main__wrapper">
-          <Route path={URLS.schedule}>
-            <Schedule />
-          </Route>
-          <Route path={URLS.standing}>
-            <Standing />
-          </Route>
+          <Routes>
+            <Route path={URLS.stats} element={<Stats />} />
+            <Route path={URLS.schedule} element={<Schedule />} />
+            <Route path={URLS.standing} element={<Standing />} />
+            <Route path="*" element={<Navigate to={URLS.schedule} replace />} />
+          </Routes>
         </div>
-        <Route path={URLS.stats}>
-          <Stats />
-        </Route>
-        <Redirect to={URLS.schedule} />
       </main>
       {windowWidth <= BREAKPOINTS.mobile && <Footer />}
     </>

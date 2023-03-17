@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { isPast, isSameWeek, parseISO, addHours } from 'date-fns';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './Weekend.scss';
 import { refactorDate } from '../../utils/utils';
@@ -19,7 +19,7 @@ const Weekend: React.FC<Props> = ({ race }) => {
   const { selectWeekend, transferContent } = useActions();
   const { windowWidth } = useWindowWidth();
   const rawDate = `${race.date}T${race.time}`;
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const weekendInfo = {
     name: race.raceName.replace('Grand Prix', ''),
@@ -39,7 +39,7 @@ const Weekend: React.FC<Props> = ({ race }) => {
     selectWeekend(race);
     if (windowWidth < BREAKPOINTS.mobile) {
       transferContent(<WeekendInfo />);
-      history.push(URLS.stats);
+      navigate(URLS.stats);
     }
   };
 
