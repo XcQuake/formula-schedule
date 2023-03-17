@@ -3,6 +3,7 @@ import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { BREAKPOINTS } from '../../utils/constants';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Placeholder from '../Placeholder/Placeholder';
 import Weekend from '../Weekend/Weekend';
 import WeekendInfo from '../WeekendInfo/WeekendInfo';
@@ -46,6 +47,7 @@ const Schedule: React.FC = () => {
       <div className="schedule__wrapper">
         {loading && listPlaceholder}
         {!loading && !error && weekendList}
+        {error && <ErrorMessage />}
       </div>
       {windowWidth > BREAKPOINTS.mobile && <WeekendInfo />}
     </section>
