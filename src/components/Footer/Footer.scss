@@ -11,8 +11,7 @@
   justify-content: space-around;
   background-color: black;
   color: white;
-  // box-shadow: 0 0 3px 1px #ff0000;
-  box-shadow: 0 0 2px 4px $dark-blue;
+  box-shadow: 0 0 1px 2px #808080;
   box-sizing: border-box;
 
   &__navbar {
@@ -31,18 +30,16 @@
     height: 100%;
     color: white;
     text-decoration: none;
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 18px;
+    line-height: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    -webkit-tap-highlight-color: transparent;
-    padding: 5px;
+    border-bottom: 3px solid transparent;
 
-    &:active {
-      border-radius: 50px;
-      background-color: rgba(29, 29, 29, 0.575);
+    &.active {
+      border-bottom: 3px solid $red;
     }
   }
 
