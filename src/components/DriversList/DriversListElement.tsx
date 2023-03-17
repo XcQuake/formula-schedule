@@ -8,6 +8,7 @@ import { DriverStanding } from '../../models/ergastApiTypes';
 import DriverInfo from '../DriverInfo/DriverInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { URLS } from '../../utils/constants';
+import { normalizeString } from '../../utils/utils';
 
 interface Props {
   stats: DriverStanding;
@@ -21,12 +22,15 @@ const DriversListElement: React.FC<Props> = ({ stats }) => {
   const bio = stats.Driver;
   const team = stats.Constructors[0];
   const flagUrl = findFlagUrlByNationality(bio.nationality);
+  const driverId = normalizeString(
+    `${bio.givenName} ${bio.familyName}`,
+  ).toLowerCase();
 
   function handleClick(): void {
     selectDriver(stats.Driver);
     if (windowWidth < 1199) {
       transferContent(<DriverInfo />);
-      navigate(URLS.stats);
+      navigate(`${URLS.stats}/driver/${driverId}`);
     }
   }
 

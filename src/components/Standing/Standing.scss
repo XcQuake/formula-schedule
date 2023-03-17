@@ -1,7 +1,8 @@
 @import '../../styles/utils/colors.scss';
+@import '../../styles/utils/breakpoints.scss';
 
 .standing {
-  padding: 25px 0 0;
+  padding: 25px 30px 30px;
   width: 100%;
   max-width: 600px;
   min-width: 290px;
@@ -80,13 +81,23 @@
   border-bottom: 2px solid $red;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $desktop) {
   .standing {
     &__wrapper {
       gap: 15px;
     }
     &__container {
       padding: 10px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .standing {
+    padding: 15px 10px;
+
+    &__wrapper {
+      gap: 10px;
     }
   }
 }

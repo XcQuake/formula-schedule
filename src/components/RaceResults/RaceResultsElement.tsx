@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './RaceResultsElement.scss';
 import { Result } from '../../models/ergastApiTypes';
 
 interface Props {

@@ -10,6 +10,7 @@ import Background from '../Background/Background';
 import Footer from '../Footer/Footer';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { BREAKPOINTS, URLS } from '../../utils/constants';
+import DriverPage from '../DriverPage/DriverPage';
 
 const App: React.FC = () => {
   const { windowWidth } = useWindowWidth();
@@ -18,14 +19,12 @@ const App: React.FC = () => {
       <Background />
       <Header />
       <main className="main">
-        <div className="main__wrapper">
-          <Routes>
-            <Route path={URLS.stats} element={<Stats />} />
-            <Route path={URLS.schedule} element={<Schedule />} />
-            <Route path={URLS.standing} element={<Standing />} />
-            <Route path="*" element={<Navigate to={URLS.schedule} replace />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path={URLS.schedule} element={<Schedule />} />
+          <Route path={URLS.standing} element={<Standing />} />
+          <Route path="/stats/driver/:id" element={<DriverPage />} />
+          <Route path="*" element={<Navigate to={URLS.schedule} replace />} />
+        </Routes>
       </main>
       {windowWidth <= BREAKPOINTS.mobile && <Footer />}
     </>

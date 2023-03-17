@@ -17,6 +17,7 @@ const RaceResults: React.FC = () => {
       <Placeholder.Rect
         key={Math.random()}
         height="20px"
+        style={{ borderRadius: '3px 3px 15px 3px' }}
       />
     ))
   );
