@@ -42,3 +42,14 @@ export function refactorWeekendDates(weekend: Race): any {
 export function normalizeString(string: string): string {
   return string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
+
+export function getSeasons(currentYear: number): {name: string, value: string}[] {
+  const seasons = [];
+  for (let i = 2020; i <= currentYear; i += 1) {
+    seasons.unshift({
+      name: `${i}`,
+      value: `${i}`,
+    });
+  }
+  return seasons;
+}
