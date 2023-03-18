@@ -15,6 +15,7 @@ import { RootState } from '../../state';
 import { Season } from '../../models/ergastApiTypes';
 import Dropdown from '../Dropdown/Dropdown';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { getSeasons } from '../../utils/utils';
 
 interface Props {
   seasons: Season[],
@@ -33,22 +34,15 @@ const Standing: React.FC<Props> = ({
   const [prevEl, setPrevEl] = useState<HTMLElement | null>(null);
   const [nextEl, setNextEl] = useState<HTMLElement | null>(null);
 
-  const seasonOptions: {
-    name: string, value: string,
-  }[] = [];
-
-  useEffect(() => {
-    if (selectedSeason) fetchStanding(selectedSeason.value);
-  }, [selectedSeason]);
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     fetchSeasons();
   }, []);
 
-  seasons.forEach((item) => seasonOptions.unshift({
-    name: item.season,
-    value: item.season,
-  }));
+  useEffect(() => {
+    if (selectedSeason) fetchStanding(selectedSeason.value);
+  }, [selectedSeason]);
 
   const handleChangeChampionship = (): void => {
     if (championship === 'constructor') setChampionship('driver');
@@ -75,12 +69,10 @@ const Standing: React.FC<Props> = ({
               Constructors
             </button>
           </div>
-          { seasonOptions.length > 0 && (
-            <Dropdown
-              title="Season"
-              options={seasonOptions}
-            />
-          )}
+          <Dropdown
+            title="Season"
+            options={getSeasons(currentYear)}
+          />
         </div>
         <div className="standing__container">
           <Swiper
