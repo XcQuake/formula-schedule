@@ -53,3 +53,13 @@ export function getSeasons(currentYear: number): {name: string, value: string}[]
   }
   return seasons;
 }
+
+export function loadImageAsync(url: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = url;
+    img.onload = function () {
+      resolve(url);
+    };
+  });
+}
