@@ -11,20 +11,25 @@ interface Props {
 type CompoundedComponent = React.ForwardRefExoticComponent<Props> & {
   Rect: ({ height, style }: Props) => JSX.Element;
   Circle: ({ height, style }: Props) => JSX.Element;
+  Man: () => JSX.Element;
 };
 
 const InternalPlaceholder: React.FC<Props> = () => (
-  <div className="placeholder" />
+  <span className="placeholder" />
 );
 
 const Placeholder = InternalPlaceholder as CompoundedComponent;
 
 Placeholder.Rect = ({ height, style }: Props) => (
-  <div className="placeholder-rect" style={{ height, ...style }} />
+  <span className="placeholder-rect" style={{ height, ...style }} />
 );
 
 Placeholder.Circle = ({ height, style }: Props) => (
-  <div className="placeholder-circle" style={{ height, ...style }} />
+  <span className="placeholder-circle" style={{ height, ...style }} />
+);
+
+Placeholder.Man = () => (
+  <span className="placeholder-man" />
 );
 
 export default Placeholder;

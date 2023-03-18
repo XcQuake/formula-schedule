@@ -34,3 +34,29 @@
     @extend %background;
   }
 }
+
+.placeholder-man {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  // padding: 10px 10px 0;
+  box-sizing: border-box;
+}
+
+.placeholder-man::before,
+.placeholder-man::after {
+  content: "";
+  @extend %background;
+}
+.placeholder-man::before {
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+}
+.placeholder-man::after {
+  width: 100%;
+  height: 40%;
+  border-radius: 100% 100% 0% 0%;
+}
