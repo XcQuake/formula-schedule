@@ -24,6 +24,7 @@ You can see a demo version of the website at: https://formula-schedule.vercel.ap
 - TypeScript
 - React
 - Redux
+- Redux-Thunk
 - React Router
 - SCSS
 

@@ -32,7 +32,7 @@
         "max-len": ["warn", { "code": 85 }],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "off",
-        "linebreak-style": ["error", "windows"],
+        "linebreak-style": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "object-curly-newline": "off",
         "function-paren-newline": ["error", "consistent"],
