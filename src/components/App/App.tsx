@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.scss';
 import Header from '../Header/Header';
-import Stats from '../Stats/Stats';
 import Schedule from '../Schedule/Schedule';
 import Standing from '../Standing/Standing';
 import Background from '../Background/Background';
