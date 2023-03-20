@@ -111,7 +111,7 @@ const GrandPrixPage: React.FC = () => {
           </p>
         </div>
         <img
-          className="weekend-info__image"
+          className="grandprix__image"
           src={circuitImage}
           alt={grandPrix?.Circuit.circuitName}
         />

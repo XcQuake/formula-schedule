@@ -7,7 +7,6 @@ import { refactorDate } from '../../utils/utils';
 import { Race } from '../../models/ergastApiTypes';
 import * as circuits from '../../utils/circuits';
 import { useActions } from '../../hooks/useActions';
-import WeekendInfo from '../WeekendInfo/WeekendInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { BREAKPOINTS, URLS } from '../../utils/constants';
 

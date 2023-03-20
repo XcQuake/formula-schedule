@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { isPast, parseISO, addHours } from 'date-fns';
 import { connect } from 'react-redux';
 
@@ -6,19 +6,18 @@ import './WeekendInfo.scss';
 import placeholder from '../../images/F1-logo.svg';
 import { RootState } from '../../state';
 import { refactorWeekendDates } from '../../utils/utils';
-import { useActions } from '../../hooks/useActions';
 import { Race } from '../../models/ergastApiTypes';
 import Session from '../Session/Session';
 import WeekendResults from '../WeekendResults/WeekendResults';
 import Placeholder from '../Placeholder/Placeholder';
+import { getImage } from '../../requests/wikiApi';
 
 interface Props {
   weekend: Race | null;
-  wikiImage: string | null;
 }
 
-const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
-  const { fetchWikiImage } = useActions();
+const WeekendInfo: React.FC<Props> = ({ weekend }) => {
+  const [circuitImage, setCircuitImage] = useState<string | null>(null);
 
   const wikiTitle = weekend?.raceName.replace(' ', '_');
   const rawDate = weekend && `${weekend.date}T${weekend.time}`;
@@ -29,8 +28,8 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
   };
 
   useEffect(() => {
-    if (weekend && !weekendDates?.isOver) {
-      fetchWikiImage(wikiTitle!);
+    if (wikiTitle && !weekendDates?.isOver) {
+      getImage(wikiTitle).then((url) => setCircuitImage(url));
     }
   }, [weekend]);
 
@@ -39,7 +38,7 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
       <figure className="weekend-info__figure">
         <img
           className="weekend-info__image"
-          src={wikiImage || placeholder}
+          src={circuitImage || placeholder}
           alt={weekend?.Circuit.circuitName}
         />
         <h5 className="weekend-info__circuit-name">
@@ -57,7 +56,7 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
     </>
   );
 
-  const renderSessionDates: JSX.Element = (
+  const renderSessionDates = weekendDates && (
     <ul className="weekend-info__sessions">
       <Session
         title="FP1"
@@ -132,7 +131,6 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
 
 const mapStateToProps = (state: RootState): Props => ({
   weekend: state.weekend.weekend,
-  wikiImage: state.wikiData.wikiImage,
 });
 
 export default connect(mapStateToProps)(WeekendInfo);
