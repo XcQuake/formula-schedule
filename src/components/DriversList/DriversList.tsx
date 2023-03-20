@@ -4,6 +4,7 @@ import './DriversList.scss';
 import DriversListElement from './DriversListElement';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Placeholder from '../Placeholder/Placeholder';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const DriversList: React.FC = () => {
   const { drivers, error, loading } = useTypedSelector((state) => state.standing);
@@ -35,7 +36,7 @@ const DriversList: React.FC = () => {
         <div className="driver__param driver__param_team">Team</div>
         <div className="driver__param text_center">Nat</div>
       </li>
-      {!error && renderedStanding}
+      {!error ? renderedStanding : <ErrorMessage />}
     </ul>
   );
 };

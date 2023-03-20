@@ -107,7 +107,7 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
   );
 
   return (
-    weekend && weekendInfo ? (
+    weekendInfo ? (
       <div className="weekend-info">
         <h3 className="weekend-info__header">{weekend.raceName}</h3>
         { !weekendInfo.isOver && (
@@ -121,7 +121,7 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
           && <WeekendResults weekend={weekend} />
         }
       </div>
-    ) : (
+    ) : weekend && (
       <Placeholder.Rect
         height="415px"
         style={{ width: '390px', borderRadius: '10px' }}
