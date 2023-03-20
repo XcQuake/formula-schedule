@@ -23,13 +23,13 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
   const wikiTitle = weekend?.raceName.replace(' ', '_');
   const rawDate = weekend && `${weekend.date}T${weekend.time}`;
 
-  const weekendInfo = weekend && {
-    dates: refactorWeekendDates(weekend),
+  const weekendDates = weekend && {
+    ...refactorWeekendDates(weekend),
     isOver: isPast(addHours(parseISO(rawDate!), 3)),
   };
 
   useEffect(() => {
-    if (weekend && !weekendInfo?.isOver) {
+    if (weekend && !weekendDates?.isOver) {
       fetchWikiImage(wikiTitle!);
     }
   }, [weekend]);
@@ -61,22 +61,22 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
     <ul className="weekend-info__sessions">
       <Session
         title="FP1"
-        date={weekendInfo?.dates.firstPractice.date}
-        time={weekendInfo?.dates.firstPractice.time}
+        date={weekendDates!.firstPractice.date}
+        time={weekendDates!.firstPractice.time}
         type="practice"
       />
       <Session
         title="FP2"
-        date={weekendInfo?.dates.secondPractice.date}
-        time={weekendInfo?.dates.secondPractice.time}
+        date={weekendDates!.secondPractice.date}
+        time={weekendDates!.secondPractice.time}
         type="practice"
       />
       {
         weekend?.ThirdPractice && (
           <Session
             title="FP3"
-            date={weekendInfo?.dates.thirdPractice.date}
-            time={weekendInfo?.dates.thirdPractice.time}
+            date={weekendDates!.thirdPractice!.date}
+            time={weekendDates!.thirdPractice!.time}
             type="practice"
           />
         )
@@ -85,39 +85,39 @@ const WeekendInfo: React.FC<Props> = ({ weekend, wikiImage }) => {
         weekend?.Sprint && (
           <Session
             title="Sprint"
-            date={weekendInfo?.dates.sprint.date}
-            time={weekendInfo?.dates.sprint.time}
+            date={weekendDates!.sprint!.date}
+            time={weekendDates!.sprint!.time}
             type="sprint"
           />
         )
       }
       <Session
         title="QU"
-        date={weekendInfo?.dates.qualifying.date}
-        time={weekendInfo?.dates.qualifying.time}
+        date={weekendDates!.qualifying.date}
+        time={weekendDates!.qualifying.time}
         type="qualifying"
       />
       <Session
         title="RACE"
-        date={weekendInfo?.dates.race.date}
-        time={weekendInfo?.dates.race.time}
+        date={weekendDates!.race.date}
+        time={weekendDates!.race.time}
         type="race"
       />
     </ul>
   );
 
   return (
-    weekendInfo ? (
+    weekendDates ? (
       <div className="weekend-info">
         <h3 className="weekend-info__header">{weekend.raceName}</h3>
-        { !weekendInfo.isOver && (
+        { !weekendDates.isOver && (
           <div className="weekend-info__wrapper">
             {renderCircuitInfo}
             {renderSessionDates}
           </div>
         )}
         {
-          weekendInfo.isOver
+          weekendDates.isOver
           && <WeekendResults weekend={weekend} />
         }
       </div>

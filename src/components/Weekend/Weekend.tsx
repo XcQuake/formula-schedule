@@ -39,7 +39,7 @@ const Weekend: React.FC<Props> = ({ race }) => {
     selectWeekend(race);
     if (windowWidth < BREAKPOINTS.mobile) {
       transferContent(<WeekendInfo />);
-      navigate(URLS.stats);
+      navigate(`${URLS.stats}/grandprix/${race.season}/${race.round}`);
     }
   };
 
