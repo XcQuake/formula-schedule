@@ -13,11 +13,8 @@ export enum ActionType {
   FETCH_DRIVERINFO = 'fetch_driverinfo',
   FETCH_DRIVERINFO_SUCCESS = 'fetch_driverinfo_success',
   FETCH_DRIVERINFO_ERROR = 'fetch_driverinfo_error',
-  FETCH_SEASONS = 'fetch_seasons',
   SELECT_WEEKEND = 'select_weekend',
   SELECT_DRIVER = 'select_driver',
   SELECT_DROPDOWN_OPTION = 'select_dropdown_option',
   TRANSFER_CONTENT = 'transfer_content',
-  OPEN_ERROR_POPUP = 'open_error_popup',
-  CLOSE_ERROR_POPUP = 'close_error_popup',
 }

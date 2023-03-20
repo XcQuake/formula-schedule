@@ -5,7 +5,6 @@ import {
   Race,
   Result,
   Driver,
-  Season,
   QualifyingResult,
   DriverStanding,
   ConstructorStanding,
@@ -85,11 +84,6 @@ export interface FetchWikiImageSuccessAction {
   payload: string,
 }
 
-export interface FetchSeasons {
-  type: ActionType.FETCH_SEASONS,
-  payload: Season[],
-}
-
 export interface SelectWeekendAction {
   type: ActionType.SELECT_WEEKEND,
   payload: Race,
@@ -113,15 +107,6 @@ export interface TransferContentAction {
   payload: React.ReactNode,
 }
 
-export interface OpenErrorPopupAction {
-  type: ActionType.OPEN_ERROR_POPUP,
-  payload: string | null,
-}
-
-export interface CloseErrorPopupAction {
-  type: ActionType.CLOSE_ERROR_POPUP,
-}
-
 export type Action =
   | FetchStandingAction
   | FetchStandingSuccessAction
@@ -137,10 +122,7 @@ export type Action =
   | FetchDriverInfoErrorAction
   | FetchWikiImageAction
   | FetchWikiImageSuccessAction
-  | FetchSeasons
   | SelectWeekendAction
   | SelectDriverAction
   | SelectDropdownOptionAction
-  | TransferContentAction
-  | OpenErrorPopupAction
-  | CloseErrorPopupAction;
+  | TransferContentAction;

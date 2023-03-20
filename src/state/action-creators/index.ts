@@ -4,8 +4,6 @@ import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import {
   Action,
-  CloseErrorPopupAction,
-  OpenErrorPopupAction,
   TransferContentAction,
   SelectDriverAction,
   SelectDropdownOptionAction,
@@ -94,15 +92,6 @@ export const fetchWikiImage = (
   dispatch({
     type: ActionType.FETCH_WIKI_IMAGE_SUCCESS,
     payload: imgSource,
-  });
-};
-
-export const fetchSeasons = () => async (dispatch: Dispatch<Action>) => {
-  const seasons = await ergastApi.getSeasons();
-
-  dispatch({
-    type: ActionType.FETCH_SEASONS,
-    payload: seasons,
   });
 };
 
