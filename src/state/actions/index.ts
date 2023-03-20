@@ -102,11 +102,6 @@ export interface SelectDropdownOptionAction {
   }
 }
 
-export interface TransferContentAction {
-  type: ActionType.TRANSFER_CONTENT,
-  payload: React.ReactNode,
-}
-
 export type Action =
   | FetchStandingAction
   | FetchStandingSuccessAction
@@ -124,5 +119,4 @@ export type Action =
   | FetchWikiImageSuccessAction
   | SelectWeekendAction
   | SelectDriverAction
-  | SelectDropdownOptionAction
-  | TransferContentAction;
+  | SelectDropdownOptionAction;

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { useActions } from '../../hooks/useActions';
 import { DriverStanding } from '../../models/ergastApiTypes';
-import DriverInfo from '../DriverInfo/DriverInfo';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
 import { URLS } from '../../utils/constants';
 import { normalizeString } from '../../utils/utils';
@@ -15,7 +14,7 @@ interface Props {
 }
 
 const DriversListElement: React.FC<Props> = ({ stats }) => {
-  const { selectDriver, transferContent } = useActions();
+  const { selectDriver } = useActions();
   const { windowWidth } = useWindowWidth();
   const navigate = useNavigate();
 
@@ -29,7 +28,6 @@ const DriversListElement: React.FC<Props> = ({ stats }) => {
   function handleClick(): void {
     selectDriver(stats.Driver);
     if (windowWidth < 1199) {
-      transferContent(<DriverInfo />);
       navigate(`${URLS.stats}/driver/${driverId}`);
     }
   }

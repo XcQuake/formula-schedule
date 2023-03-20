@@ -1,10 +1,8 @@
-import React from 'react';
 import { Dispatch } from 'redux';
 
 import { ActionType } from '../action-types';
 import {
   Action,
-  TransferContentAction,
   SelectDriverAction,
   SelectDropdownOptionAction,
   SelectWeekendAction,
@@ -111,13 +109,6 @@ export const selectDropdownOption = (
 ): SelectDropdownOptionAction => ({
   type: ActionType.SELECT_DROPDOWN_OPTION,
   payload: { title, option },
-});
-
-export const transferContent = (
-  content: React.ReactNode,
-): TransferContentAction => ({
-  type: ActionType.TRANSFER_CONTENT,
-  payload: content,
 });
 
 export const fetchDriverInfo = (

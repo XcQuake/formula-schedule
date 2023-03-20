@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 import standingReducer from './standingReducer';
 import scheduleReducer from './scheduleReducer';
 import wikiDataReducer from './wikiDataReducer';
-import statsReducer from './statsReducer';
 import resultReducer from './resultReducer';
 import driverInfoReducer from './driverInfoReducer';
 import weekendReducer from './weekendReducer';
@@ -15,7 +14,6 @@ const reducers = combineReducers({
   result: resultReducer,
   weekend: weekendReducer,
   wikiData: wikiDataReducer,
-  stats: statsReducer,
   driverInfo: driverInfoReducer,
   driver: driverReducer,
   dropdown: dropdownReducer,

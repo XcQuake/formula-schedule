@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Weekend: React.FC<Props> = ({ race }) => {
-  const { selectWeekend, transferContent } = useActions();
+  const { selectWeekend } = useActions();
   const { windowWidth } = useWindowWidth();
   const rawDate = `${race.date}T${race.time}`;
   const navigate = useNavigate();
@@ -38,7 +38,6 @@ const Weekend: React.FC<Props> = ({ race }) => {
   const onClick = (): void => {
     selectWeekend(race);
     if (windowWidth < BREAKPOINTS.mobile) {
-      transferContent(<WeekendInfo />);
       navigate(`${URLS.stats}/grandprix/${race.season}/${race.round}`);
     }
   };
