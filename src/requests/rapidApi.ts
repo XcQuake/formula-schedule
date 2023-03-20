@@ -35,7 +35,7 @@ class RapidApi {
     })
       .then((res: Response) => RapidApi.processResult(res))
       .then((data) => {
-        if (data.errors.length > 0) throw new Error('Api Error');
+        if (data.errors) throw new Error('Api Error');
         return data.response[0];
       });
   }
