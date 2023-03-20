@@ -13,7 +13,8 @@ export function refactorDate(date: string, time: string): refactoredDate {
   };
 }
 
-export function refactorWeekendDates(weekend: Race): any {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export function refactorWeekendDates(weekend: Race) {
   return {
     race: refactorDate(weekend.date, weekend.time),
     firstPractice: refactorDate(

@@ -49,6 +49,14 @@ class ErgastApi {
       .then((data) => data.MRData.StandingsTable!.StandingsLists[0].ConstructorStandings!);
   }
 
+  getGrandPrixInfo(season: string, round: string): Promise<Race> {
+    return fetch(`${this.link}/${season}/${round}.json`, {
+      method: 'GET',
+    })
+      .then((res: Response) => ErgastApi.processResult(res))
+      .then((data) => data.MRData.RaceTable!.Races[0]);
+  }
+
   getSchedule(): Promise<Race[]> {
     return fetch(`${this.link}/current.json`, {
       method: 'GET',
